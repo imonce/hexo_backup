@@ -60,6 +60,8 @@ jsonContent:
 
 ## Optional config
 
+- [switch to English](https://github.com/fi3ework/hexo-theme-archer/wiki/%E8%8B%B1%E6%96%87%E7%95%8C%E9%9D%A2)
+
 - [enable about page](https://github.com/fi3ework/hexo-theme-archer/wiki/%E5%90%AF%E7%94%A8about%E9%A1%B5)
 - [enable 404 page](https://github.com/fi3ework/hexo-theme-archer/wiki/%E5%90%AF%E7%94%A8404%E9%A1%B5)
 - [enable rss](https://github.com/fi3ework/hexo-theme-archer/wiki/%E5%90%AF%E7%94%A8rss)
@@ -90,6 +92,7 @@ social:
   # wechat and qq should be a path of an qr-code image
   wechat:
   qq:
+  telegram:
   weibo:
   zhihu:
   douban:
@@ -119,6 +122,8 @@ about:
 # ========== Site ========== #
 # title of the site (each article will be followed by this value to help SEO)
 SEO_title:
+# keywords of the site, good for SEO, you also can add specified keyswords for each post at Front-matter
+SEO_keywords:
 # main title (title in site banner)
 main_title:
 # subtitle (subtitle in site banner)
@@ -141,15 +146,12 @@ algolia_search:
     hits_stats: "${hits} results found in ${time} ms" # no results found hint
     
 # ========== Comment Plugin ========== #
-# Currently support directly adding Livere, Gitment, Changyan, Youyan and Valine, fill the field to enable corresponding plugin
+# Currently support directly adding Livere, Gitment, Youyan and Valine, fill the field to enable corresponding plugin
 comment:
   # Livere：https://livere.com/
   livere_uid:
   # Disqus：https://disqus.com/
   disqus_shortname:
-  # Changeyan：http://changyan.kuaizhan.com/
-  changyan_appid:
-  changyan_conf:
   # Gitment：https://github.com/imsun/gitment
   gitment_owner:
   gitment_repo:

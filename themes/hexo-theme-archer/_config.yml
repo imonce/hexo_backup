@@ -38,6 +38,11 @@ about:
 # ========== Site ========== #
 # title of the site
 SEO_title: C_Meng
+# keywords for site (good for SEO)
+SEO_keywords:
+  - hexo
+  - 'hexo-theme'
+  - 'hexo-blog'
 # main title
 main_title: C_Meng
 # subtitle
@@ -67,9 +72,6 @@ comment:
   livere_uid: 
   # Disqus  site: https://disqus.com/
   disqus_shortname: 
-  # Changyan  site: http://changyan.kuaizhan.com/
-  changyan_appid: 
-  changyan_conf: 
   # Gitment  site: https://github.com/imsun/gitment
   gitment_owner: 
   gitment_repo: 

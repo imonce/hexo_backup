@@ -4,8 +4,8 @@
   "description": "a smart and modern theme for Hexo",
   "scripts": {
     "dev": "gulp dev",
-    "build": "gulp build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "gulp build --option",
+    "prettier": "prettier --write './src/**/*.*'"
   },
   "author": "fi3ework",
   "license": "MIT",
@@ -21,8 +21,11 @@
     "browser-sync": "^2.18.13",
     "eslint": "^4.14.0",
     "eslint-config-alloy": "^1.4.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-prettier": "^2.6.2",
     "gulp": "^3.9.1",
     "gulp-sass": "^3.1.0",
+    "prettier": "1.14.2",
     "uglifyjs-webpack-plugin": "^1.1.8",
     "webpack": "^3.10.0",
     "webpack-merge": "^4.1.1"
