@@ -8,7 +8,7 @@ tags: [latex, caption]
 
 通过caption包中的captionsetup来进行格式的统一设定
 
-## 栗子
+# 栗子
 
 ```
 \usepackage{caption}
