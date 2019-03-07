@@ -40,6 +40,8 @@ about:
 SEO_title: C_Meng
 # keywords for site (good for SEO)
 SEO_keywords:
+  - C_Meng
+  - 'C_Meng'
   - hexo
   - 'hexo-theme'
   - 'hexo-blog'
@@ -48,9 +50,11 @@ main_title: C_Meng
 # subtitle
 subtitle: Run Run Run away Run awaaaaaaaaaaaaaaay BABY
 # site haeder image
-site_header_image: '/intro/index-bg.jpg'
+site_header_image: https://source.unsplash.com/random
+# '/intro/index-bg.jpg'
 # post haeder image
-post_header_image: '/intro/post-bg.jpg'
+post_header_image: https://source.unsplash.com/random
+# '/intro/post-bg.jpg'
 # 404 image
 _404_image: '/intro/404-bg.jpg'
 
