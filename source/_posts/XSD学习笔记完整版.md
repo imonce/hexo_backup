@@ -65,6 +65,34 @@ elementFormDefault="qualified"
 
 指出任何 XML 实例文档所使用的且在此 schema 中声明过的元素必须被命名空间限定。
 
+## 在 XSD 文档中引用 其他Schema
+
+引用方式有两种：
+
+- include
+- import
+
+import与include的作用是一样的。 区别在于import是导入另外一个命名空间的xsd， 而inlude是包含同一个命名空间的xsd。
+
+### 例子
+
+```
+<xsd:include schemaLocation="module/owl1-lite-core.xsd" /> 
+```
+
+```
+<xsd:import namespace="http://www.w3.org/XML/1998/namespace" 
+            schemaLocation="xml.xsd">
+  <!-- "http://www.w3.org/2001/xml.xsd" -->
+  <xsd:annotation>
+    <xsd:documentation>
+      Get access to the xml: attribute groups for xml:lang
+      as declared on 'Label' and 'Documentation' below 
+    </xsd:documentation>
+  </xsd:annotation>
+</xsd:import>
+```
+
 ## 在 XML 文档中引用 Schema
 
 此 XML 文档含有对 XML Schema 的引用：
