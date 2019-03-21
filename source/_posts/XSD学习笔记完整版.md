@@ -8,6 +8,20 @@ tags: [XSD, XML Schema, XML, Schema, 学习笔记]
 
 # schema声明
 
+属性大全
+
+|属性|说明|取值|
+|:--|:--|:--|
+|id|标识该元素的唯一ID| |
+|attributeFormDefault|指定XML文档使用schema中定义的局部属性时是否必须使用命名空间限定|qualified:必须通过命名空间前缀限定、unqualified：（默认值）无须通过命名空间前缀限定|
+|elementFormDefault|指定XML文档使用schema中定义的局部元素时是否必须使用命名空间限定|取值和含义同attributeFormDefault|
+|blockDefault|设定schema中element和complexType上的block属性的默认值、block属性用来阻止以指定的派生类型代替原类型|\#all或者extension、restriction和substitution的自由组合、例如extension表示防止通过扩展派生的复杂类型替代该复杂类型|
+|finalDefault|设定schema中element、simpleType和complexType上的final的默认值、final属性用来阻止以指定的派生类型来派生新类型|对于element和complexType：值可以是#all或extension和restriction的自由组合、对于simpleType：值可以是#all或restriction、list和union的自由组合|
+|targetNamespace|设定schema的命名空间的URI引用| |
+|version|设定schema的版本| |
+|xmlns|设定schema使用的一个或多个命名空间的URI引用| |
+|any attributes|设定带有non-schema命名空间的任何其他属性| |
+
 ## <schema\> 声明
 
 <schema\> 元素是每一个 XML Schema 的根元素：
