@@ -194,6 +194,53 @@ xsi:schemaLocation="http://www.w3school.com.cn note.xsd"
 <xs:element name="dateborn" type="xs:date"/>
 ```
 
+## 列表
+
+### 语法
+
+```
+<list
+id=ID 
+itemType=QName 
+any attributes
+>
+
+(annotation?,(simpleType?))
+
+</list>
+```
+
+|属性|描述|
+|:--|:--|
+|id|可选。规定该元素的唯一的 ID。|
+|itemType|在该 schema（或由指定的命名空间指示的其他 schema）中定义的内置数据类型或 simpleType 元素的名称。包含 list 元素的 simpleType 元素是从 list 值指定的简单类型派生的。list 值必须是限定名 (QName)。 如果内容包含 simpleType 元素，则不允许使用该属性，否则该属性是必需的。|
+|any attributes|可选。规定带有 non-schema 命名空间的任何其他属性。|
+
+### 例子
+
+下面的例子展示了为一列整数的简单类型：
+
+```
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+<xs:element name="intvalues" type="valuelist">
+
+<xs:simpleType name="valuelist">
+  <xs:list itemType="xs:integer"/>
+</xs:simpleType>
+
+</xs:schema>
+```
+
+文档中的 "intvalues" 元素类似这样（注意这个列表有五个列表项）：
+
+```
+<intvalues>100 34 56 -23 1567</intvalues>
+```
+
+注释：空格被作为列表项的分隔符
+
 ## 属性
 
 ```
@@ -942,6 +989,21 @@ Occurrence 指示器用于定义某个元素出现的频率。对于所有的 "O
   </xs:complexType>
 </xs:element>
 ```
+
+### 相关属性
+
+- id:可选。规定该元素的唯一的 ID。
+- namespace:可选。规定包含可以使用的元素的命名空间。如果没有指定命名空间，则 ##any 为默认值。如果指定命名空间，则必须是以下值之一。
+	- any - 来自任何命名空间的元素都可以出现（默认）。
+	- other - 来自该元素的父元素的目标命名空间之外的任何命名空间的元素都可以出现。
+	- local - 未由命名空间限定的元素可以出现。
+	- targetNamespace - 来自包含该元素的父元素的目标命名空间的元素可以出现。
+	- {URI references of namespaces, ##targetNamespace, ##local} 的列表 - 来自通过空格分隔的命名空间列表的元素可以出现。 该列表可以包含以下内容： 命名空间 ##targetNamespace 和 ##local 的 URI 引用。
+- processContents:可选。一个指示符，指示应用程序或 XML 处理器应如何根据由该 any 元素指定的元素处理 XML 文档的验证。 如果没有指定 processContents 属性，则默认为 strict。 如果指定了 processContents，必须是以下值之一。
+	- strict - XML 处理器必须获得所需命名空间的架构，并且必须验证来自这些命名空间的所有元素。（默认）
+	- lax - 与 strict 相同；但是，即使不能获取该架构，也不会发生任何错误。
+	- skip - XML 处理器不尝试验证来自指定命名空间的所有元素。
+- any attributes:可选。规定带有 non-schema 命名空间的任何其他属性。
 
 ## <anyAttribute\>
 
