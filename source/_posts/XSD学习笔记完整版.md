@@ -1137,11 +1137,11 @@ Token 数据类型同样可包含字符，但是 XML 处理器会移除换行符
 |IDREF|在 XML 中提交 IDREF 属性的字符串(仅与 schema 属性一同使用)|
 |IDREFS language|包含合法的语言 id 的字符串|
 |Name|包含合法 XML 名称的字符串|
-|NCName| |
+|NCName| `NCName	::=	(Letter | '_') (NCNameChar)*` <br> `NCNameChar	::=	Letter | Digit | '.' | '-' | '_' | CombiningChar | Extender |`
 |NMTOKEN|在 XML 中提交 NMTOKEN 属性的字符串 (仅与 schema 属性一同使用)|
 |NMTOKENS| |
 |normalizedString|不包含换行符、回车或制表符的字符串|
-|QName| |
+|QName| `QName	::=	(Prefix ':')? LocalPart`<br>`Prefix	::=	NCName`<br>`LocalPart	::=	NCName` |
 |string|字符串|
 |token|不包含换行符、回车或制表符、开头或结尾空格或者多个连续空格的字符串|
 
