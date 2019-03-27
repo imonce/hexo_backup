@@ -191,7 +191,6 @@ All standard WS-BPEL 2.0 activities in alphabetical order. Basic activities and 
 |compensateScope||
 |empty|无所事事，比如在一个错误发生后可以不做反应来消除这个错误|
 |exit|该活动用于立刻终止业务流程实例。所有当前运行的活动必须被立刻终止。不用引用任何终点处理、错误处理或者补偿行为。|
-|extensionActivity||
 |forEach||
 |invoke|活动允许业务流程同步或异步调用由合作伙伴提供的服务，服务实现可以是单向或请求-响应操作。Invoke活动使用“partnerLink”来引用伙伴服务。同过“portType”和“operation”指定相应的WSDL接口和操作。|
 |pick|活动会等待一组相互排斥事件中的一个事件的发生，然后执行与发生的事件相关联的活动。它会阻塞业务流程执行，以等待某一特定的事件发生，比如接收到一个合适的消息或超时警报响起。当其中任何一个事件被触发后，业务流程就会继续执行，pick也随即完成了，不会再等待其他事件的发生。|
@@ -204,6 +203,7 @@ All standard WS-BPEL 2.0 activities in alphabetical order. Basic activities and 
 
 |结构化活动名称|释义|
 |:--|:--|
+|extensionActivity||
 |flow|可以描述更为复杂的活动执行顺序。我们可以利用flow指定一个或多个并行执行的活动。为了定义任意的控制结构，可以在并行的活动中使用链接。|
 |if||
 |repeatUntil||
