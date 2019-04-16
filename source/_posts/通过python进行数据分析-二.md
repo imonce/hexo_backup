@@ -644,258 +644,297 @@ cframe = frame[frame.a.notnull()]
 cframe[:10]
 ```
 
+    （表格太大了，略）
 
 
 
-<div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
+```python
+# cframe['a'].str 意思是将cframe表格中的‘a’列取出来，转化为padas 中string方法组成的列表，可以调用string相关的方法
+# .contains('Windows') string中包含Windows返回True，不包含返回False
+# 顺便输出前10行看看
+cframe['a'].str.contains('Windows')[:10]
+```
 
-    .dataframe thead th {
-        text-align: left;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>_heartbeat_</th>
-      <th>a</th>
-      <th>al</th>
-      <th>c</th>
-      <th>cy</th>
-      <th>g</th>
-      <th>gr</th>
-      <th>h</th>
-      <th>hc</th>
-      <th>hh</th>
-      <th>kw</th>
-      <th>l</th>
-      <th>ll</th>
-      <th>nk</th>
-      <th>r</th>
-      <th>t</th>
-      <th>tz</th>
-      <th>u</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>NaN</td>
-      <td>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKi...</td>
-      <td>en-US,en;q=0.8</td>
-      <td>US</td>
-      <td>Danvers</td>
-      <td>A6qOVH</td>
-      <td>MA</td>
-      <td>wfLQtf</td>
-      <td>1.331823e+09</td>
-      <td>1.usa.gov</td>
-      <td>NaN</td>
-      <td>orofrog</td>
-      <td>[42.576698, -70.954903]</td>
-      <td>1.0</td>
-      <td>http://www.facebook.com/l/7AQEFzjSi/1.usa.gov/...</td>
-      <td>1.331923e+09</td>
-      <td>America/New_York</td>
-      <td>http://www.ncbi.nlm.nih.gov/pubmed/22415991</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>NaN</td>
-      <td>GoogleMaps/RochesterNY</td>
-      <td>NaN</td>
-      <td>US</td>
-      <td>Provo</td>
-      <td>mwszkS</td>
-      <td>UT</td>
-      <td>mwszkS</td>
-      <td>1.308262e+09</td>
-      <td>j.mp</td>
-      <td>NaN</td>
-      <td>bitly</td>
-      <td>[40.218102, -111.613297]</td>
-      <td>0.0</td>
-      <td>http://www.AwareMap.com/</td>
-      <td>1.331923e+09</td>
-      <td>America/Denver</td>
-      <td>http://www.monroecounty.gov/etc/911/rss.php</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>NaN</td>
-      <td>Mozilla/4.0 (compatible; MSIE 8.0; Windows NT ...</td>
-      <td>en-US</td>
-      <td>US</td>
-      <td>Washington</td>
-      <td>xxr3Qb</td>
-      <td>DC</td>
-      <td>xxr3Qb</td>
-      <td>1.331920e+09</td>
-      <td>1.usa.gov</td>
-      <td>NaN</td>
-      <td>bitly</td>
-      <td>[38.9007, -77.043098]</td>
-      <td>1.0</td>
-      <td>http://t.co/03elZC4Q</td>
-      <td>1.331923e+09</td>
-      <td>America/New_York</td>
-      <td>http://boxer.senate.gov/en/press/releases/0316...</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>NaN</td>
-      <td>Mozilla/5.0 (Macintosh; Intel Mac OS X 10_6_8)...</td>
-      <td>pt-br</td>
-      <td>BR</td>
-      <td>Braz</td>
-      <td>zCaLwp</td>
-      <td>27</td>
-      <td>zUtuOu</td>
-      <td>1.331923e+09</td>
-      <td>1.usa.gov</td>
-      <td>NaN</td>
-      <td>alelex88</td>
-      <td>[-23.549999, -46.616699]</td>
-      <td>0.0</td>
-      <td>direct</td>
-      <td>1.331923e+09</td>
-      <td>America/Sao_Paulo</td>
-      <td>http://apod.nasa.gov/apod/ap120312.html</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>NaN</td>
-      <td>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKi...</td>
-      <td>en-US,en;q=0.8</td>
-      <td>US</td>
-      <td>Shrewsbury</td>
-      <td>9b6kNl</td>
-      <td>MA</td>
-      <td>9b6kNl</td>
-      <td>1.273672e+09</td>
-      <td>bit.ly</td>
-      <td>NaN</td>
-      <td>bitly</td>
-      <td>[42.286499, -71.714699]</td>
-      <td>0.0</td>
-      <td>http://www.shrewsbury-ma.gov/selco/</td>
-      <td>1.331923e+09</td>
-      <td>America/New_York</td>
-      <td>http://www.shrewsbury-ma.gov/egov/gallery/1341...</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>NaN</td>
-      <td>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKi...</td>
-      <td>en-US,en;q=0.8</td>
-      <td>US</td>
-      <td>Shrewsbury</td>
-      <td>axNK8c</td>
-      <td>MA</td>
-      <td>axNK8c</td>
-      <td>1.273673e+09</td>
-      <td>bit.ly</td>
-      <td>NaN</td>
-      <td>bitly</td>
-      <td>[42.286499, -71.714699]</td>
-      <td>0.0</td>
-      <td>http://www.shrewsbury-ma.gov/selco/</td>
-      <td>1.331923e+09</td>
-      <td>America/New_York</td>
-      <td>http://www.shrewsbury-ma.gov/egov/gallery/1341...</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>NaN</td>
-      <td>Mozilla/5.0 (Windows NT 5.1) AppleWebKit/535.1...</td>
-      <td>pl-PL,pl;q=0.8,en-US;q=0.6,en;q=0.4</td>
-      <td>PL</td>
-      <td>Luban</td>
-      <td>wcndER</td>
-      <td>77</td>
-      <td>zkpJBR</td>
-      <td>1.331923e+09</td>
-      <td>1.usa.gov</td>
-      <td>NaN</td>
-      <td>bnjacobs</td>
-      <td>[51.116699, 15.2833]</td>
-      <td>0.0</td>
-      <td>http://plus.url.google.com/url?sa=z&amp;n=13319232...</td>
-      <td>1.331923e+09</td>
-      <td>Europe/Warsaw</td>
-      <td>http://www.nasa.gov/mission_pages/nustar/main/...</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>NaN</td>
-      <td>Mozilla/5.0 (Windows NT 6.1; rv:2.0.1) Gecko/2...</td>
-      <td>bg,en-us;q=0.7,en;q=0.3</td>
-      <td>None</td>
-      <td>NaN</td>
-      <td>wcndER</td>
-      <td>NaN</td>
-      <td>zkpJBR</td>
-      <td>1.331923e+09</td>
-      <td>1.usa.gov</td>
-      <td>NaN</td>
-      <td>bnjacobs</td>
-      <td>NaN</td>
-      <td>0.0</td>
-      <td>http://www.facebook.com/</td>
-      <td>1.331923e+09</td>
-      <td></td>
-      <td>http://www.nasa.gov/mission_pages/nustar/main/...</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>NaN</td>
-      <td>Opera/9.80 (X11; Linux zbov; U; en) Presto/2.1...</td>
-      <td>en-US, en</td>
-      <td>None</td>
-      <td>NaN</td>
-      <td>wcndER</td>
-      <td>NaN</td>
-      <td>zkpJBR</td>
-      <td>1.331923e+09</td>
-      <td>1.usa.gov</td>
-      <td>NaN</td>
-      <td>bnjacobs</td>
-      <td>NaN</td>
-      <td>0.0</td>
-      <td>http://www.facebook.com/l.php?u=http%3A%2F%2F1...</td>
-      <td>1.331923e+09</td>
-      <td></td>
-      <td>http://www.nasa.gov/mission_pages/nustar/main/...</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>NaN</td>
-      <td>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKi...</td>
-      <td>pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4</td>
-      <td>None</td>
-      <td>NaN</td>
-      <td>zCaLwp</td>
-      <td>NaN</td>
-      <td>zUtuOu</td>
-      <td>1.331923e+09</td>
-      <td>1.usa.gov</td>
-      <td>NaN</td>
-      <td>alelex88</td>
-      <td>NaN</td>
-      <td>0.0</td>
-      <td>http://t.co/o1Pd0WeV</td>
-      <td>1.331923e+09</td>
-      <td></td>
-      <td>http://apod.nasa.gov/apod/ap120312.html</td>
-    </tr>
-  </tbody>
-</table>
-</div>
+
+
+    0     True
+    1    False
+    2     True
+    3    False
+    4     True
+    5     True
+    6     True
+    7     True
+    8    False
+    9     True
+    Name: a, dtype: bool
+
+
+
+
+```python
+# 要理解np.where()这个函数，先看下边几行
+# >>> a
+# array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+# >>> np.where(a < 5, 0, 1)
+# array([ 0,  0,  0,  0,  0, 1, 1, 1, 1, 1])
+# 也就是说，对于array a，满足<5的项，用0代替，不满足<5的项用1代替
+# np.where(cframe['a'].str.contains('Windows'), 'Windows', 'Not Windows')，返回True的用Windows替代，返回False的用Not Windows替代
+operating_system = np.where(cframe['a'].str.contains('Windows'),
+                            'Windows', 'Not Windows')
+# 打印前五行，因通过numpy方法得到的结果，所以是一个numpy array
+operating_system[:5]
+```
+
+
+
+
+    array(['Windows', 'Not Windows', 'Windows', 'Not Windows', 'Windows'],
+          dtype='<U11')
+
+
+
+
+```python
+# cframe.groupby([key1, key2, ...])为将cframe表格中的数据按照key进行分组
+# key可以是2种：1. cframe表格中的列名，2.长度和cframe表格相同的数组
+# cframe.groupby(['tz', operating_system])的意思就是：
+# 第一个分组维度为‘tz’列，改列值相同的为一组
+# 第二个分组维度为operating_system数组，也就是Windows的一组，Not Windows的一组
+# .size()为统计每个小组的数据量
+# .unstack()为把堆叠的分组表格展开（把这个函数去掉试一下就知道区别了）
+# .fillna(0)之前说了，把不存在值的格子填充上0
+agg_counts = cframe.groupby(['tz', operating_system]).size().unstack().fillna(0)
+# 打出前10行看看
+# 第一行不是总数，tz的值为空字符串‘’而已
+agg_counts[:10]
+```
+
+
+
+
+<div><style>    .dataframe thead tr:only-child th {        text-align: right;    }    .dataframe thead th {        text-align: left;    }    .dataframe tbody tr th {        vertical-align: top;    }</style><table border="1" class="dataframe"><thead><tr style="text-align: right;"><th></th><th>Not Windows</th><th>Windows</th></tr><tr><th>tz</th><th></th><th></th></tr></thead><tbody><tr><th></th><td>245.0</td><td>276.0</td></tr><tr><th>Africa/Cairo</th><td>0.0</td><td>3.0</td></tr><tr><th>Africa/Casablanca</th><td>0.0</td><td>1.0</td></tr><tr><th>Africa/Ceuta</th><td>0.0</td><td>2.0</td></tr><tr><th>Africa/Johannesburg</th><td>0.0</td><td>1.0</td></tr><tr><th>Africa/Lusaka</th><td>0.0</td><td>1.0</td></tr><tr><th>America/Anchorage</th><td>4.0</td><td>1.0</td></tr><tr><th>America/Argentina/Buenos_Aires</th><td>1.0</td><td>0.0</td></tr><tr><th>America/Argentina/Cordoba</th><td>0.0</td><td>1.0</td></tr><tr><th>America/Argentina/Mendoza</th><td>0.0</td><td>1.0</td></tr></tbody></table></div>
+
+
+
+
+```python
+# agg_counts.sum(1) 意思是按照第二维方向相加，也就是把Windows和Not Windows加到一起
+# 这里打印10行
+agg_counts_sum = agg_counts.sum(1)
+agg_counts_sum[:10]
+```
+
+
+
+
+    tz
+                                      521.0
+    Africa/Cairo                        3.0
+    Africa/Casablanca                   1.0
+    Africa/Ceuta                        2.0
+    Africa/Johannesburg                 1.0
+    Africa/Lusaka                       1.0
+    America/Anchorage                   5.0
+    America/Argentina/Buenos_Aires      1.0
+    America/Argentina/Cordoba           1.0
+    America/Argentina/Mendoza           1.0
+    dtype: float64
+
+
+
+
+```python
+# .argsort()：按照从小到大的顺序排列，返回排列后item在原数组中对应的index
+indexer = agg_counts_sum.argsort()
+# 打出前10个，这个时候左边的tz和右边的数字已经没有对应关系了
+# 第一个24表示，按照从小到大排序，排在第一位的应该是原本数组中排在第25个（index为24）的那个item
+# 第二个20表示，按照从小到大排序，排在第二位的应该是原本数组中排在第21个（index为20）的那个item
+# 以此类推
+indexer[:10]
+```
+
+
+
+
+    tz
+                                      24
+    Africa/Cairo                      20
+    Africa/Casablanca                 21
+    Africa/Ceuta                      92
+    Africa/Johannesburg               87
+    Africa/Lusaka                     53
+    America/Anchorage                 54
+    America/Argentina/Buenos_Aires    57
+    America/Argentina/Cordoba         26
+    America/Argentina/Mendoza         55
+    dtype: int64
+
+
+
+
+```python
+# 让原本的数字按照这个排好的indexer输出，我们就可以得到排序后的数据了
+agg_counts_sum[indexer]
+```
+
+
+
+
+    tz
+    America/Mazatlan                     1.0
+    America/La_Paz                       1.0
+    America/Lima                         1.0
+    Europe/Volgograd                     1.0
+    Europe/Sofia                         1.0
+    Asia/Manila                          1.0
+    Asia/Nicosia                         1.0
+    Asia/Riyadh                          1.0
+    America/Monterrey                    1.0
+    Asia/Novosibirsk                     1.0
+    Australia/Queensland                 1.0
+    America/Santo_Domingo                1.0
+    Asia/Yekaterinburg                   1.0
+    America/St_Kitts                     1.0
+    America/Tegucigalpa                  1.0
+    America/Montevideo                   1.0
+    Europe/Ljubljana                     1.0
+    Asia/Pontianak                       1.0
+    Europe/Uzhgorod                      1.0
+    Africa/Casablanca                    1.0
+    Africa/Johannesburg                  1.0
+    Africa/Lusaka                        1.0
+    America/Argentina/Buenos_Aires       1.0
+    America/Argentina/Cordoba            1.0
+    America/Argentina/Mendoza            1.0
+    Europe/Skopje                        1.0
+    America/Caracas                      1.0
+    America/Costa_Rica                   1.0
+    Asia/Kuching                         1.0
+    Europe/Riga                          2.0
+                                       ...  
+    America/Montreal                     9.0
+    Asia/Calcutta                        9.0
+    America/Puerto_Rico                 10.0
+    Asia/Hong_Kong                      10.0
+    Europe/Helsinki                     10.0
+    Europe/Prague                       10.0
+    Europe/Oslo                         10.0
+    Europe/Moscow                       10.0
+    Pacific/Auckland                    11.0
+    America/Vancouver                   12.0
+    Europe/Stockholm                    14.0
+    Europe/Paris                        14.0
+    America/Mexico_City                 15.0
+    Europe/Warsaw                       16.0
+    America/Phoenix                     20.0
+    America/Indianapolis                20.0
+    Europe/Amsterdam                    22.0
+    America/Rainy_River                 25.0
+    Europe/Rome                         27.0
+    Europe/Berlin                       28.0
+    America/Sao_Paulo                   33.0
+    Europe/Madrid                       35.0
+    Pacific/Honolulu                    36.0
+    Asia/Tokyo                          37.0
+    Europe/London                       74.0
+    America/Denver                     191.0
+    America/Los_Angeles                382.0
+    America/Chicago                    400.0
+                                       521.0
+    America/New_York                  1251.0
+    Length: 97, dtype: float64
+
+
+
+
+```python
+# agg_counts.take([index1, index2, ...], axis=0)：在axis维度（0为行，1为列）上，按照index顺序取出数据
+# 这里没有输入axis的值，默认为0，按行取
+# 顺序为按照indexer
+# [-10:]：把最后10个取出来
+count_subset = agg_counts.take(indexer)[-10:]
+count_subset
+```
+
+
+
+
+<div><style>    .dataframe thead tr:only-child th {        text-align: right;    }    .dataframe thead th {        text-align: left;    }    .dataframe tbody tr th {        vertical-align: top;    }</style><table border="1" class="dataframe"><thead><tr style="text-align: right;"><th></th><th>Not Windows</th><th>Windows</th></tr><tr><th>tz</th><th></th><th></th></tr></thead><tbody><tr><th>America/Sao_Paulo</th><td>13.0</td><td>20.0</td></tr><tr><th>Europe/Madrid</th><td>16.0</td><td>19.0</td></tr><tr><th>Pacific/Honolulu</th><td>0.0</td><td>36.0</td></tr><tr><th>Asia/Tokyo</th><td>2.0</td><td>35.0</td></tr><tr><th>Europe/London</th><td>43.0</td><td>31.0</td></tr><tr><th>America/Denver</th><td>132.0</td><td>59.0</td></tr><tr><th>America/Los_Angeles</th><td>130.0</td><td>252.0</td></tr><tr><th>America/Chicago</th><td>115.0</td><td>285.0</td></tr><tr><th></th><td>245.0</td><td>276.0</td></tr><tr><th>America/New_York</th><td>339.0</td><td>912.0</td></tr></tbody></table></div>
+
+
+
+
+```python
+# 设置一块自定义大小的画布，生成画布对象（这里没写残书就是默认）
+plt.figure()
+```
+
+
+
+
+    <matplotlib.figure.Figure at 0x112f87e10>
+
+
+
+
+    <matplotlib.figure.Figure at 0x112f87e10>
+
+
+
+```python
+# 把count_subset这个表格中的数据绘制成图，类型为柱状图bar，横向h（horizontal）
+# stacked=True表示多个维度的数据堆叠显示（不明白的话改成False看看就知道了）
+count_subset.plot(kind='barh', stacked=True)
+```
+
+
+
+
+    <matplotlib.axes._subplots.AxesSubplot at 0x1134d2630>
+
+
+
+
+![](https://raw.githubusercontent.com/imonce/imgs/master/20190416211434.png)
+
+
+
+```python
+# 设置一块自定义大小的画布，生成画布对象（这里没写残书就是默认）
+plt.figure()
+```
+
+
+
+
+    <matplotlib.figure.Figure at 0x1136fd2e8>
+
+
+
+
+    <matplotlib.figure.Figure at 0x1136fd2e8>
+
+
+
+```python
+# count_subset.sum(1)：把count_subset按照第一维的方向相加
+# count_subset.div(count_subset.sum(1),axis=0)：按行除以相加的结果
+# 相当于把每一行所有数值变成了在当前行占的百分比
+normed_subset = count_subset.div(count_subset.sum(1), axis=0)
+# stacked=True表示多个维度的数据堆叠显示（不明白的话改成False看看就知道了）
+normed_subset.plot(kind='barh', stacked=True)
+```
+
+
+
+
+    <matplotlib.axes._subplots.AxesSubplot at 0x1138b6fd0>
+
+
+
+
+![](https://raw.githubusercontent.com/imonce/imgs/master/20190416211504.png)
+
+
