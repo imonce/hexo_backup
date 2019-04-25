@@ -202,7 +202,7 @@ site_state: true
 # Value after `||` delimeter is the name of FontAwesome icon. If icon (with or without delimeter) is not specified, globe icon will be loaded.
 social:
   GitHub: https://github.com/imonce || github
-  E-Mail: imonce@outlook.com || envelope
+  E-Mail: mailto:imonce@outlook.com || envelope
   Weibo: https://weibo.com/3912390829/profile?topnav=1&wvr=6&is_all=1 || weibo
   #Google: https://plus.google.com/yourname || google
   Twitter: https://twitter.com/moescee || twitter
