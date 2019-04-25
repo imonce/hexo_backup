@@ -5,9 +5,9 @@
 # Site
 title: C_Meng PSNA
 subtitle: Never wait for the storm to pass, just dance in the rain.
-description: this is description
+description: A stupid old man with a humble learning heart. And his dog.
 author: C_Meng
-language: 
+language: zh-CN
 timezone: 
 
 # URL
@@ -63,8 +63,21 @@ pagination_dir: page
 
 # Extensions
 ## Plugins: https://hexo.io/plugins/
+# plugins:
+# - hexo-server
+# - hexo-math
+# - hexo-other-plugin
 ## Themes: https://hexo.io/themes/
-theme: hexo-theme-archer-master
+# theme: hexo-theme-archer-master
+# theme: yelee
+theme: next
+# theme: claudia
+
+search:
+  path: search.xml
+  field: post
+  format: html
+  limit: 10000
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
@@ -81,3 +94,15 @@ backup:
     repository:
        github: git@github.com:imonce/hexo_backup.git,master
        gitcafe: git@github.com:imonce/hexo_backup.git,master
+
+# math:
+#   engine: 'mathjax' # or 'katex'
+#   mathjax:
+#     src: custom_mathjax_source
+#     config:
+#       # MathJax config
+#   katex:
+#     css: custom_css_source
+#     js: custom_js_source # not used
+#     config:
+#       # KaTeX config

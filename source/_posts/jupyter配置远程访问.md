@@ -14,7 +14,7 @@ tags: [jupyter,远程访问,ipython,notebook]
 > jupyter notebook --generate-config
 
 ```
-xm@r2d2:~$ jupyter notebook --generate-config
+#: jupyter notebook --generate-config
 Writing default config to: /home/xm/.jupyter/jupyter_notebook_config.py
 ```
 
@@ -23,7 +23,7 @@ Writing default config to: /home/xm/.jupyter/jupyter_notebook_config.py
 > jupyter notebook password
 
 ```
-xm@r2d2:~$ jupyter notebook password
+#: jupyter notebook password
 Enter password: # 这里输入密码不会显示字符的
 Verify password: 
 [NotebookPasswordApp] Wrote hashed password to /home/xm/.jupyter/jupyter_notebook_config.json
@@ -35,10 +35,10 @@ Verify password:
 > cat /home/xm/.jupyter/jupyter_notebook_config.json
 
 ```
-xm@r2d2:~$ cat /home/xm/.jupyter/jupyter_notebook_config.json
+#: cat /home/xm/.jupyter/jupyter_notebook_config.json
 {
   "NotebookApp": {
-    "password": "这是你的密码，一整段都复制下来"
+    "password": "这是你的密码，一整段都复制 下来"
   }
 }
 ```
@@ -52,5 +52,5 @@ xm@r2d2:~$ cat /home/xm/.jupyter/jupyter_notebook_config.json
 c.NotebookApp.ip = '*'
 c.NotebookApp.password = 'sha:ce...刚才复制的那个密文'
 c.NotebookApp.open_browser = False
-c.NotebookApp.port = 8888 #可自行指定一个端口, 访问时使用该端口
+c.NotebookApp.port = 8888 #可自行指定一个端口，访问时使用该端口
 ```

@@ -6,6 +6,13 @@ tags: [6小时精通python, python, python3, python精通]
 
 译自：[https://learnxinyminutes.com/docs/python3/](https://learnxinyminutes.com/docs/python3/)
 
+阅前须知：
+
+- “#”后边的是注释
+- 带行号的是python代码
+- 不带行号的是代码的输出
+- 把下边的语句对着敲一边自然就会了，博主用的是jupyter notebook
+
 
 ```python
 ####################################################
