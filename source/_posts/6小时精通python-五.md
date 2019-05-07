@@ -2,6 +2,7 @@
 title: 6小时精通python(五)
 date: 2019-04-19 17:35:16
 tags: [6小时精通python, python, python3, python精通]
+category: [Learn X in Y minutes, Learn Python in Y minutes]
 ---
 
 译自：[https://learnxinyminutes.com/docs/python3/](https://learnxinyminutes.com/docs/python3/)
