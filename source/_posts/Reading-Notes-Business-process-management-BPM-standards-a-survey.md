@@ -78,4 +78,45 @@ This paper’s goal is to leave the reader with some semblance of order out of a
 
 ## BPM vs BPR vs WfM
 
+- BPM: Business Process Management
+- BPR: Business Process Reengineering
+- WfM: Workflow Management
+
+### BPM vs BPR
+
+BPR calls for a radical obliteration of existing business processes, its descendant BPM is more practical, iterative and incremental in fine-tuning business processes.
+
+### BPM vs WfM
+
+- One viewpoint by Gartner research views BPM as a management discipline with WfM supporting it as a technology. 
+- Another viewpoint from academics is that the features stated in WfM according to Georgakopoulos et al. is a subset of BPM defined by van der Aalst et al., with the diagnosis stage of the BPM life cycle as the main difference.
+
+## BPM theory vs BPM standards and languages vs BPMS
+
+BPMS/BPMSs: Business Process Management Suites
+
+![](https://raw.githubusercontent.com/imonce/imgs/master/20190508215035.png)
+
+## BPM vs service oriented architecture
+
+SOA: Service Oriented Architecture
+
+BPM is a process-oriented management discipline aided by IT while SOA is an IT architectural paradigm. 
+
+According to Gartner (Hill et al., 2006), BPM “organizes people for greater agility” while SOA “organizes technology for greater agility”.
+
+![](https://raw.githubusercontent.com/imonce/imgs/master/20190508215950.png)
+
+# Categorising the BPM standards
+
+B2B: business-to-business
+
+- Graphical standards. This allows users to express business processes and their possible flows and transitions in a diagrammatic way.
+- Execution standards. It computerizes the deployment and automation of business processes.
+- Interchange standards. It facilitates portability of data, e.g. the portability of business process designs in different graphical standards across BPMS; different execution standards across disparate BPMS, and the context-less translation of graphical standards to execution standards and vice versa.
+- Diagnosis standards. It provides administrative and monitoring (such as runtime and post-modeling) capabilities. These standards can identify bottlenecks, audit and query real-time the business processes in a company.
+
+![](https://raw.githubusercontent.com/imonce/imgs/master/20190508222437.png)
+
+![](https://raw.githubusercontent.com/imonce/imgs/master/20190508222557.png)
 
