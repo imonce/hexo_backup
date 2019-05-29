@@ -1,5 +1,5 @@
 ---
-title: 6小时精通python(一)
+title: 'pyton快速入门：6小时精通python(一)'
 date: 2019-04-19 17:34:59
 tags: [6小时精通python, python, python3, python精通]
 category: [Learn X in Y minutes, Learn Python in Y minutes]
