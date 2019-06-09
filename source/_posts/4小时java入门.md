@@ -2,7 +2,7 @@
 title: 4小时java入门
 date: 2019-05-07 19:07:57
 tags: [java, java入门]
-category: [Learn X in Y minutes, Learn Java in Y minutes]
+categories: [Learn X in Y minutes, Learn Java in Y minutes]
 ---
 
 译自：[https://learnxinyminutes.com/docs/java/](https://learnxinyminutes.com/docs/java/)
