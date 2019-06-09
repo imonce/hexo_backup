@@ -12,7 +12,7 @@ timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://imonce.github.io
+url: https://imonce.github.io
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -90,7 +90,7 @@ deploy:
 # https://github.com/coneycode/hexo-git-backup
 backup:
     type: git
-    theme: hexo-theme-archer
+    theme: next
     repository:
        github: git@github.com:imonce/hexo_backup.git,master
        gitcafe: git@github.com:imonce/hexo_backup.git,master
