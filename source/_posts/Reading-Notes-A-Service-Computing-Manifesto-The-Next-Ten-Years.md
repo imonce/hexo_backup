@@ -2,7 +2,7 @@
 title: '[Reading Notes] A Service Computing Manifesto: The Next Ten Years'
 date: 2019-05-22 14:45:28
 tags: [Service Computing]
-categories: [Reading Notes, Service Computing]
+category: [Reading Notes, Service Computing]
 ---
 
 # ABSTRACT
