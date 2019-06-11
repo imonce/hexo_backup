@@ -48,13 +48,14 @@ $||x||_1 = \Sigma_i|x_i|$
 
 如果计算两个向量或矩阵之间的差的l1范数，即
 
-$SAD(x_1, x_2)=||x_1-x_2||_1=\Sigma|x_{1_i}-x_{2_i}|$
+$SAD(x_1,x_2)=||x_1-x_2||_1=\Sigma_i|x_{1_i}-x_{2_i}|$
+
 
 它在计算机视觉科学家之间被称为绝对差异之和（SAD）。
 
 在信号差测量的一般情况下，可通过以下方式将其缩放为单位矢量：
 
-$MAE(x_1, x_2)=\frac{1}{n}||x_1-x_2||_1=\frac{1}{n}\Sigma|x_{1_i}-x_{2_i}|$ where $n$ is a size of $x$ .
+$MAE(x_1, x_2) = \frac1n ||x_1-x_2|| _1 = \frac1n \Sigma_i |x_{1_i} - x_{2_i}|$ where $n$ is a size of $x$ .
 
 这就是所谓的平均绝对误差(MAE)。
 
