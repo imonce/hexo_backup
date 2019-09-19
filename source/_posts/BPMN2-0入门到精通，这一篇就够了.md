@@ -1,5 +1,5 @@
 ---
-title: BPMN2.0入门到精通，这一篇就够了
+title: BPMN2.0入门到掌握，这一篇就够了
 date: 2019-09-19 10:54:24
 tags: [BPMN, BPMN2.0]
 ---
