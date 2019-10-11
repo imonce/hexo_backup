@@ -49,7 +49,7 @@ $$\frac{\Gamma\vdash a:A\quad\Gamma\vdash b:B[a/x]}{\Gamma\vdash\lt a,b\gt:(\sum
 
 ## Elimination rule for $\sum$ 
 
-$$\frac{\Gamma\vdash c:(\sum x:A)B\quad\Gamma,x:A,y:B\vdash d:C[\lt x,y\gt/z]}{\Gamma\vdash split(c,\lambda x.\lambda y.d):C[c/z]}(\sum I)$$
+$$\frac{\Gamma\vdash c:(\sum x:A)B\quad\Gamma,x:A,y:B\vdash d:C[\lt x,y\gt/z]}{\Gamma\vdash split(c,\lambda x.\lambda y.d):C[c/z]}(\sum E)$$
 
 where: $split(\lt a,b\gt,\lambda x.\lambda y.d)=(\lambda x.\lambda y.d)(a)(b)$ 
 
