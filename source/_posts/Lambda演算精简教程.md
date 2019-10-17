@@ -13,7 +13,7 @@ mathjax: true
 
 # 整体介绍
 
-Lambda演算( $\lambda$ 演算)由Alonzo Church提出，是世界上最简洁的变成语言。尽管没有数字、字符串、布尔值等非函数数据类型，lambda演算还是可以表达任何图灵机。
+Lambda演算( $\lambda$ 演算)由Alonzo Church提出，是世界上最简洁的编程语言。尽管没有数字、字符串、布尔值等非函数数据类型，lambda演算还是可以表达任何图灵机。
 
 Lambda演算由三种元素组成：变量（variables），函数（functions），以及应用（applications）。
 
