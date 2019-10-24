@@ -362,7 +362,9 @@ for element in root.iter(tag=etree.Entity):
 
 
 ```python
-# 通过elementName.write(filepath)可以把树写进文件或通过url传输，这里不再举例
+# 通过elementTreeName.write(filePath)可以把树写进文件或通过url传输
+# 或者如果你只有elementName的话，可以这么写：
+# etree.ElementTree(elementName).write(filePath)
 ```
 
 
