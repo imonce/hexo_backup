@@ -5,8 +5,7 @@ tags: [python, python3, lxml, etree]
 category: [Learn X in Y minutes, Learn lxml.etree in Y minutes]
 ---
 
-> Reference:
-> https://lxml.de/tutorial.html
+本文主要参考官方文档[https://lxml.de/tutorial.html](https://lxml.de/tutorial.html)整理，如有错误欢迎指出。
 
 
 ```python
