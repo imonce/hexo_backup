@@ -1,5 +1,5 @@
 ---
-title: Lambda演算精简教程
+title: 'Lambda演算精简教程'
 date: 2019-04-24 21:47:53
 tags: [lambda, lambda演算, lambda calculus, 学习笔记]
 mathjax: true

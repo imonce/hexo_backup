@@ -1,5 +1,5 @@
 ---
-title: 通过TensorFlow实现word embedding
+title: '通过TensorFlow实现word embedding'
 date: 2019-10-21 10:16:01
 tags: [TensorFlow, word2vec, n-gram, skip-gram, embedding]
 ---

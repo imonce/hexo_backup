@@ -1,5 +1,5 @@
 ---
-title: 一文读懂Curry-Howard同构
+title: '一文读懂Curry-Howard同构'
 date: 2019-10-10 10:42:29
 tags: [Curry-Howard Isomorphism, Type Theory]
 mathjax: true

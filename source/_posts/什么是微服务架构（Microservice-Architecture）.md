@@ -1,5 +1,5 @@
 ---
-title: 什么是微服务架构（Microservice Architecture）
+title: '什么是微服务架构（Microservice Architecture）'
 date: 2019-08-07 22:42:39
 tags: [软件架构, 服务架构, 微服务架构, software architecture, service architecture, microservice architecture]
 categories: [软件架构和服务架构]
