@@ -27,7 +27,7 @@ tags: [XSD, XML Schema, XML, Schema, 学习笔记]
 <schema\> 元素是每一个 XML Schema 的根元素：
 <?xml version="1.0"?\>
 
-```
+```xml
 <xs:schema>
 
 ...
@@ -38,7 +38,7 @@ tags: [XSD, XML Schema, XML, Schema, 学习笔记]
 
 <schema\> 元素可包含属性。一个 schema 声明往往看上去类似这样：
 
-```
+```xml
 <?xml version="1.0"?>
  
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
@@ -53,7 +53,7 @@ elementFormDefault="qualified">
 
 ### 代码解释
 
-```
+```xml
 xmlns:xs="http://www.w3.org/2001/XMLSchema"
 ```
 
@@ -61,19 +61,19 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
 
 同时它还规定了来自命名空间 `http://www.w3.org/2001/XMLSchema`的元素和数据类型应该使用前缀 xs。
 
-```
+```xml
 targetNamespace="http://www.w3school.com.cn" 
 ```
 
 显示被此 schema 定义的元素 (note, to, from, heading, body) 来自命名空间： `http://www.w3school.com.cn`。
 
-```
+```xml
 xmlns="http://www.w3school.com.cn" 
 ```
 
 指出默认的命名空间是 `http://www.w3school.com.cn`。
 
-```
+```xml
 elementFormDefault="qualified" 
 ```
 
@@ -90,11 +90,11 @@ import与include的作用是一样的。 区别在于import是导入另外一个
 
 ### 例子
 
-```
+```xml
 <xsd:include schemaLocation="module/owl1-lite-core.xsd" /> 
 ```
 
-```
+```xml
 <xsd:import namespace="http://www.w3.org/XML/1998/namespace" 
             schemaLocation="xml.xsd">
   <!-- "http://www.w3.org/2001/xml.xsd" -->
@@ -111,7 +111,7 @@ import与include的作用是一样的。 区别在于import是导入另外一个
 
 此 XML 文档含有对 XML Schema 的引用：
 
-```
+```xml
 <?xml version="1.0"?>
 
 <note xmlns="http://www.w3school.com.cn"
@@ -127,7 +127,7 @@ xsi:schemaLocation="http://www.w3school.com.cn note.xsd">
 
 ### 代码解释
 
-```
+```xml
 xmlns="http://www.w3school.com.cn" 
 ```
 
@@ -135,13 +135,13 @@ xmlns="http://www.w3school.com.cn"
 
 一旦您拥有了可用的 XML Schema 实例命名空间：
 
-```
+```xml
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 ```
 
 您就可以使用 schemaLocation 属性了。此属性有两个值。第一个值是需要使用的命名空间。第二个值是供命名空间使用的 XML schema 的位置：
 
-```
+```xml
 xsi:schemaLocation="http://www.w3school.com.cn note.xsd"
 ```
 
@@ -149,7 +149,7 @@ xsi:schemaLocation="http://www.w3school.com.cn note.xsd"
 
 ## 元素
 
-```
+```xml
 <xs:element name="xxx" type="yyy"/>
 ```
 
@@ -166,13 +166,13 @@ xsi:schemaLocation="http://www.w3school.com.cn note.xsd"
 
 缺省值（默认值）设置：
 
-```
+```xml
 <xs:element name="color" type="xs:string" default="red"/>
 ```
 
 固定值设置：
 
-```
+```xml
 <xs:element name="color" type="xs:string" fixed="red"/>
 ```
 
@@ -180,7 +180,7 @@ xsi:schemaLocation="http://www.w3school.com.cn note.xsd"
 
 这是一些 XML 元素：
 
-```
+```xml
 <lastname>Smith</lastname>
 <age>28</age>
 <dateborn>1980-03-27</dateborn>
@@ -188,7 +188,7 @@ xsi:schemaLocation="http://www.w3school.com.cn note.xsd"
 
 这是相应的简易元素定义：
 
-```
+```xml
 <xs:element name="lastname" type="xs:string"/>
 <xs:element name="age" type="xs:integer"/>
 <xs:element name="dateborn" type="xs:date"/>
@@ -198,7 +198,7 @@ xsi:schemaLocation="http://www.w3school.com.cn note.xsd"
 
 ### 语法
 
-```
+```xml
 <list
 id=ID 
 itemType=QName 
@@ -220,7 +220,7 @@ any attributes
 
 下面的例子展示了为一列整数的简单类型：
 
-```
+```xml
 <?xml version="1.0"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
@@ -235,7 +235,7 @@ any attributes
 
 文档中的 "intvalues" 元素类似这样（注意这个列表有五个列表项）：
 
-```
+```xml
 <intvalues>100 34 56 -23 1567</intvalues>
 ```
 
@@ -243,7 +243,7 @@ any attributes
 
 ## 属性
 
-```
+```xml
 <xs:attribute name="xxx" type="yyy"/>
 ```
 
@@ -260,13 +260,13 @@ any attributes
 
 这是带有属性的 XML 元素：
 
-```
+```xml
 <lastname lang="EN">Smith</lastname>
 ```
 
 这是对应的属性定义：
 
-```
+```xml
 <xs:attribute name="lang" type="xs:string"/>
 ```
 
@@ -274,13 +274,13 @@ any attributes
 
 缺省值（默认值）设置：
 
-```
+```xml
 <xs:attribute name="lang" type="xs:string" default="EN"/>
 ```
 
 固定值设置：
 
-```
+```xml
 <xs:attribute name="lang" type="xs:string" fixed="EN"/>
 ```
 
@@ -288,7 +288,7 @@ any attributes
 
 在缺省的情况下，属性是可选的。如需规定属性为必选，请使用 "use" 属性：
 
-```
+```xml
 <xs:attribute name="lang" type="xs:string" use="required"/>
 ```
 
@@ -298,7 +298,7 @@ any attributes
 
 下面的例子定义了带有一个限定且名为 "age" 的元素。age 的值不能低于 0 或者高于 120：
 
-```
+```xml
 <xs:element name="age">
 
 <xs:simpleType>
@@ -317,7 +317,7 @@ any attributes
 
 下面的例子定义了带有一个限定的名为 "car" 的元素。可接受的值只有：Audi, Golf, BMW：
 
-```
+```xml
 <xs:element name="car">
 
 <xs:simpleType>
@@ -333,7 +333,7 @@ any attributes
 
 上面的例子也可以被写为：
 
-```
+```xml
 <xs:element name="car" type="carType"/>
 
 <xs:simpleType name="carType">
@@ -353,7 +353,7 @@ any attributes
 
 下一个例子也定义了带有一个限定的名为 "initials" 的元素。可接受的值是大写或小写字母 a - z 其中的三个：
 
-```
+```xml
 <xs:element name="initials">
 
 <xs:simpleType>
@@ -367,7 +367,7 @@ any attributes
 
 下一个例子定义了带有一个限定的名为 "choice 的元素。可接受的值是字母 x, y 或 z 中的一个：
 
-```
+```xml
 <xs:element name="choice">
 
 <xs:simpleType>
@@ -383,7 +383,7 @@ any attributes
 
 下面的例子定义了带有一个限定的名为 "letter" 的元素。可接受的值是 a - z 中零个或多个字母：
 
-```
+```xml
 <xs:element name="letter">
 
 <xs:simpleType>
@@ -397,7 +397,7 @@ any attributes
 
 下面的例子定义了带有一个限定的名为 "letter" 的元素。可接受的值是一对或多对字母，每对字母由一个小写字母后跟一个大写字母组成。举个例子，"sToP"将会通过这种模式的验证，但是 "Stop"、"STOP" 或者 "stop" 无法通过验证：
 
-```
+```xml
 <xs:element name="letter">
 
 <xs:simpleType>
@@ -411,7 +411,7 @@ any attributes
 
 下面的例子定义了带有一个限定的名为 "gender" 的元素。可接受的值是 male 或者 female：
 
-```
+```xml
 <xs:element name="gender">
 
 <xs:simpleType>
@@ -425,7 +425,7 @@ any attributes
 
 下面的例子定义了带有一个限定的名为 "password" 的元素。可接受的值是由 8 个字符组成的一行字符，这些字符必须是大写或小写字母 a - z 亦或数字 0 - 9：
 
-```
+```xml
 <xs:element name="password">
 
 <xs:simpleType>
@@ -443,7 +443,7 @@ any attributes
 
 下面的例子定义了带有一个限定的名为 "address" 的元素。这个 whiteSpace 限定被设置为 "preserve"，这意味着 XML 处理器不会移除任何空白字符：
 
-```
+```xml
 <xs:element name="address">
 
 <xs:simpleType>
@@ -457,7 +457,7 @@ any attributes
 
 这个例子也定义了带有一个限定的名为 "address" 的元素。这个 whiteSpace 限定被设置为 "replace"，这意味着 XML 处理器将移除所有空白字符（换行、回车、空格以及制表符）：
 
-```
+```xml
 <xs:element name="address">
 
 <xs:simpleType>
@@ -471,7 +471,7 @@ any attributes
 
 这个例子也定义了带有一个限定的名为 "address" 的元素。这个 whiteSpace 限定被设置为 "collapse"，这意味着 XML 处理器将移除所有空白字符（换行、回车、空格以及制表符会被替换为空格，开头和结尾的空格会被移除，而多个连续的空格会被缩减为一个单一的空格）：
 
-```
+```xml
 <xs:element name="address">
 
 <xs:simpleType>
@@ -489,7 +489,7 @@ any attributes
 
 本例定义了带有一个限定且名为 "password" 的元素。其值必须精确到 8 个字符：
 
-```
+```xml
 <xs:element name="password">
 
 <xs:simpleType>
@@ -503,7 +503,7 @@ any attributes
 
 这个例子也定义了带有一个限定的名为 "password" 的元素。其值最小为 5 个字符，最大为 8 个字符：
 
-```
+```xml
 <xs:element name="password">
 
 <xs:simpleType>
@@ -548,7 +548,7 @@ any attributes
 
 ### 例子
 
-```
+```xml
 <employee>
 <firstname>John</firstname>
 <lastname>Smith</lastname>
@@ -557,7 +557,7 @@ any attributes
 
 的XML Schema可以写成：
 
-```
+```xml
 <xs:element name="employee">
   <xs:complexType>
     <xs:sequence>
@@ -570,7 +570,7 @@ any attributes
 
 或者：
 
-```
+```xml
 <xs:element name="employee" type="personinfo"/>
 
 <xs:complexType name="personinfo">
@@ -583,7 +583,7 @@ any attributes
 
 也可以在已有的复合元素之上以某个复合元素为基础，然后添加一些元素，就像这样：
 
-```
+```xml
 <xs:element name="employee" type="fullpersoninfo"/>
 
 <xs:complexType name="personinfo">
@@ -610,13 +610,13 @@ any attributes
 
 一个空的 XML 元素：
 
-```
+```xml
 <product prodid="1345" />
 ```
 
 上面的 "product" 元素根本没有内容。为了定义无内容的类型，我们就必须声明一个在其内容中只能包含元素的类型，但是实际上我们并不会声明任何元素，比如这样：
 
-```
+```xml
 <xs:element name="product">
   <xs:complexType>
     <xs:complexContent>
@@ -630,7 +630,7 @@ any attributes
 
 或者：
 
-```
+```xml
 <xs:element name="product">
   <xs:complexType>
     <xs:attribute name="prodid" type="xs:positiveInteger"/>
@@ -640,7 +640,7 @@ any attributes
 
 or：
 
-```
+```xml
 <xs:element name="product" type="prodtype"/>
 
 <xs:complexType name="prodtype">
@@ -652,7 +652,7 @@ or：
 
 XML 元素，"person"，仅包含其他的元素：
 
-```
+```xml
 <person>
 <firstname>John</firstname>
 <lastname>Smith</lastname>
@@ -661,7 +661,7 @@ XML 元素，"person"，仅包含其他的元素：
 
 可在 schema 中这样定义 "person" 元素：
 
-```
+```xml
 <xs:element name="person">
   <xs:complexType>
     <xs:sequence>
@@ -674,7 +674,7 @@ XML 元素，"person"，仅包含其他的元素：
 
 或者：
 
-```
+```xml
 <xs:element name="person" type="persontype"/>
 
 <xs:complexType name="persontype">
@@ -689,7 +689,7 @@ XML 元素，"person"，仅包含其他的元素：
 
 此类型仅包含简易的内容（文本和属性），因此我们要向此内容添加 simpleContent 元素。当使用简易内容时，我们就必须在 simpleContent 元素内定义扩展或限定，就像这样：
 
-```
+```xml
 <xs:element name="某个名称">
   <xs:complexType>
     <xs:simpleContent>
@@ -704,7 +704,7 @@ XML 元素，"person"，仅包含其他的元素：
 
 或者：
 
-```
+```xml
 <xs:element name="某个名称">
   <xs:complexType>
     <xs:simpleContent>
@@ -719,13 +719,13 @@ XML 元素，"person"，仅包含其他的元素：
 
 ### 例子
 
-```
+```xml
 <shoesize country="france">35</shoesize>
 ```
 
 下面这个例子声明了一个复合类型，其内容被定义为整数值，并且 "shoesize" 元素含有名为 "country" 的属性：
 
-```
+```xml
 <xs:element name="shoesize">
   <xs:complexType>
     <xs:simpleContent>
@@ -739,7 +739,7 @@ XML 元素，"person"，仅包含其他的元素：
 
 我们也可为 complexType 元素设定一个名称，并让 "shoesize" 元素的 type 属性来引用此名称（通过使用此方法，若干元素均可引用相同的复合类型）：
 
-```
+```xml
 <xs:element name="shoesize" type="shoetype"/>
 
 <xs:complexType name="shoetype">
@@ -756,7 +756,7 @@ XML 元素，"person"，仅包含其他的元素：
 带有混合内容的复合类型
 XML 元素，"letter"，含有文本以及其他元素：
 
-```
+```xml
 <letter>
 Dear Mr.<name>John Smith</name>.
 Your order <orderid>1032</orderid>
@@ -766,7 +766,7 @@ will be shipped on <shipdate>2001-07-13</shipdate>.
 
 下面这个 schema 声明了这个 "letter" 元素：
 
-```
+```xml
 <xs:element name="letter">
   <xs:complexType mixed="true">
     <xs:sequence>
@@ -782,7 +782,7 @@ will be shipped on <shipdate>2001-07-13</shipdate>.
 
 或者：
 
-```
+```xml
 <xs:element name="letter" type="lettertype"/>
 
 <xs:complexType name="lettertype" mixed="true">
@@ -820,7 +820,7 @@ Group 指示器：
 
 当使用 <all\> 指示器时，你可以把 <minOccurs\> 设置为 0 或者 1，而只能把 <maxOccurs\> 指示器设置为 1
 
-```
+```xml
 <xs:element name="person">
   <xs:complexType>
     <xs:all>
@@ -835,7 +835,7 @@ Group 指示器：
 
 <choice\> 指示器规定可出现某个子元素或者可出现另外一个子元素（非此即彼）,如需设置子元素出现任意次数，可将 <maxOccurs\> 设置为 unbounded（无限次）：
 
-```
+```xml
 <xs:element name="person">
   <xs:complexType>
     <xs:choice>
@@ -850,7 +850,7 @@ Group 指示器：
 
 <sequence\> 规定子元素必须按照特定的顺序出现：
 
-```
+```xml
 <xs:element name="person">
   <xs:complexType>
     <xs:sequence>
@@ -867,7 +867,7 @@ Occurrence 指示器用于定义某个元素出现的频率。对于所有的 "O
 
 <maxOccurs\>指示器可规定某个元素可出现的最大次数,如需使某个元素的出现次数不受限制，可以使用 maxOccurs="unbounded" 这个声明：
 
-```
+```xml
 <xs:element name="person">
   <xs:complexType>
     <xs:sequence>
@@ -882,7 +882,7 @@ Occurrence 指示器用于定义某个元素出现的频率。对于所有的 "O
 
 <minOccurs\>指示器可规定某个元素能够出现的最小次数：
 
-```
+```xml
 <xs:element name="person">
   <xs:complexType>
     <xs:sequence>
@@ -898,7 +898,7 @@ Occurrence 指示器用于定义某个元素出现的频率。对于所有的 "O
 
 元素组通过 group 声明进行定义：
 
-```
+```xml
 <xs:group name="组名称">
   ...
 </xs:group>
@@ -906,7 +906,7 @@ Occurrence 指示器用于定义某个元素出现的频率。对于所有的 "O
 
 您必须在 group 声明内部定义一个 all、choice 或者 sequence 元素。下面这个例子定义了名为 "persongroup" 的 group，它定义了必须按照精确的顺序出现的一组元素：
 
-```
+```xml
 <xs:group name="persongroup">
   <xs:sequence>
     <xs:element name="firstname" type="xs:string"/>
@@ -918,7 +918,7 @@ Occurrence 指示器用于定义某个元素出现的频率。对于所有的 "O
 
 在您把 group 定义完毕以后，就可以在另一个定义中引用它了：
 
-```
+```xml
 <xs:group name="persongroup">
   <xs:sequence>
     <xs:element name="firstname" type="xs:string"/>
@@ -941,7 +941,7 @@ Occurrence 指示器用于定义某个元素出现的频率。对于所有的 "O
 
 属性组通过 attributeGroup 声明来进行定义：
 
-```
+```xml
 <xs:attributeGroup name="组名称">
   ...
 </xs:attributeGroup>
@@ -949,7 +949,7 @@ Occurrence 指示器用于定义某个元素出现的频率。对于所有的 "O
 
 下面这个例子定义了名为 "personattrgroup" 的一个属性组：
 
-```
+```xml
 <xs:attributeGroup name="personattrgroup">
   <xs:attribute name="firstname" type="xs:string"/>
   <xs:attribute name="lastname" type="xs:string"/>
@@ -959,7 +959,7 @@ Occurrence 指示器用于定义某个元素出现的频率。对于所有的 "O
 
 在您已定义完毕属性组之后，就可以在另一个定义中引用它了，就像这样：
 
-```
+```xml
 <xs:attributeGroup name="personattrgroup">
   <xs:attribute name="firstname" type="xs:string"/>
   <xs:attribute name="lastname" type="xs:string"/>
@@ -978,7 +978,7 @@ Occurrence 指示器用于定义某个元素出现的频率。对于所有的 "O
 <any\> 元素使我们有能力通过未被 schema 规定的元素来拓展 XML 文档！
 下面这个例子是从名为 "family.xsd" 的 XML schema 中引用的片段。它展示了一个针对 "person" 元素的声明。通过使用 <any\> 元素，我们可以通过任何元素（在 <lastname\> 之后）扩展 "person" 的内容：
 
-```
+```xml
 <xs:element name="person">
   <xs:complexType>
     <xs:sequence>
@@ -1010,7 +1010,7 @@ Occurrence 指示器用于定义某个元素出现的频率。对于所有的 "O
 <anyAttribute\> 元素使我们有能力通过未被 schema 规定的属性来扩展 XML 文档！
 下面的例子是来自名为 "family.xsd" 的 XML schema 的一个片段。它为我们展示了针对 "person" 元素的一个声明。通过使用 <anyAttribute\> 元素，我们就可以向 "person" 元素添加任意数量的属性：
 
-```
+```xml
 <xs:element name="person">
   <xs:complexType>
     <xs:sequence>
@@ -1027,7 +1027,7 @@ Occurrence 指示器用于定义某个元素出现的频率。对于所有的 "O
 让我们举例说明：我们的用户来自英国和挪威。我们希望有能力让用户选择在 XML 文档中使用挪威语的元素名称还是英语的元素名称。
 为了解决这个问题，我们可以在 XML schema 中定义一个 substitutionGroup。首先，我们声明主元素，然后我们会声明次元素，这些次元素可声明它们能够替换主元素。
 
-```
+```xml
 <xs:element name="name" type="xs:string"/>
 <xs:element name="navn" substitutionGroup="name"/>
 
@@ -1043,7 +1043,7 @@ Occurrence 指示器用于定义某个元素出现的频率。对于所有的 "O
 
 有效的 XML 文档类似这样（根据上面的 schema）：
 
-```
+```xml
 <customer>
   <name>John Smith</name>
 </customer>
@@ -1051,7 +1051,7 @@ Occurrence 指示器用于定义某个元素出现的频率。对于所有的 "O
 
 或类似这样：
 
-```
+```xml
 <kunde>
   <navn>John Smith</navn>
 </kunde>
@@ -1059,7 +1059,7 @@ Occurrence 指示器用于定义某个元素出现的频率。对于所有的 "O
 
 如果需要阻止元素替换，可使用 block 属性：
 
-```
+```xml
 <xs:element name="name" type="xs:string" block="substitution"/>
 ```
 
@@ -1075,7 +1075,7 @@ Occurrence 指示器用于定义某个元素出现的频率。对于所有的 "O
 
 字符串数据类型可包含字符、换行、回车以及制表符。如果您使用字符串数据类型，XML 处理器就不会更改其中的值。
 
-```
+```xml
 <xs:element name="customer" type="xs:string"/>
 ```
 
@@ -1085,19 +1085,19 @@ Occurrence 指示器用于定义某个元素出现的频率。对于所有的 "O
 
 下面是一个关于在某个 schema 中规格化字符串数据类型的例子：
 
-```
+```xml
 <xs:element name="customer" type="xs:normalizedString"/>
 ```
 
 文档中的元素看上去应该类似这样：
 
-```
+```xml
 <customer>John Smith</customer>
 ```
 
 或者类似这样：
 
-```
+```xml
 <customer>	John Smith	</customer>
 ```
 
@@ -1109,19 +1109,19 @@ Token 数据类型同样可包含字符，但是 XML 处理器会移除换行符
 
 下面是在 schema 中一个有关 token 声明的例子：
 
-```
+```xml
 <xs:element name="customer" type="xs:token"/>
 ```
 
 文档中的元素看上去应该类似这样：
 
-```
+```xml
 <customer>John Smith</customer>
 ```
 
 或者类似这样：
 
-```
+```xml
 <customer>	John Smith	</customer>
 ```
 
@@ -1164,31 +1164,31 @@ Token 数据类型同样可包含字符，但是 XML 处理器会移除换行符
 
 下面是一个有关 schema 中日期声明的例子：
 
-```
+```xml
 <xs:element name="start" type="xs:date"/>
 ```
 
 文档中的元素看上去应该类似这样：
 
-```
+```xml
 <start>2002-09-24</start>
 ```
 
 如需规定一个时区，您也可以通过在日期后加一个 "Z" 的方式，使用世界调整时间（UTC time）来输入一个日期 - 比如这样：
 
-```
+```xml
 <start>2002-09-24Z</start>
 ```
 
 或者也可以通过在日期后添加一个正的或负时间的方法，来规定以世界调整时间为准的偏移量 - 比如这样：
 
-```
+```xml
 <start>2002-09-24-06:00</start>
 ```
 
 或者：
 
-```
+```xml
 <start>2002-09-24+06:00</start>
 ```
 
@@ -1198,7 +1198,7 @@ Token 数据类型同样可包含字符，但是 XML 处理器会移除换行符
 
 下面是一个有关 schema 中时间声明的例子：
 
-```
+```xml
 <xs:element name="start" type="xs:time"/>
 ```
 
@@ -1210,11 +1210,11 @@ Token 数据类型同样可包含字符，但是 XML 处理器会移除换行符
 
 下面是一个有关 schema 中日期时间声明的例子：
 
-```
+```xml
 <xs:element name="startdate" type="xs:dateTime"/>
 ```
 
-```
+```xml
 <startdate>2002-05-30T09:00:00</startdate>
 ```
 
@@ -1235,7 +1235,7 @@ Token 数据类型同样可包含字符，但是 XML 处理器会移除换行符
 
 如需规定一个负的持续时间，请在 P 之前输入减号：
 
-```
+```xml
 <period>-P10D</period>
 ```
 
@@ -1269,7 +1269,7 @@ Token 数据类型同样可包含字符，但是 XML 处理器会移除换行符
 
 ### 十进制数据类型
 
-```
+```xml
 <xs:element name="prize" type="xs:decimal"/>
 ```
 
@@ -1277,7 +1277,7 @@ Token 数据类型同样可包含字符，但是 XML 处理器会移除换行符
 
 ### 整数数据类型
 
-```
+```xml
 <xs:element name="prize" type="xs:integer"/>
 ```
 
@@ -1322,7 +1322,7 @@ Token 数据类型同样可包含字符，但是 XML 处理器会移除换行符
 
 逻辑数据性用于规定 true 或 false 值。
 
-```
+```xml
 <xs:attribute name="disabled" type="xs:boolean"/>
 ```
 
@@ -1339,7 +1339,7 @@ Token 数据类型同样可包含字符，但是 XML 处理器会移除换行符
 
 下面是一个关于某个 scheme 中 hexBinary 声明的例子：
 
-```
+```xml
 <xs:element name="blobsrc" type="xs:hexBinary"/>
 ```
 
@@ -1349,13 +1349,13 @@ anyURI 数据类型用于规定 URI。
 
 下面是一个关于某个 scheme 中 anyURI 声明的例子：
 
-```
+```xml
 <xs:attribute name="src" type="xs:anyURI"/>
 ```
 
 文档中的元素看上去应该类似这样：
 
-```
+```xml
 <pic src="http://www.w3school.com.cn/images/smiley.gif" />
 ```
 

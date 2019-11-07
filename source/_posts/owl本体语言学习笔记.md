@@ -50,7 +50,7 @@ OWL(Web Ontology Language)是W3C开发的一种网络本体语言，用于对本
 属性值是不具有命名空间的，在OWL里可以写出它们的完整URI。完整的URI中可以利用实体定义来简略。
 如：
 
-```
+```xml
 <!DOCTYPE rdf:RDF [
      <!ENTITY vin  "http://www.w3.org/TR/2004/REC-owl-guide-20040210/wine#" >
      <!ENTITY food "http://www.w3.org/TR/2004/REC-owl-guide-20040210/food#" > ]>
@@ -98,7 +98,7 @@ rdfs:subClassOf是用于类的基本分类构造符，次关系是可传递的
 
 ### 个体
 
-```
+```xml
 <owl:Thing rdf:ID="CentralCoastRegion" /> 
 <owl:Thing rdf:about="#CentralCoastRegion"> 
 <rdf:type rdf:resource="#Region"/> 
@@ -131,7 +131,7 @@ Web本体被设计成为分布式的，我们可以通过导入和补充已有�
 
 ### 定义属性
 
-```
+```xml
 <owl:ObjectProperty rdf:ID="madeFromGrape"> 
     <rdfs:domain rdf:resource="#Wine"/> /*表示定义域*/
     <rdfs:range rdf:resource="#WineGrape"/> /*表示值域*/
@@ -140,7 +140,7 @@ Web本体被设计成为分布式的，我们可以通过导入和补充已有�
 
 在OWL中，一个值域可被用来推断一个类型
 
-```
+```xml
 <owl:Thing rdf:ID="LindemansBin65Chardonnay">
     <madeFromGrape rdf:resource="#ChardonnayGrape" />
 </owl:Thing>
@@ -154,7 +154,7 @@ Web本体被设计成为分布式的，我们可以通过导入和补充已有�
 
 数据类型属性：将个体关联到数据（值域为：RDF文字或XML Schema数据类型）
 
-```
+```xml
 <owl:Class rdf:ID="VintageYear" />
 <owl:DatatypeProperty rdf:ID="yearValue">
 <rdfs:domain rdf:resource="#VintageYear" />
@@ -166,7 +166,7 @@ yearValue属性将VintageYears与一个整数值相关联。
 
 ### 个体的属性
 
-```
+```xml
 <Region rdf:ID="SantaCruzMountainsRegion">
     <locatedIn rdf:resource="#CaliforniaRegion" />
 </Region>
@@ -244,7 +244,7 @@ SameAs：描述个体之间相同的机制与描述类之间的相同机制类�
 
 假如hasMaker是一个函数型属性，那么下面的例子就不一定会产生冲突。
 
-```
+```xml
 <owl:Thing rdf:about="#BancroftChardonnay">
     <hasMaker rdf:resource="#Bancroft" />
     <hasMaker rdf:resource="#Beringer" />
@@ -277,7 +277,7 @@ SameAs：描述个体之间相同的机制与描述类之间的相同机制类�
 
 ### 交运算
 
-```
+```xml
 <owl:Class rdf:ID="WhiteWine">
    <owl:intersectionOf rdf:parseType="Collection"> /*这是必须的，因为必须对集合操作*/
      <owl:Class rdf:about="#Wine" />

@@ -12,7 +12,7 @@ tags: [latex, long table, 表格跨页]
 
 # 栗子
 
-```
+```tex
 \begin{center}
 	\begin{longtable}{p{2.4cm}p{5.4cm}p{3.6cm}}
 		\caption{服务模式的语义解释和案例}\\

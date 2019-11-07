@@ -61,13 +61,13 @@ y_train, y_test = np.split(targets, [60000])
 
 这个方便的对象以命名后的layer作为关键字参数，以便我们之后可以引用它们。FunctionSet工作的方式如下：
 
-```
+```python
 model = FunctionSet(layer1=<place link here>, layer2=<place link here>, ...etc.)
 ```
 
 然后layer就会在类的实例中作为属性存在。这些layer都可以通过把FunctionSet实例交给optimizer的setup方法同时进行优化：
 
-```
+```python
 optimizer.setup(model)
 ```
 
@@ -87,7 +87,7 @@ optimizer.setup(model)
 
 最终我们的前向传播的架构应该是这样的形式：
 
-```
+```python
 out = linear_layer1(data)
 out = relu(out)
 out = linear_layer2(out)

@@ -6,7 +6,7 @@ tags: [bpel, wsbpel, ws-bpel, bpel2.0, schema, xsd]
 
 # element：eventHandlers
 
-```
+```xml
 <xsd:element name="eventHandlers" type="tEventHandlers"/>
 
 <xsd:complexType name="tEventHandlers">
@@ -33,7 +33,7 @@ eventHandlers基于tExtensibleElements扩展，由2种元素的sequence组成：
 
 # element：onEvent
 
-```
+```xml
 <xsd:element name="onEvent" type="tOnEvent"/>
 
 <xsd:complexType name="tOnEvent">
@@ -60,7 +60,7 @@ onEvent元素基于tOnMsgCommon进行扩展，包含一个element sequence：
 
 # complexType：tOnMsgCommon
 
-```
+```xml
 <xsd:complexType name="tOnMsgCommon">
     <xsd:annotation>
         <xsd:documentation>
@@ -98,7 +98,7 @@ tOnMsgCommon这个complexType同样支持tExtensibleElements扩展，包含由�
 
 # complexType：tCorrelations
 
-```
+```xml
 <xsd:complexType name="tCorrelations">
     <xsd:annotation>
         <xsd:documentation>
@@ -141,7 +141,7 @@ tCorrelation同样基于tExtensibleElements扩展，在此之上还定义了两�
 
 # complexType：tOnAlarmEvent
 
-```
+```xml
 <xsd:complexType name="tOnAlarmEvent">
     <xsd:complexContent>
         <xsd:extension base="tExtensibleElements">
@@ -166,7 +166,7 @@ tOnAlarmEvent基于tExtensibleElements扩展，由1个group：forOrUntilGroup �
 
 # group：forOrUntilGroup
 
-```
+```xml
 <xsd:group name="forOrUntilGroup">
     <xsd:choice>
         <xsd:element ref="for" minOccurs="1"/>
@@ -187,7 +187,7 @@ tOnAlarmEvent基于tExtensibleElements扩展，由1个group：forOrUntilGroup �
 
 # complexType：tActivity
 
-```
+```xml
 <xsd:complexType name="tActivity">
     <xsd:complexContent>
         <xsd:extension base="tExtensibleElements">
@@ -216,7 +216,7 @@ tOnAlarmEvent基于tExtensibleElements扩展，由1个group：forOrUntilGroup �
 
 # element：targets
 
-```
+```xml
 <xsd:element name="targets" type="tTargets"/>
 
 <xsd:complexType name="tTargets">
@@ -238,7 +238,7 @@ targets基于tExtensibleElements进行扩展，包含两个元素组成的sequen
 
 # element：joinCondition
 
-```
+```xml
 <xsd:element name="joinCondition" type="tCondition"/>
 ```
 
@@ -246,7 +246,7 @@ targets基于tExtensibleElements进行扩展，包含两个元素组成的sequen
 
 # element：target
 
-```
+```xml
 <xsd:element name="target" type="tTarget"/>
 
 <xsd:complexType name="tTarget">
@@ -264,7 +264,7 @@ tTarget这个东西是一个机遇tExtensibleElements扩展的元素，就增加
 
 # element：sources
 
-```
+```xml
 <xsd:element name="sources" type="tSources"/>
 
 <xsd:complexType name="tSources">
@@ -305,7 +305,7 @@ source：tExtensibleElements扩展，还有一个元素的sequence
 
 # element：assign
 
-```
+```xml
 <xsd:element name="assign" type="tAssign"/>
 
 <xsd:complexType name="tAssign">
@@ -334,7 +334,7 @@ Assign，基于tActivity扩展，增加了两个属性，二选一只猴构成se
 
 # element：copy
 
-```
+```xml
 <xsd:element name="copy" type="tCopy"/>
 
 <xsd:complexType name="tCopy">
@@ -363,7 +363,7 @@ copy，基于tExtensibleElements扩展，两个元素比较好理解
 
 # element：from
 
-```
+```xml
 <xsd:element name="from" type="tFrom"/>
 
 <xsd:complexType name="tFrom" mixed="true">
@@ -403,7 +403,7 @@ copy，基于tExtensibleElements扩展，两个元素比较好理解
 
 # element：literal
 
-```
+```xml
 <xsd:element name="literal" type="tLiteral"/>
 
 <xsd:complexType name="tLiteral" mixed="true">
@@ -417,7 +417,7 @@ literal就是一个mixed描述段落，里边可以有一个任意元素。
 
 # element：query
 
-```
+```xml
 <xsd:element name="query" type="tQuery"/>
 
 <xsd:complexType name="tQuery" mixed="true">
@@ -436,7 +436,7 @@ Query和literal相似，是一个mixed描述段落，里边可以有任意个任
 
 # simpleType：tRoles
 
-```
+```xml
 <xsd:simpleType name="tRoles">
     <xsd:restriction base="xsd:string">
         <xsd:enumeration value="myRole"/>
@@ -449,7 +449,7 @@ myRole和partnerRole两个值二选一
 
 # element：to
 
-```
+```xml
 <xsd:element name="to" type="tTo"/>
 
 <xsd:complexType name="tTo" mixed="true">
@@ -484,7 +484,7 @@ myRole和partnerRole两个值二选一
 
 # element：extensionAssignOperation
 
-```
+```xml
 <xsd:element name="extensionAssignOperation" type="tExtensionAssignOperation"/>
 
 <xsd:complexType name="tExtensionAssignOperation">
@@ -498,7 +498,7 @@ myRole和partnerRole两个值二选一
 
 # element：compensate
 
-```
+```xml
 <xsd:element name="compensate" type="tCompensate"/>
 
 <xsd:complexType name="tCompensate">
@@ -512,7 +512,7 @@ myRole和partnerRole两个值二选一
 
 # element：compensateScope
 
-```
+```xml
 <xsd:element name="compensateScope" type="tCompensateScope"/>
 
 <xsd:complexType name="tCompensateScope">
@@ -530,7 +530,7 @@ myRole和partnerRole两个值二选一
 
 # element：empty
 
-```
+```xml
 <xsd:element name="empty" type="tEmpty"/>
 
 <xsd:complexType name="tEmpty">

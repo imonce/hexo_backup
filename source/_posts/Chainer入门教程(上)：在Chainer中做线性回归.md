@@ -15,7 +15,7 @@ comments: true
 
 首先我们需要安装几个python包：
 
-```
+```bash
 #首先更新一下cython，旧的版本可能会导致chainer安装出错
 pip install --upgrade cython
 #再把numpy、matplotlib、chainer都安装一下

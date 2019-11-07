@@ -17,7 +17,7 @@ MySQL自带配置数据库mysql中的表user中，User=root一栏，Host的值�
 
 在本机登入mysql后，更改 “mysql” 数据库里的 “user” 表里的 “host” 项，从”localhost”改称'%'即可 
 
-```
+```sql
 mysql -u root -p  
 mysql>use mysql;  
 mysql>update user set host = '%' where user ='root';  

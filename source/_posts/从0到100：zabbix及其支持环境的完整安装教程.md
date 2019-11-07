@@ -59,7 +59,7 @@ zabbix3.0
 ![phpmyadmin登录页面](/assets/images/zabbix_7.jpg)
 ## 4.安装配置zabbix server
 ###4.1 下载deb：
-```
+```bash
 cd ~
 wget http://repo.zabbix.com/zabbix/3.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_3.0-1+trusty_all.deb
 dpkg -i zabbix-release_3.0-1+trusty_all.deb
@@ -82,7 +82,7 @@ apt-get update
  - DBPassword=zabbix
 
 ###4.4 配置mysql
-```
+```sql
 mysql -u root -p
 (输入你的数据库root密码)
 mysql> create database zabbix character set utf8 collate utf8_bin;

@@ -10,7 +10,7 @@ tags: [linux, 磁盘, 空间]
 
 # 示例
 
-```
+```bash
 USER_MANE@PC_NAME:~$ df -h
 Filesystem      Size  Used Avail Use% Mounted on
 udev             16G     0   16G   0% /dev

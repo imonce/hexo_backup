@@ -14,7 +14,7 @@ word2vec的方法主要分为CBOW（Continuous Bag Of Words）和skip-gram（n-g
 
 IDE: jupyter notebook
 
-```
+```python
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
@@ -239,7 +239,7 @@ class BasicPatternEmbedding:
 ```
 
 
-```
+```python
 if __name__ == "__main__":
     try:
         bpe = BasicPatternEmbedding()
@@ -340,7 +340,7 @@ if __name__ == "__main__":
 
 argsort函数返回的是数组值从小到大的索引值
 
-```
+```python
 >>> x = np.array([3, 1, 2])
 >>> np.argsort(x)
 array([1, 2, 0])
@@ -350,7 +350,7 @@ array([1, 2, 0])
 
 reduce_sum( ) 是求和函数，在 tensorflow 里面，计算的都是 tensor，可以通过调整 axis =0,1 的维度来控制求和维度。
 
-```
+```python
 >>> x = tf.constant([[1,1,1],[1,1,1]])
 >>> tf.reduce_sum(x)
 6
@@ -398,7 +398,7 @@ sigmoid_cross_entropy_with_logits: 通过 sigmoid cross entropy来计算output�
 
 ## tf.nn.embedding_lookup()
 
-```
+```python
 # Signature:
 tf.nn.embedding_lookup(params, ids, partition_strategy='mod', name=None, validate_indices=True, max_norm=None)
 # Docstring:
@@ -431,7 +431,7 @@ partition_strategy 为张量编号方式，在张量存在多维时起作用，�
 
 SparseTensor(indices, values, dense_shape)
 
-```
+```python
 SparseTensor(indices=[[0, 0], [1, 2]], values=[1, 2], dense_shape=[3, 4])
 
 # represents the dense tensor

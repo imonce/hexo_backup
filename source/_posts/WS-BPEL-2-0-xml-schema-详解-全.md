@@ -12,7 +12,7 @@ wsbpel2.0源码：[ws-bpel_executable.xsd](http://docs.oasis-open.org/wsbpel/2.0
 
 # schema声明
 
-```
+```xml
 <xsd:schema xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable" 
 	xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://docs.oasis-open.org/wsbpel/2.0/process/executable" elementFormDefault="qualified" blockDefault="#all">
 	...
@@ -29,7 +29,7 @@ wsbpel2.0源码：[ws-bpel_executable.xsd](http://docs.oasis-open.org/wsbpel/2.0
 
 # annotation
 
-```
+```xml
 <xsd:annotation>
 	<xsd:documentation>
 Schema for Executable Process for WS-BPEL 2.0 OASIS Standard 11th April, 2007
@@ -41,7 +41,7 @@ Schema for Executable Process for WS-BPEL 2.0 OASIS Standard 11th April, 2007
 
 # import
 
-```
+```xml
 <xsd:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="http://www.w3.org/2001/xml.xsd"/>
 ```
 
@@ -49,7 +49,7 @@ Schema for Executable Process for WS-BPEL 2.0 OASIS Standard 11th April, 2007
 
 # element：process
 
-```
+```xml
 <xsd:element name="process" type="tProcess">
 	<xsd:annotation>
 		<xsd:documentation>
@@ -63,7 +63,7 @@ BPEL的根元素，此处没有定义任何内容，内部元素属性通过type
 
 # complexType：tProcess
 
-```
+```xml
 <xsd:complexType name="tProcess">
 	<xsd:complexContent>
 		<xsd:extension base="tExtensibleElements">
@@ -104,7 +104,7 @@ BPEL的根元素，此处没有定义任何内容，内部元素属性通过type
 
 # complexType：tExtensibleElement
 
-```
+```xml
 <xsd:complexType name="tExtensibleElements">
     <xsd:annotation>
         <xsd:documentation>
@@ -126,7 +126,7 @@ tExtensibleElements这个扩展马上就来了，可以看到，扩展除了0至
 
 # element：documentation
 
-```
+```xml
 <xsd:element name="documentation" type="tDocumentation"/>
 
 <xsd:complexType name="tDocumentation" mixed="true">
@@ -147,7 +147,7 @@ documentation中：
 
 # group：activity
 
-```
+```xml
 <xsd:group name="activity">
     <xsd:annotation>
         <xsd:documentation>
@@ -210,7 +210,7 @@ All standard WS-BPEL 2.0 activities in alphabetical order. Basic activities and 
 
 # element：extensions
 
-```
+```xml
 <xsd:element name="extensions" type="tExtensions"/>
 
 <xsd:complexType name="tExtensions">
@@ -241,7 +241,7 @@ extension扩展自tExtensibleElements，增加了namespace和mustUnderstand两�
 
 # element：import
 
-```
+```xml
 <xsd:element name="import" type="tImport"/>
 
 <xsd:complexType name="tImport">
@@ -259,7 +259,7 @@ BPEL允许import，import元素在tExtensibleElements的基础上，增加namesp
 
 # element：partnerLinks
 
-```
+```xml
 <xsd:element name="partnerLinks" type="tPartnerLinks"/>
 
 <xsd:complexType name="tPartnerLinks">
@@ -299,7 +299,7 @@ partnerLink在tExtensibleElements的基础上，增加了以下5个属性
 
 # element：messageExchanges
 
-```
+```xml
 <xsd:element name="messageExchanges" type="tMessageExchanges"/>
 
 <xsd:complexType name="tMessageExchanges">
@@ -331,7 +331,7 @@ messageExchange在tExtensibleElements的基础上，增加了一个属性
 
 # element：variables
 
-```
+```xml
 <xsd:element name="variables" type="tVariables"/>
 
 <xsd:complexType name="tVariables">
@@ -376,7 +376,7 @@ variable在tExtensibleElements的基础上，增加了一个元素
 
 # simpleType：BPELVariableName
 
-```
+```xml
 <xsd:simpleType name="BPELVariableName">
     <xsd:restriction base="xsd:NCName">
         <xsd:pattern value="[^\.]+"/>
@@ -388,7 +388,7 @@ bpel变量的一个限制，BPELVariableName需要满足xsd:NCName限制，不�
 
 # element：correlationSets
 
-```
+```xml
 <xsd:element name="correlationSets" type="tCorrelationSets"/>
 
 <xsd:complexType name="tCorrelationSets">
@@ -422,7 +422,7 @@ correlationSet在tExtensibleElements的基础上，增加了2个属性
 
 # simpleType：QNames
 
-```
+```xml
 <xsd:simpleType name="QNames">
     <xsd:restriction>
         <xsd:simpleType>
@@ -437,7 +437,7 @@ QNames就是一个QName的list，最少1个，默认空格分割。
 
 # element：faultHandlers
 
-```
+```xml
 <xsd:element name="faultHandlers" type="tFaultHandlers"/>
 
 <xsd:complexType name="tFaultHandlers">
@@ -459,7 +459,7 @@ faultHandlers，听名字就知道是干啥的了，同样支持tExtensibleEleme
 
 # element：catch
 
-```
+```xml
 <xsd:element name="catch" type="tCatch">
     <xsd:annotation>
         <xsd:documentation>
@@ -489,7 +489,7 @@ catch扩展自tActivityContainer，包含4个属性，对catch做了限定：
 
 # element：catchAll
 
-```
+```xml
 <xsd:element name="catchAll" type="tActivityContainer">
     <xsd:annotation>
         <xsd:documentation>
@@ -513,7 +513,7 @@ This element can contain all activities including the activities compensate, com
 
 # element：eventHandlers
 
-```
+```xml
 <xsd:element name="eventHandlers" type="tEventHandlers"/>
 
 <xsd:complexType name="tEventHandlers">
@@ -540,7 +540,7 @@ eventHandlers基于tExtensibleElements扩展，由2种元素的sequence组成：
 
 # element：onEvent
 
-```
+```xml
 <xsd:element name="onEvent" type="tOnEvent"/>
 
 <xsd:complexType name="tOnEvent">
@@ -567,7 +567,7 @@ onEvent元素基于tOnMsgCommon进行扩展，包含一个element sequence：
 
 # complexType：tOnMsgCommon
 
-```
+```xml
 <xsd:complexType name="tOnMsgCommon">
     <xsd:annotation>
         <xsd:documentation>
@@ -605,7 +605,7 @@ tOnMsgCommon这个complexType同样支持tExtensibleElements扩展，包含由�
 
 # complexType：tCorrelations
 
-```
+```xml
 <xsd:complexType name="tCorrelations">
     <xsd:annotation>
         <xsd:documentation>
@@ -648,7 +648,7 @@ tCorrelation同样基于tExtensibleElements扩展，在此之上还定义了两�
 
 # complexType：tOnAlarmEvent
 
-```
+```xml
 <xsd:complexType name="tOnAlarmEvent">
     <xsd:complexContent>
         <xsd:extension base="tExtensibleElements">
@@ -673,7 +673,7 @@ tOnAlarmEvent基于tExtensibleElements扩展，由1个group：forOrUntilGroup �
 
 # group：forOrUntilGroup
 
-```
+```xml
 <xsd:group name="forOrUntilGroup">
     <xsd:choice>
         <xsd:element ref="for" minOccurs="1"/>
@@ -694,7 +694,7 @@ tOnAlarmEvent基于tExtensibleElements扩展，由1个group：forOrUntilGroup �
 
 # complexType：tActivity
 
-```
+```xml
 <xsd:complexType name="tActivity">
     <xsd:complexContent>
         <xsd:extension base="tExtensibleElements">
@@ -723,7 +723,7 @@ tOnAlarmEvent基于tExtensibleElements扩展，由1个group：forOrUntilGroup �
 
 # element：targets
 
-```
+```xml
 <xsd:element name="targets" type="tTargets"/>
 
 <xsd:complexType name="tTargets">
@@ -745,7 +745,7 @@ targets基于tExtensibleElements进行扩展，包含两个元素组成的sequen
 
 # element：joinCondition
 
-```
+```xml
 <xsd:element name="joinCondition" type="tCondition"/>
 ```
 
@@ -753,7 +753,7 @@ targets基于tExtensibleElements进行扩展，包含两个元素组成的sequen
 
 # element：target
 
-```
+```xml
 <xsd:element name="target" type="tTarget"/>
 
 <xsd:complexType name="tTarget">
@@ -771,7 +771,7 @@ tTarget这个东西是一个机遇tExtensibleElements扩展的元素，就增加
 
 # element：sources
 
-```
+```xml
 <xsd:element name="sources" type="tSources"/>
 
 <xsd:complexType name="tSources">
@@ -812,7 +812,7 @@ source：tExtensibleElements扩展，还有一个元素的sequence
 
 # element：assign
 
-```
+```xml
 <xsd:element name="assign" type="tAssign"/>
 
 <xsd:complexType name="tAssign">
@@ -841,7 +841,7 @@ Assign，基于tActivity扩展，增加了两个属性，二选一只猴构成se
 
 # element：copy
 
-```
+```xml
 <xsd:element name="copy" type="tCopy"/>
 
 <xsd:complexType name="tCopy">
@@ -870,7 +870,7 @@ copy，基于tExtensibleElements扩展，两个元素比较好理解
 
 # element：from
 
-```
+```xml
 <xsd:element name="from" type="tFrom"/>
 
 <xsd:complexType name="tFrom" mixed="true">
@@ -910,7 +910,7 @@ copy，基于tExtensibleElements扩展，两个元素比较好理解
 
 # element：literal
 
-```
+```xml
 <xsd:element name="literal" type="tLiteral"/>
 
 <xsd:complexType name="tLiteral" mixed="true">
@@ -924,7 +924,7 @@ literal就是一个mixed描述段落，里边可以有一个任意元素。
 
 # element：query
 
-```
+```xml
 <xsd:element name="query" type="tQuery"/>
 
 <xsd:complexType name="tQuery" mixed="true">
@@ -943,7 +943,7 @@ Query和literal相似，是一个mixed描述段落，里边可以有任意个任
 
 # simpleType：tRoles
 
-```
+```xml
 <xsd:simpleType name="tRoles">
     <xsd:restriction base="xsd:string">
         <xsd:enumeration value="myRole"/>
@@ -956,7 +956,7 @@ myRole和partnerRole两个值二选一
 
 # element：to
 
-```
+```xml
 <xsd:element name="to" type="tTo"/>
 
 <xsd:complexType name="tTo" mixed="true">
@@ -991,7 +991,7 @@ myRole和partnerRole两个值二选一
 
 # element：extensionAssignOperation
 
-```
+```xml
 <xsd:element name="extensionAssignOperation" type="tExtensionAssignOperation"/>
 
 <xsd:complexType name="tExtensionAssignOperation">
@@ -1005,7 +1005,7 @@ myRole和partnerRole两个值二选一
 
 # element：compensate
 
-```
+```xml
 <xsd:element name="compensate" type="tCompensate"/>
 
 <xsd:complexType name="tCompensate">
@@ -1019,7 +1019,7 @@ myRole和partnerRole两个值二选一
 
 # element：compensateScope
 
-```
+```xml
 <xsd:element name="compensateScope" type="tCompensateScope"/>
 
 <xsd:complexType name="tCompensateScope">
@@ -1037,7 +1037,7 @@ myRole和partnerRole两个值二选一
 
 # element：empty
 
-```
+```xml
 <xsd:element name="empty" type="tEmpty"/>
 
 <xsd:complexType name="tEmpty">
@@ -1053,7 +1053,7 @@ myRole和partnerRole两个值二选一
 
 # element：exit
 
-```
+```xml
 <xsd:element name="exit" type="tExit"/>
 
 <xsd:complexType name="tExit">
@@ -1069,7 +1069,7 @@ myRole和partnerRole两个值二选一
 
 # element：extensionActivity
 
-```
+```xml
 <xsd:element name="extensionActivity" type="tExtensionActivity"/>
 
 <xsd:complexType name="tExtensionActivity">
@@ -1083,7 +1083,7 @@ myRole和partnerRole两个值二选一
 
 # element：flow
 
-```
+```xml
 <xsd:element name="flow" type="tFlow"/>
 
 <xsd:complexType name="tFlow">
@@ -1105,7 +1105,7 @@ myRole和partnerRole两个值二选一
 
 # element：links
 
-```
+```xml
 <xsd:element name="links" type="tLinks"/>
 
 <xsd:complexType name="tLinks">
@@ -1137,7 +1137,7 @@ name：NCName，这就是link的真相了
 
 # element：forEach
 
-```
+```xml
 <xsd:element name="forEach" type="tForEach"/>
 
 <xsd:complexType name="tForEach">
@@ -1176,7 +1176,7 @@ name：NCName，这就是link的真相了
 
 # element：completionCondition
 
-```
+```xml
 <xsd:element name="completionCondition" type="tCompletionCondition"/>
 
 <xsd:complexType name="tCompletionCondition">
@@ -1194,7 +1194,7 @@ name：NCName，这就是link的真相了
 
 # element：branches
 
-```
+```xml
 <xsd:element name="branches" type="tBranches"/>
 
 <xsd:complexType name="tBranches">
@@ -1212,7 +1212,7 @@ branches基于tExpression进行扩展，还有一个属性
 
 # element：if
 
-```
+```xml
 <xsd:element name="if" type="tIf"/>
 
 <xsd:complexType name="tIf">
@@ -1238,7 +1238,7 @@ if也是一类activity，基于tAcitivity进行扩展，sequence中包括
 
 # element：elseif
 
-```
+```xml
 <xsd:element name="elseif" type="tElseif"/>
 
 <xsd:complexType name="tElseif">
@@ -1264,7 +1264,7 @@ Else就直接是tActivityContainer了，condition都不用。
 
 # element：invoke
 
-```
+```xml
 <xsd:element name="invoke" type="tInvoke"/>
 
 <xsd:complexType name="tInvoke">
@@ -1316,7 +1316,7 @@ attribute有5个
 
 # complexType：tCorrelationsWithPattern
 
-```
+```xml
 <xsd:complexType name="tCorrelationsWithPattern">
     <xsd:annotation>
         <xsd:documentation>
@@ -1357,7 +1357,7 @@ XSD Authors: The child element correlation needs to be a Local Element Declarati
 
 # element：fromParts
 
-```
+```xml
 <xsd:element name="fromParts" type="tFromParts"/>
 
 <xsd:complexType name="tFromParts">
@@ -1391,7 +1391,7 @@ fromPart同样扩展自tExtensibleElements，包含两个attribute
 
 # element：toParts
 
-```
+```xml
 <xsd:element name="toParts" type="tToParts"/>
 
 <xsd:complexType name="tToParts">
@@ -1425,7 +1425,7 @@ toPart同样扩展自tExtensibleElements，包含两个attribute
 
 # element：pick
 
-```
+```xml
 <xsd:element name="pick" type="tPick"/>
 
 <xsd:complexType name="tPick">
@@ -1459,7 +1459,7 @@ pick扩展自tActivity
 
 # element：onMessage
 
-```
+```xml
 <xsd:element name="onMessage" type="tOnMessage"/>
 
 <xsd:complexType name="tOnMessage">
@@ -1479,7 +1479,7 @@ sequence中是一个activity的group
 
 # complexType：tOnAlarmPick
 
-```
+```xml
 <xsd:complexType name="tOnAlarmPick">
     <xsd:complexContent>
         <xsd:extension base="tExtensibleElements">
@@ -1503,7 +1503,7 @@ sequence中有两个group
 
 # element：receive
 
-```
+```xml
 <xsd:element name="receive" type="tReceive"/>
 
 <xsd:complexType name="tReceive">
@@ -1547,7 +1547,7 @@ XSD Authors: The child element correlations needs to be a Local Element Declarat
 
 # element：repeatUntil
 
-```
+```xml
 <xsd:element name="repeatUntil" type="tRepeatUntil"/>
 
 <xsd:complexType name="tRepeatUntil">
@@ -1571,7 +1571,7 @@ sequence中包含
 
 # element：reply
 
-```
+```xml
 <xsd:element name="reply" type="tReply"/>
 
 <xsd:complexType name="tReply">
@@ -1615,7 +1615,7 @@ XSD Authors: The child element correlations needs to be a Local Element Declarat
 
 # element：rethrow
 
-```
+```xml
 <xsd:element name="rethrow" type="tRethrow"/>
 
 <xsd:complexType name="tRethrow">
@@ -1631,7 +1631,7 @@ XSD Authors: The child element correlations needs to be a Local Element Declarat
 
 # element：scope
 
-```
+```xml
 <xsd:element name="scope" type="tScope"/>
 
 <xsd:complexType name="tScope">
@@ -1681,7 +1681,7 @@ sequence中有：
 
 # element：compensationHandler
 
-```
+```xml
 <xsd:element name="compensationHandler" type="tActivityContainer">
     <xsd:annotation>
         <xsd:documentation>
@@ -1695,7 +1695,7 @@ This element can contain all activities including the activities compensate and 
 
 # element：terminationHandler
 
-```
+```xml
 <xsd:element name="terminationHandler" type="tActivityContainer">
     <xsd:annotation>
         <xsd:documentation>
@@ -1709,7 +1709,7 @@ This element can contain all activities including the activities compensate and 
 
 # element：sequence
 
-```
+```xml
 <xsd:element name="sequence" type="tSequence"/>
 
 <xsd:complexType name="tSequence">
@@ -1727,7 +1727,7 @@ This element can contain all activities including the activities compensate and 
 
 # element：throw
 
-```
+```xml
 <xsd:element name="throw" type="tThrow"/>
 
 <xsd:complexType name="tThrow">
@@ -1747,7 +1747,7 @@ This element can contain all activities including the activities compensate and 
 
 # element：validate
 
-```
+```xml
 <xsd:element name="validate" type="tValidate"/>
 
 <xsd:complexType name="tValidate">
@@ -1765,7 +1765,7 @@ This element can contain all activities including the activities compensate and 
 
 # simpleType：BPELVariableNames
 
-```
+```xml
 <xsd:simpleType name="BPELVariableNames">
     <xsd:restriction>
         <xsd:simpleType>
@@ -1780,7 +1780,7 @@ This element can contain all activities including the activities compensate and 
 
 # element：wait
 
-```
+```xml
 <xsd:element name="wait" type="tWait"/>
 
 <xsd:complexType name="tWait">
@@ -1799,7 +1799,7 @@ This element can contain all activities including the activities compensate and 
 
 # element：while
 
-```
+```xml
 <xsd:element name="while" type="tWhile"/>
 
 <xsd:complexType name="tWhile">
@@ -1821,7 +1821,7 @@ This element can contain all activities including the activities compensate and 
 
 # complexType：tExpression
 
-```
+```xml
 <xsd:complexType name="tExpression" mixed="true">
     <xsd:sequence>
         <xsd:any minOccurs="0" maxOccurs="unbounded" processContents="lax"/>
@@ -1839,7 +1839,7 @@ tExpression的内容基本就是随便写
 
 # complexType：tCondition
 
-```
+```xml
 <xsd:complexType name="tCondition">
     <xsd:complexContent mixed="true">
         <xsd:extension base="tExpression"/>
@@ -1851,7 +1851,7 @@ tCondition就是在tExpression的基础上随便写
 
 # element：condition
 
-```
+```xml
 <xsd:element name="condition" type="tBoolean-expr"/>
 
 <xsd:complexType name="tBoolean-expr">
@@ -1865,7 +1865,7 @@ condition也是在tExpression的基础上随便写
 
 # complexType：tDuration-expr
 
-```
+```xml
 <xsd:complexType name="tDuration-expr">
     <xsd:complexContent mixed="true">
         <xsd:extension base="tExpression"/>
@@ -1877,7 +1877,7 @@ condition也是在tExpression的基础上随便写
 
 # complexType：tDeadline-expr
 
-```
+```xml
 <xsd:complexType name="tDeadline-expr">
     <xsd:complexContent mixed="true">
         <xsd:extension base="tExpression"/>
@@ -1889,7 +1889,7 @@ condition也是在tExpression的基础上随便写
 
 # simpleType：tBoolean
 
-```
+```xml
 <xsd:simpleType name="tBoolean">
     <xsd:restriction base="xsd:string">
         <xsd:enumeration value="yes"/>

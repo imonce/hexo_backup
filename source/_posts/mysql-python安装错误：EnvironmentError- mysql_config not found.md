@@ -9,7 +9,7 @@ comments: true
 
 安装mysql-python时报错：
 
-```
+```bash
 Collecting mysql-python
   Using cached MySQL-python-1.2.5.zip
     Complete output from command python setup.py egg_info:

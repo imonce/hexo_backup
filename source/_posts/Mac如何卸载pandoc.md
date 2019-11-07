@@ -6,7 +6,7 @@ tags: [mac, 卸载, pandoc]
 
 # 将以下脚本保存到本地，命名为**uninstall-pandoc.pl**
 
-```
+```bash
 #!/usr/bin/perl
 
 # Script to remove all files installed by the macOS pandoc installer

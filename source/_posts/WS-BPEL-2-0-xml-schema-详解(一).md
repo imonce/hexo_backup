@@ -12,7 +12,7 @@ wsbpel2.0 xsd源码来自：[ws-bpel_executable.xsd](http://docs.oasis-open.org/
 
 # schema声明
 
-```
+```xml
 <xsd:schema xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable" 
 	xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://docs.oasis-open.org/wsbpel/2.0/process/executable" elementFormDefault="qualified" blockDefault="#all">
 	...
@@ -29,7 +29,7 @@ wsbpel2.0 xsd源码来自：[ws-bpel_executable.xsd](http://docs.oasis-open.org/
 
 # annotation
 
-```
+```xml
 <xsd:annotation>
 	<xsd:documentation>
 Schema for Executable Process for WS-BPEL 2.0 OASIS Standard 11th April, 2007
@@ -41,7 +41,7 @@ Schema for Executable Process for WS-BPEL 2.0 OASIS Standard 11th April, 2007
 
 # import
 
-```
+```xml
 <xsd:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="http://www.w3.org/2001/xml.xsd"/>
 ```
 
@@ -49,7 +49,7 @@ Schema for Executable Process for WS-BPEL 2.0 OASIS Standard 11th April, 2007
 
 # element：process
 
-```
+```xml
 <xsd:element name="process" type="tProcess">
 	<xsd:annotation>
 		<xsd:documentation>
@@ -63,7 +63,7 @@ BPEL的根元素，此处没有定义任何内容，内部元素属性通过type
 
 # complexType：tProcess
 
-```
+```xml
 <xsd:complexType name="tProcess">
 	<xsd:complexContent>
 		<xsd:extension base="tExtensibleElements">
@@ -104,7 +104,7 @@ BPEL的根元素，此处没有定义任何内容，内部元素属性通过type
 
 # complexType：tExtensibleElement
 
-```
+```xml
 <xsd:complexType name="tExtensibleElements">
     <xsd:annotation>
         <xsd:documentation>
@@ -126,7 +126,7 @@ tExtensibleElements这个扩展马上就来了，可以看到，扩展除了0至
 
 # element：documentation
 
-```
+```xml
 <xsd:element name="documentation" type="tDocumentation"/>
 
 <xsd:complexType name="tDocumentation" mixed="true">
@@ -147,7 +147,7 @@ documentation中：
 
 # group：activity
 
-```
+```xml
 <xsd:group name="activity">
     <xsd:annotation>
         <xsd:documentation>
@@ -213,7 +213,7 @@ All standard WS-BPEL 2.0 activities in alphabetical order. Basic activities and 
 
 # element：extensions
 
-```
+```xml
 <xsd:element name="extensions" type="tExtensions"/>
 
 <xsd:complexType name="tExtensions">
@@ -244,7 +244,7 @@ extension扩展自tExtensibleElements，增加了namespace和mustUnderstand两�
 
 # element：import
 
-```
+```xml
 <xsd:element name="import" type="tImport"/>
 
 <xsd:complexType name="tImport">
@@ -262,7 +262,7 @@ BPEL允许import，import元素在tExtensibleElements的基础上，增加namesp
 
 # element：partnerLinks
 
-```
+```xml
 <xsd:element name="partnerLinks" type="tPartnerLinks"/>
 
 <xsd:complexType name="tPartnerLinks">
@@ -302,7 +302,7 @@ partnerLink在tExtensibleElements的基础上，增加了以下5个属性
 
 # element：messageExchanges
 
-```
+```xml
 <xsd:element name="messageExchanges" type="tMessageExchanges"/>
 
 <xsd:complexType name="tMessageExchanges">
@@ -334,7 +334,7 @@ messageExchange在tExtensibleElements的基础上，增加了一个属性
 
 # element：variables
 
-```
+```xml
 <xsd:element name="variables" type="tVariables"/>
 
 <xsd:complexType name="tVariables">
@@ -379,7 +379,7 @@ variable在tExtensibleElements的基础上，增加了一个元素
 
 # simpleType：BPELVariableName
 
-```
+```xml
 <xsd:simpleType name="BPELVariableName">
     <xsd:restriction base="xsd:NCName">
         <xsd:pattern value="[^\.]+"/>
@@ -391,7 +391,7 @@ bpel变量的一个限制，BPELVariableName需要满足xsd:NCName限制，不�
 
 # element：correlationSets
 
-```
+```xml
 <xsd:element name="correlationSets" type="tCorrelationSets"/>
 
 <xsd:complexType name="tCorrelationSets">
@@ -425,7 +425,7 @@ correlationSet在tExtensibleElements的基础上，增加了2个属性
 
 # simpleType：QNames
 
-```
+```xml
 <xsd:simpleType name="QNames">
     <xsd:restriction>
         <xsd:simpleType>
@@ -440,7 +440,7 @@ QNames就是一个QName的list，最少1个，默认空格分割。
 
 # element：faultHandlers
 
-```
+```xml
 <xsd:element name="faultHandlers" type="tFaultHandlers"/>
 
 <xsd:complexType name="tFaultHandlers">
@@ -462,7 +462,7 @@ faultHandlers，听名字就知道是干啥的了，同样支持tExtensibleEleme
 
 # element：catch
 
-```
+```xml
 <xsd:element name="catch" type="tCatch">
     <xsd:annotation>
         <xsd:documentation>
@@ -492,7 +492,7 @@ catch扩展自tActivityContainer，包含4个属性，对catch做了限定：
 
 # element：catchAll
 
-```
+```xml
 <xsd:element name="catchAll" type="tActivityContainer">
     <xsd:annotation>
         <xsd:documentation>

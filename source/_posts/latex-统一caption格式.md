@@ -10,7 +10,7 @@ tags: [latex, caption]
 
 # 栗子
 
-```
+```tex
 \usepackage{caption}
 \captionsetup{
    labelsep = quad,
