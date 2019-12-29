@@ -126,3 +126,5 @@
   {% set custom_head = '../../_custom/head.swig' %}
 {% endif %}
 {% include custom_head %}
+<script data-ad-client="ca-pub-1831623022964098" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js">
+</script>
