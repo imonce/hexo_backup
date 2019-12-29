@@ -369,6 +369,7 @@ reward:
   wechatpay: /images/wechatpay.png
   alipay: /images/alipay.png
   #bitcoin: /images/bitcoin.png
+  paypal: /images/paypal.png
 
 # Related popular posts
 # Dependencies: https://github.com/tea3/hexo-related-popular-posts
