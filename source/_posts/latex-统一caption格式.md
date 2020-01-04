@@ -1,7 +1,7 @@
 ---
 title: 'latex:统一图表caption格式'
 date: 2018-12-27 15:18:03
-tags: [latex, caption]
+tags: [Latex, Caption]
 ---
 
 # 方法

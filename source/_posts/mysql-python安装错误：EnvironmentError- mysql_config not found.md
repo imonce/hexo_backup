@@ -1,7 +1,7 @@
 ﻿---
 title: mysql-python安装错误：EnvironmentError:mysql_config not found
 date: 2017-04-24 02:45:19
-tags: [mysql, python, mysql-python安装错误, trick]
+tags: [Mysql, Python, mysql-python安装错误, Trick]
 comments: true
 ---
 

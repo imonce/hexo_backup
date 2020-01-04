@@ -1,7 +1,7 @@
 ﻿---
 title: "Chainer入门教程(下)：MNIST手写体识别"
 date: 2016-12-15 22:57:00
-tags: [chainer, 入门教程, 机器学习, 神经网络]
+tags: [Chainer, 入门教程, 机器学习, 神经网络]
 comments: true
 ---
 

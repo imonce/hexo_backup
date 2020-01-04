@@ -1,7 +1,7 @@
 ---
-title: jupyter配置远程访问
+title: Jupyter Notebook 配置远程访问
 date: 2018-09-19 11:10:45
-tags: [jupyter,远程访问,ipython,notebook]
+tags: [Jupyter Notebook, 远程访问, ipython]
 ---
 
 # 安装jupyter

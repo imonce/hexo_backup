@@ -1,7 +1,7 @@
 ---
-title: owl本体语言学习笔记
+title: OWL本体语言学习笔记
 date: 2019-03-18 20:49:42
-tags: [owl, 本体, 学习笔记]
+tags: [OWL, 本体, 学习笔记]
 ---
 
 # OWL简介

@@ -1,7 +1,7 @@
 ---
 title: WS-BPEL 2.0 xml schema 详解(一)
 date: 2019-03-21 22:11:55
-tags: [bpel, wsbpel, ws-bpel, bpel2.0, schema, xsd]
+tags: [BPEL, WSBPEL, ws-bpel, BPEL2.0, Schema, XSD]
 ---
 
 本系列文章将一行一行的解读wsbpel2.0的源码。

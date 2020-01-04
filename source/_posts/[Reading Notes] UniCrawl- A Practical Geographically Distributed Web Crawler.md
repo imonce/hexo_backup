@@ -1,7 +1,7 @@
 ﻿---
 title: '[Reading Notes] UniCrawl: A Practical Geographically Distributed Web Crawler'
 date: 2016-12-11 00:13:19
-tags: [web, crawler, unicrawl, Reading Notes]
+tags: [Web Crawler, Unicrawl]
 comments: true
 ---
 

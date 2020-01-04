@@ -1,7 +1,7 @@
 ---
 title: '[Reading Notes] Business process management (BPM) standards: a survey'
 date: 2019-04-22 20:42:13
-tags: [Reading Notes, BPM, survey, business process management]
+tags: [Reading Notes, BPM, Survey, Business Process Management]
 ---
 
 # Abstract

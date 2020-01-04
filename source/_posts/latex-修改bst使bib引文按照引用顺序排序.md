@@ -1,7 +1,7 @@
 ---
 title: 'latex:修改bst使bib引文按照引用顺序排序'
 date: 2018-12-27 14:57:31
-tags: [latex, bib, bst]
+tags: [Latex, Latex Bib, Latex Bst]
 comments: true
 ---
 

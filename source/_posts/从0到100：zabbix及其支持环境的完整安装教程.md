@@ -1,7 +1,7 @@
 ---
 title: 从0到100：zabbix及其支持环境的完整安装教程
 date: 2016-08-08 02:45:19
-tags: [zabbix安装, lamp配置]
+tags: [zabbix, LAMP]
 comments: true
 ---
 

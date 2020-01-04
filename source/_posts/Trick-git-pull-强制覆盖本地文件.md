@@ -1,7 +1,7 @@
 ---
 title: '[Trick]git pull 强制覆盖本地文件'
 date: 2018-07-31 12:50:16
-tags: [git, trick]
+tags: [git, Trick]
 comments: true
 ---
 

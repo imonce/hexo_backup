@@ -1,7 +1,7 @@
 ﻿---
 title: 远程连接mysql报错：1130 - Host '192.168.2.204' is not allowed to connect to this MySQL server
 date: 2017-04-24 02:45:19
-tags: [mysql, 远程连接报错, trick]
+tags: [Mysql, 远程连接报错, Trick]
 comments: true
 ---
 

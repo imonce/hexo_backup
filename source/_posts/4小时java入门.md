@@ -1,7 +1,7 @@
 ---
 title: 4小时java入门
 date: 2019-05-07 19:07:57
-tags: [java, java入门]
+tags: [Java, Java入门]
 categories: [Learn X in Y minutes, Learn Java in Y minutes]
 ---
 

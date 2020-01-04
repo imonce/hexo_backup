@@ -3,8 +3,8 @@ title: >-
   [Reading Notes] How Should I Slice My Network? A Multi-Service Empirical
   Evaluation of Resource Sharing Efficiency
 date: 2020-01-03 16:56:40
-tags: [evaluation, edge computing, service computing]
-categories: [service computing, edge computing]
+tags: [Network Slicing, Resource Management, Network Efficiency, Edge Computing, Service Computing]
+categories: [Reading Notes, Edge Computing]
 mathjax: true
 ---
 

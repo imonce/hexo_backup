@@ -1,7 +1,7 @@
 ---
 title: 'Lambda演算精简教程'
 date: 2019-04-24 21:47:53
-tags: [lambda, lambda演算, lambda calculus, 学习笔记]
+tags: [Lambda, Lambda演算, Lambda Calculus, 学习笔记]
 mathjax: true
 ---
 

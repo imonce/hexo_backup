@@ -3,7 +3,7 @@ title: >-
   [Reading Notes]Service system fundamentals: Work system, value chain, and life
   cycle
 date: 2019-09-23 17:01:46
-tags: [service system, value chain]
+tags: [Service System, Value Chain]
 categories: [Reading Notes, Service Computing]
 ---
 

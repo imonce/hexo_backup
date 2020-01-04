@@ -1,7 +1,8 @@
 ---
 title: SQL语句命令执行顺序
 date: 2019-11-06 22:42:22
-tags: [sql]
+tags: [SQL]
+categories: [SQL]
 ---
 
 ```flow

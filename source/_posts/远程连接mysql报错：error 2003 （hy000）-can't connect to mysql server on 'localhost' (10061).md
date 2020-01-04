@@ -1,7 +1,7 @@
 ﻿---
 title: 远程连接mysql报错：error 2003 （hy000）:can't connect to mysql server on 'localhost' (10061)
 date: 2017-04-24 02:45:19
-tags: [mysql, 远程连接报错, trick]
+tags: [Mysql, 远程连接报错, Trick]
 comments: true
 ---
 

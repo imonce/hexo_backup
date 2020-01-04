@@ -1,7 +1,8 @@
 ---
 title: '[Python]获取某文件夹下所有文件名'
 date: 2018-08-06 15:35:36
-tags: [python, os, python入门]
+tags: [Python, OS, Python入门]
+categories: [Python]
 ---
 
 # 导入模块

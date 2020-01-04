@@ -1,7 +1,7 @@
 ---
 title: '什么是一体化架构(Monolithic Architecture)'
 date: 2019-08-07 22:27:44
-tags: [软件架构, 服务架构, 一体化架构, software architecture, service architecture, monolithic architecture]
+tags: [软件架构, 服务架构, 一体化架构, Software Architecture, Service Architecture, Monolithic Architecture]
 categories: [软件架构和服务架构]
 ---
 

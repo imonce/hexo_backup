@@ -1,7 +1,7 @@
 ---
 title: '[Reading Notes]Customer Value Chain Analysis'
 date: 2019-09-27 20:09:04
-tags: [service system, value chain]
+tags: [Service System, Value Chain]
 categories: [Reading Notes, Service Computing]
 ---
 

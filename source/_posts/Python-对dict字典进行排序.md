@@ -1,7 +1,7 @@
 ---
 title: '[Python]对dict字典进行排序'
 date: 2018-08-08 09:33:09
-tags: [python, dict, 字典, python入门]
+tags: [Python, Dict, 字典, Python入门]
 ---
 
 # 代码

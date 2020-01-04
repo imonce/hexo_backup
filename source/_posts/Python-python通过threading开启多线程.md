@@ -1,7 +1,8 @@
 ---
 title: '[Python]通过threading开启多线程'
 date: 2018-08-09 22:42:08
-tags: [python, threading, 多线程, python入门]
+tags: [Python, Threading, 多线程, Python入门]
+category: [Python]
 ---
 
 # 构造方法： 

@@ -1,7 +1,7 @@
 ﻿---
 title: "Chainer入门教程(上)：在Chainer中做线性回归"
 date: 2016-12-14 14:14:00
-tags: [chainer, 入门教程, 机器学习, 神经网络]
+tags: [Chainer, 入门教程, 机器学习, 神经网络]
 comments: true
 ---
 

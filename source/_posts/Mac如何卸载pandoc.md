@@ -1,7 +1,7 @@
 ---
 title: Mac如何卸载pandoc
 date: 2018-09-28 09:44:34
-tags: [mac, 卸载, pandoc]
+tags: [MAC, 卸载, Pandoc]
 ---
 
 # 将以下脚本保存到本地，命名为**uninstall-pandoc.pl**

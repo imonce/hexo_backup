@@ -1,7 +1,7 @@
 ---
 title: "[Reading Notes] Object detection via a multi-region and sematic segmentation-aware CNN model"
 date: 2016-12-13 22:58:00
-tags: [object detection, CNN, multi-region, sematic segmentation-aware, Reading Notes]
+tags: [Object Detection, CNN, multi-region, Sematic segmentation-aware, Reading Notes]
 comments: true
 ---
 

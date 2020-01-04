@@ -1,7 +1,8 @@
 ﻿---
 title: Python入门：pickle模块简介
 date: 2017-04-24 02:45:19
-tags: [python, pickle, python入门]
+tags: [Python, Pickle, Python入门]
+categories: [Python]
 comments: true
 ---
 

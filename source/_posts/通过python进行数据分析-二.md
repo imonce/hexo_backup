@@ -2,6 +2,7 @@
 title: 通过python进行数据分析(二)
 date: 2019-04-15 21:25:56
 tags: [python, 数据分析]
+categories: [Python]
 ---
 
 ### Counting time zones with pandas

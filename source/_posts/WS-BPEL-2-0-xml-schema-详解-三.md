@@ -1,7 +1,7 @@
 ---
 title: WS-BPEL 2.0 xml schema 详解(三)
 date: 2019-03-22 16:24:20
-tags: [bpel, wsbpel, ws-bpel, bpel2.0, schema, xsd]
+tags: [BPEL, WSBPEL, ws-bpel, BPEL2.0, Schema, XSD]
 ---
 
 # element：exit

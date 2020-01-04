@@ -1,7 +1,7 @@
 ---
 title: '计算机应用数学学习笔记（三）：通过稀疏表示进行图像修复（IMAGE INPAINTING VIA SPARSE REPRESENTATION）'
 date: 2019-06-19 13:05:07
-tags: [image inpainting, sparse representation, 稀疏表示, 图像修复, 计算机应用数学]
+tags: [Image Inpainting, Sparse Representation, 稀疏表示, 图像修复, 计算机应用数学]
 categories: [计算机应用数学]
 mathjax: true
 ---

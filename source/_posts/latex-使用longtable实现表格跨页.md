@@ -1,7 +1,7 @@
 ---
 title: 'latex:使用longtable实现表格跨页'
 date: 2018-12-27 15:16:55
-tags: [latex, long table, 表格跨页]
+tags: [Latex, Long Table, 表格跨页]
 ---
 
 # 方法

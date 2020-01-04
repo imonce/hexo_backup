@@ -1,7 +1,7 @@
 ---
 title: '3小时精通lxml.etree:Python中xml的读取、解析、生成和查找'
 date: 2019-10-21 17:04:41
-tags: [python, python3, lxml, etree]
+tags: [Python, Python3, lxml, etree]
 category: [Learn X in Y minutes, Learn lxml.etree in Y minutes]
 ---
 

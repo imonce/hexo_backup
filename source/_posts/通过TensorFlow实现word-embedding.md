@@ -1,7 +1,8 @@
 ---
 title: '通过TensorFlow实现word embedding'
 date: 2019-10-21 10:16:01
-tags: [TensorFlow, word2vec, n-gram, skip-gram, embedding]
+tags: [tensorflow, word2vec, n-gram, skip-gram, Embedding]
+categories: [Python]
 ---
 
 word2vec的方法主要分为CBOW（Continuous Bag Of Words）和skip-gram（n-gram）两大类。
