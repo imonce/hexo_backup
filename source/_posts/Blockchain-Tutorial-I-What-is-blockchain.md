@@ -7,6 +7,9 @@ categories: [Learn X in Y minutes, Learn blockchain in Y minutes]
 
 # Brief History
 
+- 1983, David Chaum first proposed to use encryption technology in digital cash
+- 1998, Wei Dai's B coin first introduced the idea of creating currency by solving calculation problems and decentralized consensus, but the proposal did not give a specific method to achieve decentralized consensus.
+- 2005, Hal Finney introduced the concept of "reusable proof of work" (RPOW), which uses the idea of b-coin and the hash cash problem proposed by Adam Baker to create cryptology currency. However, this concept is once again lost in idealization because it relies on trusted computing as the back end.
 - May/2007, Nakamoto Satoshi started the Bitcoin project
 - August/2008, Nakamoto Satoshi registered domain name bitcoin.org
 - 31/Obtober/2008, Nakamoto Satoshi sent an email to all members of a cryptography mailing list entitled "bitcoin: peer-to-peer e-cash thesis."
