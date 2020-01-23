@@ -2,7 +2,7 @@
 title: 'python快速入门：6小时精通python(五)'
 date: 2019-04-19 17:35:16
 tags: [python, python3]
-category: [Learn X in Y minutes, Learn Python in Y minutes]
+categories: [Learn X in Y minutes, Learn Python in Y minutes]
 ---
 
 译自：[https://learnxinyminutes.com/docs/python3/](https://learnxinyminutes.com/docs/python3/)
