@@ -1,7 +1,7 @@
 ---
-title: 'python快速入门：6小时精通python(四)'
+title: 'Python快速入门：6小时精通Python(四)'
 date: 2019-04-19 17:35:12
-tags: [6小时精通python, python, python3, python精通]
+tags: [6小时精通Python, Python, Python3, Python精通]
 category: [Learn X in Y minutes, Learn Python in Y minutes]
 ---
 

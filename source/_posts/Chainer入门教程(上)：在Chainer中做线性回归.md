@@ -13,7 +13,7 @@ comments: true
 
 <!-- more-->
 
-首先我们需要安装几个python包：
+首先我们需要安装几个Python包：
 
 ```bash
 #首先更新一下cython，旧的版本可能会导致chainer安装出错

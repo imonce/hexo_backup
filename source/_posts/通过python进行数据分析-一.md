@@ -1,7 +1,7 @@
 ---
-title: 通过python进行数据分析(一)
+title: 通过Python进行数据分析(一)
 date: 2019-04-14 22:09:12
-tags: [python, 数据分析, 学习笔记]
+tags: [Python, 数据分析, 学习笔记]
 ---
 
 # Introductory examples
