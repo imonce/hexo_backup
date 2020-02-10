@@ -40,7 +40,7 @@ And the constructed index system should possess these features:
 3E theory refers to:
 
 - Efficacy, which measures its own output
-- efficiency, which reflects the utilization of resources
-- effectiveness, which reflects the effect of the system output on its superior system
+- Efficiency, which reflects the utilization of resources
+- Effectiveness, which reflects the effect of the system output on its superior system
 
 3E system represents the trend of diversified development of performance evaluation system. Through the establishment of 3E standard system, the soft environment evaluation system is more scientific and transparent, and the efficiency and operability of performance evaluation are increased, which greatly promotes the improvement and development of public policy evaluation system.
