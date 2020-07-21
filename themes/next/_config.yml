@@ -62,11 +62,11 @@ footer:
     color: "#808080"
 
   # If not defined, `author` from Hexo main config will be used.
-  copyright: 
-  # copyright:
-  #   enable: true
-  #   # https://creativecommons.org/
-  #   license: '本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可'
+  # copyright: 
+  copyright:
+    enable: true
+    # https://creativecommons.org/
+    license: '本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可'
 
   powered:
     # Hexo link (Powered by Hexo).
@@ -162,7 +162,7 @@ baidu_push: true
 # External url should start with http:// or https://
 menu:
   home: / || home
-  # about: /about/ || user
+  # about: https://www.baidu.com
   tags: /tags/ || tags
   categories: /categories/ || th
   archives: /archives/ || archive
