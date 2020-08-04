@@ -3,6 +3,7 @@ title: '统计学三大相关性系数:Pearson,Spearman,Kendall'
 date: 2020-08-04 10:25:52
 tags: [统计学, 相关性分析]
 categories: [统计学]
+mathjax: true
 ---
 
 # Pearson
