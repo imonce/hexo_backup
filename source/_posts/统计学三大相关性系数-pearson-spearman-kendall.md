@@ -46,10 +46,13 @@ Kendall相关系数是对于定类变量的统计，之前讲pearson是对定距
 Kendall相关系数的计算公式：
 
 $$
-\begin{array}{l}
-\text { 公式 } 1=\frac{C-D}{\frac{1}{2} N(N-1)} \\
-\text { 公式 } 2=\frac{\mathrm{C}-\mathrm{D}}{\sqrt{\left(\mathrm{N}_{3}-\mathrm{N}_{1}\right)\left(\mathrm{N}_{3}-\mathrm{N}_{2}\right)}}
-\end{array}
+Kendall1=\frac{C-D}{\frac{1}{2} N\left(N-1\right)}
+$$
+
+另一个计算公式：
+
+$$
+Kendall2=\frac{C-D}{\sqrt{\left(N_{3}-N_{1}\right)\left(N_{3}-N_{2}\right)}}
 $$
 
 第一个和第二个公式的区别在于，当两变量任何一个中都不存在相同元素时用公式1，两变量中任何一个中存在相同元素用2。
