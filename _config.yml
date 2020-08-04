@@ -71,7 +71,8 @@ pagination_dir: page
 # theme: hexo-theme-archer-master
 # theme: yelee
 theme: next
-# theme: claudia
+# theme: next-old
+# theme: hexo-theme-next-master
 
 search:
   path: search.xml
