@@ -263,7 +263,7 @@ reward_settings:
   # If true, reward will be displayed in every article by default.
   enable: true
   animation: false
-  comment: 您的支持将鼓励我继续创作，欢迎留言私信交朋友呀~
+  comment: 求鼓励，求支持，求投喂，求包养 >3<
 
 reward:
   wechatpay: /images/wechatpay.png
