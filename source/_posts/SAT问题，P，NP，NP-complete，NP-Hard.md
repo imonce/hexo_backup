@@ -1,8 +1,11 @@
 ---
-title: SAT问题，P，NP，NP-complete，NP-hard
+title: SAT问题，P，NP，NP-complete(NPC)，NP-hard
 date: 2021-01-17 22:22:16
 tags: [SAT, P, NP, NP-complete, NP-hard]
+categories: [Mathematics]
 ---
+
+# 问题简介
 
 SAT问题（Boolean Satisfiability Problem）是判断一个以合取范式形式给出的逻辑命题公式是否存在一个真值指派，使得公式为真。
 SAT 可满足问题是第一个被证明的NP问题（就是能在多项式时间验证答案正确与否的问题）
@@ -27,6 +30,12 @@ NP问题：在多项式时间里能够验证是否有解，可以通过非确定
 
 ![](https://raw.githubusercontent.com/imonce/imgs/master/20210117221738.png)
 
+# 求解方法
+
+研究中遇到的大部分问题都是NPC问题，选择的方法可以视问题的输入规模而定：
+
+1. 规模小：搜索法，利用搜索策略在指数时间内求解问题
+2. 规模大：随机算法，在多项式时间内“高概率”地精确求解问题；近似算法，也可以考虑在多项式时间内求得问题的一个近似解
 
 > reference:
 > https://www.cnblogs.com/sancyun/p/4250360.html
