@@ -7,6 +7,11 @@ tags: [SAT, P, NP, NP-complete, NP-hard]
 SAT问题（Boolean Satisfiability Problem）是判断一个以合取范式形式给出的逻辑命题公式是否存在一个真值指派，使得公式为真。
 SAT 可满足问题是第一个被证明的NP问题（就是能在多项式时间验证答案正确与否的问题）
 
+解决方法：
+
+1. 完备方法：枚举法、贪婪算法、局部搜索法等
+2. 不完备方法：各类启发式算法，如演化算法、退火算法、蚁群算法等
+
 P问题：在多项式时间内能够求解，是一类可以通过确定性图灵机在多项式时间(Polynomial time)内解决的问题集合。
 
 NP问题：在多项式时间里能够验证是否有解，可以通过非确定性图灵机(Non-deterministic Turing Machine)在多项式时间(Polynomial time)内解决的决策问题集合。
