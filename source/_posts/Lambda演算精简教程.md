@@ -131,7 +131,7 @@ $$\begin{split}
 &=& S ( \lambda f.(S (K f))) ( \lambda f.(S (K f) I)) (case 3)
 \end{split}$$
 
-对于第一个参数 \lambda f.(S (K f))：
+对于第一个参数 $\lambda f.(S (K f))$ ：
 
 $$\begin{split}
 \lambda f.(S (K f)) 
@@ -140,7 +140,7 @@ $$\begin{split}
 &=& S (K S) (S (K K) I)       (case 2, 3)
 \end{split}$$
 
-对于第二个参数 \lambda f.(S (K f) I)：
+对于第二个参数 $\lambda f.(S (K f) I)$ ：
 
 $$\begin{split}
  \lambda f.(S (K f) I)
