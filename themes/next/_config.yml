@@ -263,7 +263,7 @@ reward_settings:
   # If true, reward will be displayed in every article by default.
   enable: true
   animation: false
-  comment: 求鼓励，求支持，求投喂，求包养 >3<
+  comment: 点击这个按钮，会有好事发生哦~(>w<)~
 
 reward:
   wechatpay: /images/wechatpay.png
