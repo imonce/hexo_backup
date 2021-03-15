@@ -7,4 +7,4 @@ tags: [Internet of Things, cloud, edge computing, service optimization, energy e
 categories: [Reading Notes]
 ---
 
-<object data="/Reading-Notes-IoT-Cloud-Service-Optimization-in-Next-Generation-Smart-Environments/IoT-Cloud_Service_Optimization_in_Next_Generation_Smart_Environments.pdf" type="application/pdf" width="100%" height="100%">
+<object data="/Reading-Notes-IoT-Cloud-Service-Optimization-in-Next-Generation-Smart-Environments/IoT-Cloud_Service_Optimization_in_Next_Generation_Smart_Environments.pdf" type="application/pdf" width="100%" height="1000px">
