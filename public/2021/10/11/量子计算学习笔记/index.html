@@ -22,13 +22,13 @@
     var CONFIG = {"hostname":"imonce.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="向量表示量子计算的基本单位是量子比特，量子比特用向量 $|\psi\rangle$ (狄拉克Dirac符号)来描述。 基态: $|g\rangle=|1\rangle=\left[ \begin{matrix} 0 \ 1 \end{matrix} \right]$ 激发态: $∣e\rangle=|0\rangle=\left[ \begin{matrix} 1 \ 0 \end{matrix}">
+  <meta name="description" content="向量表示量子计算的基本单位是量子比特，量子比特用向量 $|\psi\rangle$ (狄拉克Dirac符号)来描述。 基态: $|g\rangle=|1\rangle=\left[ \begin{matrix} 0 \\ 1 \end{matrix} \right]$ 激发态: $∣e\rangle=|0\rangle=\left[ \begin{matrix} 1 \\ 0 \end{matri">
 <meta name="keywords" content="Quantum Computing">
 <meta property="og:type" content="article">
 <meta property="og:title" content="量子计算学习笔记">
 <meta property="og:url" content="https://imonce.github.io/2021/10/11/量子计算学习笔记/index.html">
 <meta property="og:site_name" content="C_Meng PSNA">
-<meta property="og:description" content="向量表示量子计算的基本单位是量子比特，量子比特用向量 $|\psi\rangle$ (狄拉克Dirac符号)来描述。 基态: $|g\rangle=|1\rangle=\left[ \begin{matrix} 0 \ 1 \end{matrix} \right]$ 激发态: $∣e\rangle=|0\rangle=\left[ \begin{matrix} 1 \ 0 \end{matrix}">
+<meta property="og:description" content="向量表示量子计算的基本单位是量子比特，量子比特用向量 $|\psi\rangle$ (狄拉克Dirac符号)来描述。 基态: $|g\rangle=|1\rangle=\left[ \begin{matrix} 0 \\ 1 \end{matrix} \right]$ 激发态: $∣e\rangle=|0\rangle=\left[ \begin{matrix} 1 \\ 0 \end{matri">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://raw.githubusercontent.com/imonce/imgs/master/20211009103200.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/imonce/imgs/master/20211009103250.png">
@@ -37,10 +37,10 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/imonce/imgs/master/20211009105733.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/imonce/imgs/master/20211009105856.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/imonce/imgs/master/20211009110009.png">
-<meta property="og:updated_time" content="2021-10-11T10:07:02.739Z">
+<meta property="og:updated_time" content="2021-10-11T10:42:39.914Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="量子计算学习笔记">
-<meta name="twitter:description" content="向量表示量子计算的基本单位是量子比特，量子比特用向量 $|\psi\rangle$ (狄拉克Dirac符号)来描述。 基态: $|g\rangle=|1\rangle=\left[ \begin{matrix} 0 \ 1 \end{matrix} \right]$ 激发态: $∣e\rangle=|0\rangle=\left[ \begin{matrix} 1 \ 0 \end{matrix}">
+<meta name="twitter:description" content="向量表示量子计算的基本单位是量子比特，量子比特用向量 $|\psi\rangle$ (狄拉克Dirac符号)来描述。 基态: $|g\rangle=|1\rangle=\left[ \begin{matrix} 0 \\ 1 \end{matrix} \right]$ 激发态: $∣e\rangle=|0\rangle=\left[ \begin{matrix} 1 \\ 0 \end{matri">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/imonce/imgs/master/20211009103200.png">
 
 <link rel="canonical" href="https://imonce.github.io/2021/10/11/量子计算学习笔记/">
@@ -231,7 +231,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-10-11 18:04:50 / Modified: 18:07:02" itemprop="dateCreated datePublished" datetime="2021-10-11T18:04:50+08:00">2021-10-11</time>
+              <time title="Created: 2021-10-11 18:04:50 / Modified: 18:42:39" itemprop="dateCreated datePublished" datetime="2021-10-11T18:04:50+08:00">2021-10-11</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -276,13 +276,13 @@
 
       
         <h1 id="向量表示"><a href="#向量表示" class="headerlink" title="向量表示"></a>向量表示</h1><p>量子计算的基本单位是量子比特，量子比特用向量 $|\psi\rangle$ (狄拉克Dirac符号)来描述。</p>
-<p>基态: $|g\rangle=|1\rangle=\left[ \begin{matrix} 0 \ 1 \end{matrix} \right]$</p>
-<p>激发态: $∣e\rangle=|0\rangle=\left[ \begin{matrix} 1 \ 0 \end{matrix} \right]$ </p>
+<p>基态: $|g\rangle=|1\rangle=\left[ \begin{matrix} 0 \\ 1 \end{matrix} \right]$</p>
+<p>激发态: $∣e\rangle=|0\rangle=\left[ \begin{matrix} 1 \\ 0 \end{matrix} \right]$ </p>
 <p>在量子理论中，描述量子态的向量称为态矢，态矢分为左矢和右矢。相同描述对象的左矢和右矢互为转置共轭。</p>
 <blockquote>
 <p>pyqpanda中，dagger()函数可用于对逻辑门进行转置共轭操作</p>
 </blockquote>
-<p>右失（ket）： $|\psi\rangle=\left[ \begin{matrix} c_1 &amp; c_2 &amp; \cdots &amp; c_n \end{matrix} \right]^T=\left[ \begin{matrix} c_1 \ c_2 \ \vdots \ c_n \end{matrix} \right]$ </p>
+<p>右失（ket）： $|\psi\rangle=\left[ \begin{matrix} c_1 &amp; c_2 &amp; \cdots &amp; c_n \end{matrix} \right]^T=\left[ \begin{matrix} c_1 \\ c_2 \\ \vdots \\ c_n \end{matrix} \right]$ </p>
 <p>左失（bra）： $\langle\psi|=\left[ \begin{matrix} c_1^* &amp; c_2^* &amp; \cdots &amp; c_n^* \end{matrix} \right]$ </p>
 <p>并不是任意的二维向量都能用来描述一个qubit的状态，描述量子态的向量的模长必须为1，所谓向量的模长定义如下：</p>
 <p>​ $M(\alpha) = \sqrt{|a_{1}|^{2} + |a_{2}|^{2} + … + |a_{n}|^{2}}$ </p>
@@ -293,7 +293,7 @@
 <p>可以看做 $\langle \alpha|$ 共轭转置后得到的 $1 \times n$ 的矩阵与 $| \beta \rangle$ 构成的 $n \times 1$ 的矩阵的积,内积的结果是一个值。</p>
 <h2 id="外积"><a href="#外积" class="headerlink" title="外积"></a>外积</h2><p>外积 $| \alpha \rangle \langle \beta |$ 可以看做 $\langle \alpha|$ 的 $n \times 1$ 的矩阵与 $| \beta \rangle$ 共轭转置后构成的 $1 \times n$ 的矩阵的积,外积的结果是一个矩阵！</p>
 <h2 id="张量积"><a href="#张量积" class="headerlink" title="张量积"></a>张量积</h2><p>向量 $|\alpha\rangle$ 、 $|\beta\rangle$ 在 $C^n$ 、 $C^m$ 中的张量积为 $C^{n\times m}$ 中的向量： $|\alpha\rangle\otimes|\beta\rangle=|\alpha\rangle|\beta\rangle=|\alpha\beta\rangle$ ，计算方法为：</p>
-<p> $\left[ \begin{matrix} a_1 \ a_2 \end{matrix} \right]\times\left[ \begin{matrix} b_1 \ b_2 \end{matrix} \right] = \left[ \begin{matrix} a_1 b_1 \ a_1 b_2 \ a_2 b_1 \ a_2 b_2 \end{matrix} \right]$  </p>
+<p> $\left[ \begin{matrix} a_1 \\ a_2 \end{matrix} \right]\times\left[ \begin{matrix} b_1 \\ b_2 \end{matrix} \right] = \left[ \begin{matrix} a_1 b_1 \\ a_1 b_2 \\ a_2 b_1 \\ a_2 b_2 \end{matrix} \right]$  </p>
 <h1 id="常用算子（常见量子逻辑门）矩阵形式"><a href="#常用算子（常见量子逻辑门）矩阵形式" class="headerlink" title="常用算子（常见量子逻辑门）矩阵形式"></a>常用算子（常见量子逻辑门）矩阵形式</h1><h2 id="单比特量子逻辑门"><a href="#单比特量子逻辑门" class="headerlink" title="单比特量子逻辑门"></a>单比特量子逻辑门</h2><p>当单比特量子逻辑门作用于量子比特时，为门在前比特在后进行矩阵相乘，进而改变比特状态。</p>
 <p>其中: </p>
 <ul>
