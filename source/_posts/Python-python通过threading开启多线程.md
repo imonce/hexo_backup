@@ -5,6 +5,12 @@ tags: [Python, Threading, 多线程, Python入门]
 category: [Python]
 ---
 
+# 导入包
+
+```python
+import threading
+```
+
 # 构造方法： 
 Thread(group=None, target=None, name=None, args=(), kwargs={}) 
 
@@ -26,6 +32,8 @@ Thread(group=None, target=None, name=None, args=(), kwargs={})
 
 # 示例代码
 ```python
+import threading
+
 # Split items and run function through n threads
 # func形如func(arg_list[0], ..., arg_list[n], items),run_through_threads 可以把items分为num份分配给num个线程运行
 def run_through_threads(func, arg_list, items, num=4):

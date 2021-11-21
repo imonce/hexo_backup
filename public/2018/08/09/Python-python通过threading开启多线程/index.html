@@ -22,18 +22,18 @@
     var CONFIG = {"hostname":"imonce.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="构造方法：Thread(group=None, target=None, name=None, args=(), kwargs={})   group: 线程组，目前还没有实现，库引用中提示必须是None；  target: 要执行的方法；  name: 线程名；  args/kwargs: 要传入方法的参数。  实例方法： isAlive(): 返回线程是否在运行。正在运行指启动后、终止前。">
-<meta name="keywords" content="Python,Python入门,Threading,多线程">
+  <meta name="description" content="导入包1import threading  构造方法：Thread(group=None, target=None, name=None, args=(), kwargs={})   group: 线程组，目前还没有实现，库引用中提示必须是None；  target: 要执行的方法；  name: 线程名；  args/kwargs: 要传入方法的参数。  实例方法： isAlive(): 返回线">
+<meta name="keywords" content="Python,Threading,多线程,Python入门">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[Python]通过threading开启多线程">
 <meta property="og:url" content="https://imonce.github.io/2018/08/09/Python-python通过threading开启多线程/index.html">
 <meta property="og:site_name" content="C_Meng PSNA">
-<meta property="og:description" content="构造方法：Thread(group=None, target=None, name=None, args=(), kwargs={})   group: 线程组，目前还没有实现，库引用中提示必须是None；  target: 要执行的方法；  name: 线程名；  args/kwargs: 要传入方法的参数。  实例方法： isAlive(): 返回线程是否在运行。正在运行指启动后、终止前。">
+<meta property="og:description" content="导入包1import threading  构造方法：Thread(group=None, target=None, name=None, args=(), kwargs={})   group: 线程组，目前还没有实现，库引用中提示必须是None；  target: 要执行的方法；  name: 线程名；  args/kwargs: 要传入方法的参数。  实例方法： isAlive(): 返回线">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-01-04T08:00:19.688Z">
+<meta property="og:updated_time" content="2021-11-21T02:57:02.791Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[Python]通过threading开启多线程">
-<meta name="twitter:description" content="构造方法：Thread(group=None, target=None, name=None, args=(), kwargs={})   group: 线程组，目前还没有实现，库引用中提示必须是None；  target: 要执行的方法；  name: 线程名；  args/kwargs: 要传入方法的参数。  实例方法： isAlive(): 返回线程是否在运行。正在运行指启动后、终止前。">
+<meta name="twitter:description" content="导入包1import threading  构造方法：Thread(group=None, target=None, name=None, args=(), kwargs={})   group: 线程组，目前还没有实现，库引用中提示必须是None；  target: 要执行的方法；  name: 线程名；  args/kwargs: 要传入方法的参数。  实例方法： isAlive(): 返回线">
 
 <link rel="canonical" href="https://imonce.github.io/2018/08/09/Python-python通过threading开启多线程/">
 
@@ -134,7 +134,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">123</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">124</span></a>
 
   </li>
         <li class="menu-item menu-item-sitemap">
@@ -229,7 +229,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-01-04 16:00:19" itemprop="dateModified" datetime="2020-01-04T16:00:19+08:00">2020-01-04</time>
+                <time title="Modified: 2021-11-21 10:57:02" itemprop="dateModified" datetime="2021-11-21T10:57:02+08:00">2021-11-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -273,7 +273,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="构造方法："><a href="#构造方法：" class="headerlink" title="构造方法："></a>构造方法：</h1><p>Thread(group=None, target=None, name=None, args=(), kwargs={}) </p>
+        <h1 id="导入包"><a href="#导入包" class="headerlink" title="导入包"></a>导入包</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> threading</span><br></pre></td></tr></table></figure>
+
+<h1 id="构造方法："><a href="#构造方法：" class="headerlink" title="构造方法："></a>构造方法：</h1><p>Thread(group=None, target=None, name=None, args=(), kwargs={}) </p>
 <ul>
 <li>group: 线程组，目前还没有实现，库引用中提示必须是None； </li>
 <li>target: 要执行的方法； </li>
@@ -292,7 +294,7 @@
 <li>start(): 启动线程。 </li>
 <li>join([timeout]): 阻塞当前上下文环境的线程，直到调用此方法的线程终止或到达指定的timeout（可选参数）。</li>
 </ul>
-<h1 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Split items and run function through n threads</span></span><br><span class="line"><span class="comment"># func形如func(arg_list[0], ..., arg_list[n], items),run_through_threads 可以把items分为num份分配给num个线程运行</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">run_through_threads</span><span class="params">(func, arg_list, items, num=<span class="number">4</span>)</span>:</span></span><br><span class="line">    threads = []</span><br><span class="line">    item_len = len(items)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(num):</span><br><span class="line">        threads.append(threading.Thread(target=func, args=(*arg_list, items[int(i*item_len/num):int((i+<span class="number">1</span>)*item_len/num)])))</span><br><span class="line">    <span class="keyword">for</span> t <span class="keyword">in</span> threads:</span><br><span class="line">        t.setDaemon(<span class="keyword">True</span>)</span><br><span class="line">        t.start()</span><br><span class="line">    <span class="keyword">for</span> t <span class="keyword">in</span> threads:</span><br><span class="line">        t.join()</span><br></pre></td></tr></table></figure>
+<h1 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"></span><br><span class="line"><span class="comment"># Split items and run function through n threads</span></span><br><span class="line"><span class="comment"># func形如func(arg_list[0], ..., arg_list[n], items),run_through_threads 可以把items分为num份分配给num个线程运行</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">run_through_threads</span><span class="params">(func, arg_list, items, num=<span class="number">4</span>)</span>:</span></span><br><span class="line">    threads = []</span><br><span class="line">    item_len = len(items)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(num):</span><br><span class="line">        threads.append(threading.Thread(target=func, args=(*arg_list, items[int(i*item_len/num):int((i+<span class="number">1</span>)*item_len/num)])))</span><br><span class="line">    <span class="keyword">for</span> t <span class="keyword">in</span> threads:</span><br><span class="line">        t.setDaemon(<span class="keyword">True</span>)</span><br><span class="line">        t.start()</span><br><span class="line">    <span class="keyword">for</span> t <span class="keyword">in</span> threads:</span><br><span class="line">        t.join()</span><br></pre></td></tr></table></figure>
     </div>
 
     
@@ -327,9 +329,9 @@
       <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/Python/" rel="tag"># Python</a>
-              <a href="/tags/Python入门/" rel="tag"># Python入门</a>
               <a href="/tags/Threading/" rel="tag"># Threading</a>
               <a href="/tags/多线程/" rel="tag"># 多线程</a>
+              <a href="/tags/Python入门/" rel="tag"># Python入门</a>
           </div>
 
         
@@ -413,7 +415,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#构造方法："><span class="nav-number">1.</span> <span class="nav-text">构造方法：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实例方法："><span class="nav-number">2.</span> <span class="nav-text">实例方法：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#示例代码"><span class="nav-number">3.</span> <span class="nav-text">示例代码</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#导入包"><span class="nav-number">1.</span> <span class="nav-text">导入包</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#构造方法："><span class="nav-number">2.</span> <span class="nav-text">构造方法：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实例方法："><span class="nav-number">3.</span> <span class="nav-text">实例方法：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#示例代码"><span class="nav-number">4.</span> <span class="nav-text">示例代码</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -429,7 +431,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">123</span>
+          <span class="site-state-item-count">124</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

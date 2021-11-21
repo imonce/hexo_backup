@@ -132,7 +132,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">123</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">124</span></a>
 
   </li>
         <li class="menu-item menu-item-sitemap">
@@ -192,6 +192,83 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="default">
+    <link itemprop="mainEntityOfPage" href="https://imonce.github.io/2019/01/13/mac显示隐藏文件-文件夹快捷键/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/C_Meng.png">
+      <meta itemprop="name" content="C_Meng">
+      <meta itemprop="description" content="A stupid old man with a humble learning heart. And his dog.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="C_Meng PSNA">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/01/13/mac显示隐藏文件-文件夹快捷键/" class="post-title-link" itemprop="url">mac显示隐藏文件/文件夹快捷键</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2019-01-13 18:55:15 / Modified: 18:58:23" itemprop="dateCreated datePublished" datetime="2019-01-13T18:55:15+08:00">2019-01-13</time>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2019/01/13/mac显示隐藏文件-文件夹快捷键/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/01/13/mac显示隐藏文件-文件夹快捷键/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Finder（访达）在最前端的时候，三个键一起按下即可</p>
+<blockquote>
+<p>Shift + Command + .</p>
+</blockquote>
+<p><strong>注意：</strong>最后一个是点不是逗号</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -1031,7 +1108,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-01-04 16:00:19" itemprop="dateModified" datetime="2020-01-04T16:00:19+08:00">2020-01-04</time>
+                <time title="Modified: 2021-11-21 10:57:02" itemprop="dateModified" datetime="2021-11-21T10:57:02+08:00">2021-11-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1068,7 +1145,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="构造方法："><a href="#构造方法：" class="headerlink" title="构造方法："></a>构造方法：</h1><p>Thread(group=None, target=None, name=None, args=(), kwargs={}) </p>
+          <h1 id="导入包"><a href="#导入包" class="headerlink" title="导入包"></a>导入包</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> threading</span><br></pre></td></tr></table></figure>
+
+<h1 id="构造方法："><a href="#构造方法：" class="headerlink" title="构造方法："></a>构造方法：</h1><p>Thread(group=None, target=None, name=None, args=(), kwargs={}) </p>
 <ul>
 <li>group: 线程组，目前还没有实现，库引用中提示必须是None； </li>
 <li>target: 要执行的方法； </li>
@@ -1087,88 +1166,7 @@
 <li>start(): 启动线程。 </li>
 <li>join([timeout]): 阻塞当前上下文环境的线程，直到调用此方法的线程终止或到达指定的timeout（可选参数）。</li>
 </ul>
-<h1 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Split items and run function through n threads</span></span><br><span class="line"><span class="comment"># func形如func(arg_list[0], ..., arg_list[n], items),run_through_threads 可以把items分为num份分配给num个线程运行</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">run_through_threads</span><span class="params">(func, arg_list, items, num=<span class="number">4</span>)</span>:</span></span><br><span class="line">    threads = []</span><br><span class="line">    item_len = len(items)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(num):</span><br><span class="line">        threads.append(threading.Thread(target=func, args=(*arg_list, items[int(i*item_len/num):int((i+<span class="number">1</span>)*item_len/num)])))</span><br><span class="line">    <span class="keyword">for</span> t <span class="keyword">in</span> threads:</span><br><span class="line">        t.setDaemon(<span class="keyword">True</span>)</span><br><span class="line">        t.start()</span><br><span class="line">    <span class="keyword">for</span> t <span class="keyword">in</span> threads:</span><br><span class="line">        t.join()</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="default">
-    <link itemprop="mainEntityOfPage" href="https://imonce.github.io/2018/08/08/Python-对dict字典进行排序/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/C_Meng.png">
-      <meta itemprop="name" content="C_Meng">
-      <meta itemprop="description" content="A stupid old man with a humble learning heart. And his dog.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="C_Meng PSNA">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/08/08/Python-对dict字典进行排序/" class="post-title-link" itemprop="url">[Python]对dict字典进行排序</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-08-08 09:33:09" itemprop="dateCreated datePublished" datetime="2018-08-08T09:33:09+08:00">2018-08-08</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-01-04 15:51:05" itemprop="dateModified" datetime="2020-01-04T15:51:05+08:00">2020-01-04</time>
-              </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2018/08/08/Python-对dict字典进行排序/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2018/08/08/Python-对dict字典进行排序/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#定义字典</span></span><br><span class="line">dict = &#123;<span class="string">'a'</span>:<span class="number">1</span>, <span class="string">'b'</span>:<span class="number">2</span>, <span class="string">'c'</span>:<span class="number">3</span>, <span class="string">'d'</span>:<span class="number">4</span>, <span class="string">'e'</span>:<span class="number">5</span>&#125;</span><br><span class="line"><span class="comment">#根据key进行排序</span></span><br><span class="line">dict_sorted_by_key = sorted(dict.items(), key=<span class="keyword">lambda</span> d: d[<span class="number">0</span>])</span><br><span class="line"><span class="comment">#根据key进行反向排序</span></span><br><span class="line">dict_sorted_by_key_reverse = sorted(dict.items(), key=<span class="keyword">lambda</span> d: d[<span class="number">0</span>], reverse=<span class="keyword">True</span>)</span><br><span class="line"><span class="comment">#根据value进行排序</span></span><br><span class="line">dict_sorted_by_value = sorted(dict.items(), key=<span class="keyword">lambda</span> d: d[<span class="number">1</span>])</span><br><span class="line"><span class="comment">#根据value进行反向排序</span></span><br><span class="line">dict_sorted_by_value_reverse = sorted(dict.items(), key=<span class="keyword">lambda</span> d: d[<span class="number">1</span>], reverse=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure>
-
-<h1 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h1><p><img src="https://raw.githubusercontent.com/imonce/imgs/master/20180808100756.png"></p>
-
+<h1 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"></span><br><span class="line"><span class="comment"># Split items and run function through n threads</span></span><br><span class="line"><span class="comment"># func形如func(arg_list[0], ..., arg_list[n], items),run_through_threads 可以把items分为num份分配给num个线程运行</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">run_through_threads</span><span class="params">(func, arg_list, items, num=<span class="number">4</span>)</span>:</span></span><br><span class="line">    threads = []</span><br><span class="line">    item_len = len(items)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(num):</span><br><span class="line">        threads.append(threading.Thread(target=func, args=(*arg_list, items[int(i*item_len/num):int((i+<span class="number">1</span>)*item_len/num)])))</span><br><span class="line">    <span class="keyword">for</span> t <span class="keyword">in</span> threads:</span><br><span class="line">        t.setDaemon(<span class="keyword">True</span>)</span><br><span class="line">        t.start()</span><br><span class="line">    <span class="keyword">for</span> t <span class="keyword">in</span> threads:</span><br><span class="line">        t.join()</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -1254,7 +1252,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">123</span>
+          <span class="site-state-item-count">124</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
