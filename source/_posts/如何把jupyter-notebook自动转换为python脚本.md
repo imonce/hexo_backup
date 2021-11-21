@@ -9,3 +9,11 @@ tags: [Python]
 ```sh
 jupyter nbconvert --to script YOURNOTEBOOKNAME.ipynb
 ```
+
+如果使用了anaconda环境，且未将其设置为默认环境的话，可以在jupyter命令前补充安装路径。
+
+以安装路径为“~/opt/anaconda3”为例：
+
+```sh
+~/opt/anaconda3/bin/jupyter nbconvert --to script YOURNOTEBOOKNAME.ipynb
+```

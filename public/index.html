@@ -221,7 +221,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-11-21 11:45:59 / Modified: 11:47:48" itemprop="dateCreated datePublished" datetime="2021-11-21T11:45:59+08:00">2021-11-21</time>
+              <time title="Created: 2021-11-21 11:45:59 / Modified: 11:52:02" itemprop="dateCreated datePublished" datetime="2021-11-21T11:45:59+08:00">2021-11-21</time>
             </span>
 
           
@@ -251,6 +251,12 @@
       
           <p>将YOURNOTEBOOKNAME替换为需要转换的文件名称，运行以下命令即可</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter nbconvert --to script YOURNOTEBOOKNAME.ipynb</span><br></pre></td></tr></table></figure>
+
+<p>如果使用了anaconda环境，且未将其设置为默认环境的话，可以在jupyter命令前补充安装路径。</p>
+<p>以安装路径为“~/opt/anaconda3”为例：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~/opt/anaconda3/bin/jupyter nbconvert --to script YOURNOTEBOOKNAME.ipynb</span><br></pre></td></tr></table></figure>
+
+
       
     </div>
 
