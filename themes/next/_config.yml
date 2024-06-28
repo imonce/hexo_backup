@@ -233,6 +233,7 @@ chat:
 
 # Automatically excerpt description in homepage as preamble text.
 excerpt_description: true
+excerpt_length: 400
 
 # Read more button
 # If true, the read more button will be displayed in excerpt section.
@@ -262,7 +263,7 @@ tag_icon: false
 reward_settings:
   # If true, reward will be displayed in every article by default.
   enable: true
-  animation: false
+  animation: true
   comment: 点击这个按钮，会有好事发生哦~(>w<)~
 
 reward:

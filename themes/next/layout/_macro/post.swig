@@ -200,7 +200,15 @@
           {%- endif %}
           <!--/noindex-->
         {% else %}
+          {#####################}
+          {### original ###}
           {{ post.content }}
+          {### my ###}
+          {#{{ post.content | striptags | truncate(theme.excerpt_length) }}#}
+          {#{{ post.content | truncate(theme.excerpt_length) | escape }}#}
+          {#{% set my_string = post.content | truncate(theme.excerpt_length) %}#}
+          {#{{ my_string | reverse | replace("<", ".", 1) | reverse }}#}
+          {#####################}
         {%- endif %}
       {% else %}
         {{ post.content }}
