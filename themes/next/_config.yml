@@ -232,7 +232,7 @@ chat:
 # ---------------------------------------------------------------
 
 # Automatically excerpt description in homepage as preamble text.
-excerpt_description: true
+excerpt_description: false
 excerpt_length: 400
 
 # Read more button
