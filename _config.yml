@@ -83,10 +83,10 @@ search:
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
-deploy:
-  type: git
-  repository: git@github.com:imonce/imonce.github.io.git
-  branch: master
+# deploy:
+#   type: git
+#   repository: git@github.com:imonce/imonce.github.io.git
+#   branch: master
 
 # Backup
 # https://github.com/coneycode/hexo-git-backup
