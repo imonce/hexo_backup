@@ -206,6 +206,9 @@ llama-server \
   --no-mmap
 ```
 
+其他还有一些常用参数，比如`--reasoning-budget 0`是关闭思考，`--mmproj 模型名称.gguf`是增加多模态映射等
+
+
 # Openclaw配置llama.cpp
 
 打开openclaw.json，修改默认模型（注意把具体模型名称替换成自己的）：
