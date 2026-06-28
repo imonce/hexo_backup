@@ -122,7 +122,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">220</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">222</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -132,7 +132,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">143</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">144</span></a>
 
   </li>
         <li class="menu-item menu-item-sitemap">
@@ -196,6 +196,272 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="default">
+    <link itemprop="mainEntityOfPage" href="https://imonce.github.io/2026/06/28/从零开始如何自己写一个 OpenClaw Agent Skill并发布到 GitHub 和 ClawHub/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/C_Meng.png">
+      <meta itemprop="name" content="C_Meng">
+      <meta itemprop="description" content="This site is primarily used for personal note-taking, and some content are from open access, with sources clearly indicated. If there are any copyright issues, please feel free to contact us. 本站主要用于个人笔记记录，存在部分内容引用，均已表明出处，如存在版权问题，敬请联系。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="C_Meng PSNA">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2026/06/28/从零开始如何自己写一个 OpenClaw Agent Skill并发布到 GitHub 和 ClawHub/" class="post-title-link" itemprop="url">从零开始：如何自己写一个 OpenClaw Agent Skill，并发布到 GitHub 和 ClawHub</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2026-06-28 21:51:21 / Modified: 21:51:59" itemprop="dateCreated datePublished" datetime="2026-06-28T21:51:21+08:00">2026-06-28</time>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2026/06/28/从零开始如何自己写一个 OpenClaw Agent Skill并发布到 GitHub 和 ClawHub/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2026/06/28/从零开始如何自己写一个 OpenClaw Agent Skill并发布到 GitHub 和 ClawHub/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+          
+          <blockquote>
+<p>让 AI Agent 学会新本事，不需要写一行代码——只需要写一份 Markdown。</p>
+</blockquote>
+<h2 id="什么是-Skill？"><a href="#什么是-Skill？" class="headerlink" title="什么是 Skill？"></a>什么是 Skill？</h2><p>OpenClaw Skill 是一种教 AI Agent 如何使用工具、何时调用工具的机制。每个 Skill 本质上是一个包含 <code>SKILL.md</code> 文件的目录，里面用 YAML frontmatter 定义元数据，用 Markdown 正文给 Agent 下发操作指令。</p>
+<p>当你用自然语言跟 Agent 对话时，它会根据你的请求自动匹配并加载最相关的 Skill，然后按照你写好的步骤去执行。</p>
+<p><strong>Skill 的核心优势：</strong></p>
+<ul>
+<li>零代码：纯 Markdown 编写，谁都能上手</li>
+<li>即写即用：写完保存，Agent 自动感知</li>
+<li>可分享：发布到 ClawHub，全世界的人都能安装</li>
+<li>可条件加载：根据环境、依赖、平台动态决定是否启用</li>
+</ul>
+<hr>
+<h2 id="第一步：创建你的第一个-Skill"><a href="#第一步：创建你的第一个-Skill" class="headerlink" title="第一步：创建你的第一个 Skill"></a>第一步：创建你的第一个 Skill</h2><h3 id="1-创建目录结构"><a href="#1-创建目录结构" class="headerlink" title="1. 创建目录结构"></a>1. 创建目录结构</h3><p>OpenClaw 的 Skill 存放在工作区的 <code>skills/</code> 目录下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p ~/.openclaw/workspace/skills/my-first-skill</span><br></pre></td></tr></table></figure>
+
+<p>你可以按子目录组织 Skill，比如 <code>skills/research/</code> 或 <code>skills/personal/</code>，Skill 的名称来自 <code>SKILL.md</code> 的 frontmatter，与文件夹路径无关。</p>
+<h3 id="2-编写-SKILL-md"><a href="#2-编写-SKILL-md" class="headerlink" title="2. 编写 SKILL.md"></a>2. 编写 SKILL.md</h3><p>在目录下创建 <code>SKILL.md</code>：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">name: hello-agent</span><br><span class="line">description: 一个演示 Skill，向用户打招呼并展示当前时间</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line"><span class="section"># Hello Agent</span></span><br><span class="line"></span><br><span class="line">当用户想要打招呼或询问时间时，使用 <span class="code">`exec`</span> 工具运行以下命令：</span><br><span class="line"></span><br><span class="line"><span class="code">```bash</span></span><br><span class="line"><span class="code">echo "你好！现在是 $(date '+%Y-%m-%d %H:%M:%S')"</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ul>
+<li>用户可能用中文或英文打招呼</li>
+<li>如果用户明确询问某个时区的时间，加上 <code>TZ=指定时区 date</code> 命令<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">**Frontmatter 必填字段：**</span><br><span class="line"></span><br><span class="line">| 字段 | 说明 | 规则 |</span><br><span class="line">|---|---|---|</span><br><span class="line">| `name` | Skill 的唯一标识 | 小写字母、数字、连字符 |</span><br><span class="line">| `description` | 一句话描述，用于匹配和展示 | 单行，建议 160 字符以内 |</span><br><span class="line"></span><br><span class="line">**可选字段：**</span><br><span class="line"></span><br><span class="line">| 字段 | 说明 |</span><br><span class="line">|---|---|</span><br><span class="line">| `user-invocable` | 是否暴露为斜杠命令（默认 `true`） |</span><br><span class="line">| `disable-model-invocation` | 是否从 Agent 系统提示中隐藏（默认 `false`） |</span><br><span class="line">| `homepage` | 项目主页 URL，显示在 macOS Skills UI 中 |</span><br><span class="line">| `metadata.openclaw` | 条件门控、安装器等（单行 JSON 格式） |</span><br><span class="line"></span><br><span class="line">### 3. 验证 Skill 已加载</span><br><span class="line"></span><br><span class="line">```bash</span><br><span class="line">openclaw skills list</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>如果没看到，开一个新会话或重启 Gateway：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openclaw gateway restart</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-测试"><a href="#4-测试" class="headerlink" title="4. 测试"></a>4. 测试</h3><p>直接在聊天中让 Agent 触发你的 Skill，或者显式调用：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openclaw agent --message <span class="string">"跟我打个招呼"</span></span><br></pre></td></tr></table></figure>
+
+<p>也可以在对话中使用 <code>/hello-agent</code> 斜杠命令。</p>
+<hr>
+<h2 id="第二步：编写更强大的-Skill"><a href="#第二步：编写更强大的-Skill" class="headerlink" title="第二步：编写更强大的 Skill"></a>第二步：编写更强大的 Skill</h2><h3 id="使用-baseDir-引用同级文件"><a href="#使用-baseDir-引用同级文件" class="headerlink" title="使用 {baseDir} 引用同级文件"></a>使用 <code>{baseDir}</code> 引用同级文件</h3><p>如果 Skill 需要附带脚本、模板等辅助文件，用 <code>{baseDir}</code> 引用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">目录结构：</span><br><span class="line">my-skill/</span><br><span class="line">├── SKILL.md</span><br><span class="line">├── scripts/</span><br><span class="line">│   └── check.sh</span><br><span class="line">└── templates/</span><br><span class="line">    └── report.md</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">name: daily-report</span><br><span class="line">description: 生成每日工作报告</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line"><span class="section"># 每日报告</span></span><br><span class="line"></span><br><span class="line">运行报告脚本：</span><br><span class="line"></span><br><span class="line"><span class="code">```bash</span></span><br><span class="line"><span class="code">bash &#123;baseDir&#125;/scripts/check.sh</span></span><br></pre></td></tr></table></figure>
+
+<p>报告模板在：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;baseDir&#125;/templates/report.md</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 条件加载（Gating）</span><br><span class="line"></span><br><span class="line">让 Skill 只在特定条件下加载，比如只有当某个依赖存在时才启用：</span><br><span class="line"></span><br><span class="line">```markdown</span><br><span class="line">---</span><br><span class="line">name: gemini-search</span><br><span class="line">description: 使用 Gemini CLI 进行搜索</span><br><span class="line">metadata: &#123; &quot;openclaw&quot;: &#123; &quot;requires&quot;: &#123; &quot;bins&quot;: [&quot;gemini&quot;], &quot;env&quot;: [&quot;GEMINI_API_KEY&quot;] &#125; &#125; &#125;</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<p><strong>可用的门控规则：</strong></p>
+<table>
+<thead>
+<tr>
+<th>规则</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>requires.bins</code></td>
+<td>所有指定的二进制文件必须在 PATH 上</td>
+</tr>
+<tr>
+<td><code>requires.anyBins</code></td>
+<td>至少一个二进制文件在 PATH 上</td>
+</tr>
+<tr>
+<td><code>requires.env</code></td>
+<td>环境变量必须存在</td>
+</tr>
+<tr>
+<td><code>requires.config</code></td>
+<td>OpenClaw 配置中的指定路径必须为真</td>
+</tr>
+<tr>
+<td><code>os</code></td>
+<td>平台过滤：<code>[&quot;darwin&quot;]</code>、<code>[&quot;linux&quot;]</code>、<code>[&quot;win32&quot;]</code></td>
+</tr>
+<tr>
+<td><code>always</code></td>
+<td>设为 <code>true</code> 跳过所有门控</td>
+</tr>
+</tbody></table>
+<h3 id="安装器规格（Installer-Specs）"><a href="#安装器规格（Installer-Specs）" class="headerlink" title="安装器规格（Installer Specs）"></a>安装器规格（Installer Specs）</h3><p>告诉 macOS Skills UI 如何自动安装依赖：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">name: my-tool</span><br><span class="line">description: 使用 my-tool 完成某件事</span><br><span class="line">metadata:</span><br><span class="line">  &#123;</span><br><span class="line"><span class="code">    "openclaw":</span></span><br><span class="line"><span class="code">      &#123;</span></span><br><span class="line"><span class="code">        "emoji": "🛠️",</span></span><br><span class="line"><span class="code">        "requires": &#123; "bins": ["mytool"] &#125;,</span></span><br><span class="line"><span class="code">        "install": [</span></span><br><span class="line"><span class="code">          &#123;</span></span><br><span class="line"><span class="code">            "id": "brew",</span></span><br><span class="line"><span class="code">            "kind": "brew",</span></span><br><span class="line"><span class="code">            "formula": "my-tool",</span></span><br><span class="line"><span class="code">            "bins": ["mytool"],</span></span><br><span class="line"><span class="code">            "label": "Install my-tool (brew)"</span></span><br><span class="line"><span class="code">          &#125;</span></span><br><span class="line"><span class="code">        ]</span></span><br><span class="line"><span class="code">      &#125;</span></span><br><span class="line">  &#125;</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置覆盖"><a href="#配置覆盖" class="headerlink" title="配置覆盖"></a>配置覆盖</h3><p>在 <code>openclaw.json</code> 中覆盖 Skill 的行为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  skills: &#123;</span><br><span class="line">    entries: &#123;</span><br><span class="line">      &quot;my-skill&quot;: &#123;</span><br><span class="line">        enabled: true,</span><br><span class="line">        env: &#123; API_KEY: &quot;your-key-here&quot; &#125;,</span><br><span class="line">        config: &#123; endpoint: &quot;https://example.com&quot; &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="第三步：通过-Skill-Workshop-提案"><a href="#第三步：通过-Skill-Workshop-提案" class="headerlink" title="第三步：通过 Skill Workshop 提案"></a>第三步：通过 Skill Workshop 提案</h2><p>如果你希望 Agent 起草 Skill、经过审核后再生效，可以使用 <strong>Skill Workshop</strong>。这是一种受治理的 Skill 创建路径。</p>
+<h3 id="用-CLI-提案创建"><a href="#用-CLI-提案创建" class="headerlink" title="用 CLI 提案创建"></a>用 CLI 提案创建</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">openclaw skills workshop propose-create \</span><br><span class="line">  --name <span class="string">"daily-report"</span> \</span><br><span class="line">  --description <span class="string">"每日工作报告生成"</span> \</span><br><span class="line">  --proposal ./PROPOSAL.md</span><br></pre></td></tr></table></figure>
+
+<p>PROPOSAL.md 内容格式：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">name: "daily-report"</span><br><span class="line">description: "每日工作报告生成"</span><br><span class="line">status: proposal</span><br><span class="line">version: "v1"</span><br><span class="line">date: "2026-06-27T00:00:00.000Z"</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line"><span class="section"># 每日报告</span></span><br><span class="line"></span><br><span class="line">（你的 Skill 指令内容...）</span><br></pre></td></tr></table></figure>
+
+<h3 id="提案操作"><a href="#提案操作" class="headerlink" title="提案操作"></a>提案操作</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看待审核提案</span></span><br><span class="line">openclaw skills workshop list</span><br><span class="line"></span><br><span class="line"><span class="comment"># 审查提案内容</span></span><br><span class="line">openclaw skills workshop inspect &lt;proposal-id&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改提案</span></span><br><span class="line">openclaw skills workshop revise &lt;proposal-id&gt; --proposal ./PROPOSAL.md</span><br><span class="line"></span><br><span class="line"><span class="comment"># 审核后生效</span></span><br><span class="line">openclaw skills workshop apply &lt;proposal-id&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 拒绝</span></span><br><span class="line">openclaw skills workshop reject &lt;proposal-id&gt; --reason <span class="string">"不符合规范"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 隔离审查</span></span><br><span class="line">openclaw skills workshop quarantine &lt;proposal-id&gt; --reason <span class="string">"需要安全审查"</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="用-Agent-工具提案"><a href="#用-Agent-工具提案" class="headerlink" title="用 Agent 工具提案"></a>用 Agent 工具提案</h3><p>你也可以直接在聊天中让 Agent 帮你创建提案：</p>
+<blockquote>
+<p>“帮我创建一个叫 weather-check 的 Skill，描述是’查询天气并提醒带伞’”</p>
+</blockquote>
+<p>Agent 会自动调用 <code>skill_workshop</code> 工具并返回提案 ID。</p>
+<hr>
+<h2 id="第四步：发布到-ClawHub"><a href="#第四步：发布到-ClawHub" class="headerlink" title="第四步：发布到 ClawHub"></a>第四步：发布到 ClawHub</h2><p>ClawHub（<a href="https://clawhub.ai/" target="_blank" rel="noopener">clawhub.ai</a>）是 OpenClaw 的公共 Skill 注册中心。</p>
+<h3 id="1-安装-ClawHub-CLI"><a href="#1-安装-ClawHub-CLI" class="headerlink" title="1. 安装 ClawHub CLI"></a>1. 安装 ClawHub CLI</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm i -g clawhub</span><br><span class="line">clawhub login</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-安装发布-Skill（可选）"><a href="#2-安装发布-Skill（可选）" class="headerlink" title="2. 安装发布 Skill（可选）"></a>2. 安装发布 Skill（可选）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openclaw skills install clawhub-publish</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-发布-Skill"><a href="#3-发布-Skill" class="headerlink" title="3. 发布 Skill"></a>3. 发布 Skill</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 发布整个 Skill 文件夹</span></span><br><span class="line">clawhub skill publish ./skills/my-first-skill</span><br><span class="line"></span><br><span class="line"><span class="comment"># 指定版本号</span></span><br><span class="line">clawhub skill publish ./skills/my-first-skill --version 1.0.0</span><br></pre></td></tr></table></figure>
+
+<p>发布后，你的 Skill 页面就是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://clawhub.ai/&lt;你的owner&gt;/&lt;slug&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-ClawHub-发布流程"><a href="#4-ClawHub-发布流程" class="headerlink" title="4. ClawHub 发布流程"></a>4. ClawHub 发布流程</h3><ol>
+<li><strong>收集元数据和文件</strong>：CLI 自动读取 <code>SKILL.md</code> 中的 frontmatter</li>
+<li><strong>发送发布请求</strong>：包含 owner、slug、版本、更新日志和所有文件</li>
+<li><strong>服务器验证</strong>：检查 owner 权限、包名、版本、文件大小和来源</li>
+<li><strong>存储发布</strong>：ClawHub 保存新版本</li>
+<li><strong>安全检查</strong>：自动运行 VirusTotal、ClawScan 和静态分析</li>
+<li><strong>审核通过后上架</strong>：新版本对所有用户可见</li>
+</ol>
+<h3 id="5-其他人安装你的-Skill"><a href="#5-其他人安装你的-Skill" class="headerlink" title="5. 其他人安装你的 Skill"></a>5. 其他人安装你的 Skill</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 从 ClawHub 安装</span></span><br><span class="line">openclaw skills install &lt;your-username&gt;/my-first-skill</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装指定版本</span></span><br><span class="line">openclaw skills install &lt;your-username&gt;/my-first-skill --version 1.0.0</span><br><span class="line"></span><br><span class="line"><span class="comment"># 全局安装（所有 Agent 可用）</span></span><br><span class="line">openclaw skills install &lt;your-username&gt;/my-first-skill --global</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="第五步：发布到-GitHub"><a href="#第五步：发布到-GitHub" class="headerlink" title="第五步：发布到 GitHub"></a>第五步：发布到 GitHub</h2><h3 id="1-准备仓库"><a href="#1-准备仓库" class="headerlink" title="1. 准备仓库"></a>1. 准备仓库</h3><p>把你的 Skill 目录放到一个 Git 仓库中：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/.openclaw/workspace/skills/my-first-skill</span><br><span class="line">git init</span><br><span class="line">git add SKILL.md</span><br><span class="line">git commit -m <span class="string">"feat: 添加 my-first-skill"</span></span><br><span class="line">git branch -M main</span><br><span class="line">git remote add origin https://github.com/你的用户名/my-first-skill.git</span><br><span class="line">git push -u origin main</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-仓库结构建议"><a href="#2-仓库结构建议" class="headerlink" title="2. 仓库结构建议"></a>2. 仓库结构建议</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">my-first-skill/</span><br><span class="line">├── SKILL.md              # 必需：Skill 定义文件</span><br><span class="line">├── README.md             # 可选：对人类的说明文档</span><br><span class="line">├── scripts/              # 可选：辅助脚本</span><br><span class="line">│   └── helper.sh</span><br><span class="line">├── templates/            # 可选：模板文件</span><br><span class="line">│   └── report.md</span><br><span class="line">└── assets/               # 可选：静态资源</span><br><span class="line">    └── logo.png</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-通过-Git-安装"><a href="#3-通过-Git-安装" class="headerlink" title="3. 通过 Git 安装"></a>3. 通过 Git 安装</h3><p>其他用户可以直接从 GitHub 安装：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">openclaw skills install git:用户名/仓库名</span><br><span class="line">openclaw skills install git:用户名/仓库名@main</span><br><span class="line">openclaw skills install git:用户名/仓库名@v1.0.0</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-自定义-Skill-名称"><a href="#4-自定义-Skill-名称" class="headerlink" title="4. 自定义 Skill 名称"></a>4. 自定义 Skill 名称</h3><p>如果仓库名和 Skill 名不一致，用 <code>--as</code> 指定：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openclaw skills install git:用户名/repo-name --as my-skill-name</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="最佳实践"><a href="#最佳实践" class="headerlink" title="最佳实践"></a>最佳实践</h2><h3 id="编写-SKILL-md-的建议"><a href="#编写-SKILL-md-的建议" class="headerlink" title="编写 SKILL.md 的建议"></a>编写 SKILL.md 的建议</h3><ol>
+<li><strong>简洁明了</strong>：告诉 Agent 做什么，而不是教它”作为一个 AI”该怎么思考</li>
+<li><strong>安全优先</strong>：如果 Skill 使用 <code>exec</code>，确保不会注入不可信的输入</li>
+<li><strong>描述简短</strong>：<code>description</code> 控制在 160 字符以内，减少 Token 消耗</li>
+<li><strong>先测试再分享</strong>：用 <code>openclaw agent --message &quot;...&quot;</code> 本地验证</li>
+</ol>
+<h3 id="Token-消耗须知"><a href="#Token-消耗须知" class="headerlink" title="Token 消耗须知"></a>Token 消耗须知</h3><p>每个 Skill 注入系统提示的 Token 消耗是可预测的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">总开销 = 195 + Σ (97 + len(名字) + len(描述) + len(文件路径))</span><br></pre></td></tr></table></figure>
+
+<p>约每 4 个字符 ≈ 1 个 Token。保持描述简短就能减少开销。</p>
+<h3 id="组织多个-Skill"><a href="#组织多个-Skill" class="headerlink" title="组织多个 Skill"></a>组织多个 Skill</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">skills/</span><br><span class="line">├── research/</span><br><span class="line">│   ├── SKILL.md       # 自动识别为 &quot;research&quot;</span><br><span class="line">│   └── papers/</span><br><span class="line">│       └── SKILL.md   # 自动识别为 &quot;papers&quot;</span><br><span class="line">├── personal/</span><br><span class="line">│   └── SKILL.md       # 自动识别为 &quot;personal&quot;</span><br><span class="line">└── SKILL.md           # 根目录的 SKILL.md 也是有效 Skill</span><br></pre></td></tr></table></figure>
+
+<h3 id="多-Agent-场景下的-Skill-共享"><a href="#多-Agent-场景下的-Skill-共享" class="headerlink" title="多 Agent 场景下的 Skill 共享"></a>多 Agent 场景下的 Skill 共享</h3><table>
+<thead>
+<tr>
+<th>作用域</th>
+<th>路径</th>
+<th>对谁可见</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>单个 Agent</td>
+<td><code>&lt;workspace&gt;/skills</code></td>
+<td>仅该 Agent</td>
+</tr>
+<tr>
+<td>项目 Agent</td>
+<td><code>&lt;workspace&gt;/.agents/skills</code></td>
+<td>仅该工作区的 Agent</td>
+</tr>
+<tr>
+<td>个人级</td>
+<td><code>~/.agents/skills</code></td>
+<td>本机所有 Agent</td>
+</tr>
+<tr>
+<td>共享级</td>
+<td><code>~/.openclaw/skills</code></td>
+<td>本机所有 Agent</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><h3 id="Q：写完-SKILL-md-后-Agent-没反应？"><a href="#Q：写完-SKILL-md-后-Agent-没反应？" class="headerlink" title="Q：写完 SKILL.md 后 Agent 没反应？"></a>Q：写完 SKILL.md 后 Agent 没反应？</h3><p>A：开一个新会话（<code>/new</code>）或重启 Gateway（<code>openclaw gateway restart</code>）。OpenClaw 默认监听 Skill 文件变化，但已有会话的快照不会自动刷新。</p>
+<h3 id="Q：如何调试-Skill-匹配问题？"><a href="#Q：如何调试-Skill-匹配问题？" class="headerlink" title="Q：如何调试 Skill 匹配问题？"></a>Q：如何调试 Skill 匹配问题？</h3><p>A：使用以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">openclaw skills list              <span class="comment"># 查看所有 Skill</span></span><br><span class="line">openclaw skills list --eligible    <span class="comment"># 查看符合条件的 Skill</span></span><br><span class="line">openclaw skills check              <span class="comment"># 检查 Agent 实际可见的 Skill</span></span><br><span class="line">openclaw skills info my-skill      <span class="comment"># 查看某个 Skill 的详情</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Q：第三方-Skill-安全吗？"><a href="#Q：第三方-Skill-安全吗？" class="headerlink" title="Q：第三方 Skill 安全吗？"></a>Q：第三方 Skill 安全吗？</h3><p>A：把第三方 Skill 视为<strong>不受信任的代码</strong>。启用前请先阅读其内容。对不可信的输入，优先使用沙箱运行。</p>
+<h3 id="Q：如何更新已发布的-Skill？"><a href="#Q：如何更新已发布的-Skill？" class="headerlink" title="Q：如何更新已发布的 Skill？"></a>Q：如何更新已发布的 Skill？</h3><p>A：更新本地文件后，重新发布到 ClawHub：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">clawhub skill publish ./skills/my-skill --version 1.0.1</span><br></pre></td></tr></table></figure>
+
+<p>其他人用 <code>openclaw skills update &lt;slug&gt;</code> 即可更新。</p>
+<hr>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>写 OpenClaw Skill 本质上就是写一份给 AI Agent 看的操作手册。你不需要会编程，只需要把你的工作流用清晰的指令描述出来，Agent 就能帮你自动化完成。</p>
+<p>从一个小工具开始，逐步扩展你的 Agent 能力。当你的 Skill 变得足够好用时，发布到 ClawHub，让全世界的人受益。</p>
+<p><em>本文基于 OpenClaw 文档编写。文档地址：<a href="https://docs.openclaw.ai/" target="_blank" rel="noopener">https://docs.openclaw.ai</a></em></p>
+
+          
+          
+          
+          
+          
+          
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="default">
     <link itemprop="mainEntityOfPage" href="https://imonce.github.io/2026/04/24/如何在mac上安装openclaw/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -227,7 +493,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2026-05-05 11:06:08" itemprop="dateModified" datetime="2026-05-05T11:06:08+08:00">2026-05-05</time>
+                <time title="Modified: 2026-06-28 22:37:22" itemprop="dateModified" datetime="2026-06-28T22:37:22+08:00">2026-06-28</time>
               </span>
 
           
@@ -457,10 +723,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2024-09-04 09:11:30 / Modified: 10:07:45" itemprop="dateCreated datePublished" datetime="2024-09-04T09:11:30+08:00">2024-09-04</time>
+              <time title="Created: 2024-09-04 09:11:30" itemprop="dateCreated datePublished" datetime="2024-09-04T09:11:30+08:00">2024-09-04</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2026-06-28 22:37:22" itemprop="dateModified" datetime="2026-06-28T22:37:22+08:00">2026-06-28</time>
+              </span>
 
           
   
@@ -613,7 +885,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-09-04 09:19:09" itemprop="dateModified" datetime="2024-09-04T09:19:09+08:00">2024-09-04</time>
+                <time title="Modified: 2026-06-28 22:37:22" itemprop="dateModified" datetime="2026-06-28T22:37:22+08:00">2026-06-28</time>
               </span>
 
           
@@ -738,7 +1010,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-08-14 14:46:31" itemprop="dateModified" datetime="2024-08-14T14:46:31+08:00">2024-08-14</time>
+                <time title="Modified: 2026-06-28 22:37:22" itemprop="dateModified" datetime="2026-06-28T22:37:22+08:00">2026-06-28</time>
               </span>
 
           
@@ -869,10 +1141,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2024-08-12 17:24:41 / Modified: 17:26:29" itemprop="dateCreated datePublished" datetime="2024-08-12T17:24:41+08:00">2024-08-12</time>
+              <time title="Created: 2024-08-12 17:24:41" itemprop="dateCreated datePublished" datetime="2024-08-12T17:24:41+08:00">2024-08-12</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2026-06-28 22:37:22" itemprop="dateModified" datetime="2026-06-28T22:37:22+08:00">2026-06-28</time>
+              </span>
 
           
   
@@ -960,10 +1238,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2024-08-05 18:06:16 / Modified: 18:09:18" itemprop="dateCreated datePublished" datetime="2024-08-05T18:06:16+08:00">2024-08-05</time>
+              <time title="Created: 2024-08-05 18:06:16" itemprop="dateCreated datePublished" datetime="2024-08-05T18:06:16+08:00">2024-08-05</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2026-06-28 22:37:22" itemprop="dateModified" datetime="2026-06-28T22:37:22+08:00">2026-06-28</time>
+              </span>
 
           
   
@@ -1050,10 +1334,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2024-07-09 19:59:16 / Modified: 22:02:08" itemprop="dateCreated datePublished" datetime="2024-07-09T19:59:16+08:00">2024-07-09</time>
+              <time title="Created: 2024-07-09 19:59:16" itemprop="dateCreated datePublished" datetime="2024-07-09T19:59:16+08:00">2024-07-09</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2026-06-28 22:37:22" itemprop="dateModified" datetime="2026-06-28T22:37:22+08:00">2026-06-28</time>
+              </span>
 
           
   
@@ -1202,7 +1492,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-07-09 21:59:05" itemprop="dateModified" datetime="2024-07-09T21:59:05+08:00">2024-07-09</time>
+                <time title="Modified: 2026-06-28 22:37:22" itemprop="dateModified" datetime="2026-06-28T22:37:22+08:00">2026-06-28</time>
               </span>
 
           
@@ -1410,10 +1700,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2024-07-08 11:04:51 / Modified: 11:15:39" itemprop="dateCreated datePublished" datetime="2024-07-08T11:04:51+08:00">2024-07-08</time>
+              <time title="Created: 2024-07-08 11:04:51" itemprop="dateCreated datePublished" datetime="2024-07-08T11:04:51+08:00">2024-07-08</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2026-06-28 22:37:22" itemprop="dateModified" datetime="2026-06-28T22:37:22+08:00">2026-06-28</time>
+              </span>
 
           
   
@@ -1448,104 +1744,6 @@
 <li>修改脚本内容，比如：</li>
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line">### (其他在APP启动时需要执行的内容，比如删除文件：）</span><br><span class="line"># rm -rf &quot;/Users/$(whoami)/Library/Application Support/APPNAME&quot;</span><br><span class="line"></span><br><span class="line">&quot;`dirname &quot;$0&quot;`&quot;/APPNAME.real $@</span><br></pre></td></tr></table></figure>
-          
-          
-          
-          
-          
-          
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="default">
-    <link itemprop="mainEntityOfPage" href="https://imonce.github.io/2024/06/30/时空关联关系挖掘方法概述/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/C_Meng.png">
-      <meta itemprop="name" content="C_Meng">
-      <meta itemprop="description" content="This site is primarily used for personal note-taking, and some content are from open access, with sources clearly indicated. If there are any copyright issues, please feel free to contact us. 本站主要用于个人笔记记录，存在部分内容引用，均已表明出处，如存在版权问题，敬请联系。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="C_Meng PSNA">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/06/30/时空关联关系挖掘方法概述/" class="post-title-link" itemprop="url">时空关联关系挖掘方法概述</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2024-06-30 18:20:55" itemprop="dateCreated datePublished" datetime="2024-06-30T18:20:55+08:00">2024-06-30</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-07-09 21:33:47" itemprop="dateModified" datetime="2024-07-09T21:33:47+08:00">2024-07-09</time>
-              </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2024/06/30/时空关联关系挖掘方法概述/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2024/06/30/时空关联关系挖掘方法概述/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-          
-          <ol>
-<li>K-means聚类：K-means是一种广泛使用的无监督学习算法，用于将数据点划分为具有相似特征的集群。在时空数据中，它可以用于发现模式和趋势。例如，通过将具有相似交通模式的日子聚类在一起，我们可以找出影响交通流量和交通拥堵的关键因素。</li>
-<li>关联规则挖掘：关联规则挖掘是用于发现数据集中变量之间的有趣关系的一种方法。在时空数据中，它可以用于发现时间和空间上的关联规则。例如，我们可能发现某种商品在某个特定时间段的销售量与另一商品在同一时间段的销售量之间存在强烈的关联。</li>
-<li>主成分分析（PCA）：PCA是一种用于降低数据维度的机器学习算法。在时空数据中，PCA可以帮助我们减少数据的复杂性，并找出影响结果的主要因素。例如，在气候变化数据中，PCA可以帮助我们找出影响气候变化的主要因素，从而更好地预测和管理气候变化。</li>
-<li>决策树和随机森林：决策树和随机森林是监督学习算法，用于根据输入变量预测一个或多个输出变量。在时空数据中，它们可以用于预测时间和空间上的事件。例如，我们可能使用这些算法来预测交通事故的发生，</li>
-<li>神经网络：神经网络是一种模拟人脑工作机制的非线性算法，具有强大的模式识别和预测能力。在时空数据中，神经网络可以用于识别和预测时空模式。例如，我们可以训练神经网络来识别交通流量的时空模式，从而更准确地预测交通拥堵。</li>
-</ol>
-<p>以上所述的算法各有其优点和局限性。K-means聚类对于发现集群很有用，但可能无法处理复杂的时空关系；关联规则挖掘可以发现有趣的关系，但可能无法处理复杂的时空维度；主成分分析可以帮助我们降低数据的复杂性，但可能无法处理复杂的时空关系；决策树和随机森林可以用于预测事件，但可能无法处理复杂的时空关系；神经网络可以处理复杂的时空关系，但可能需要对数据进行大量的预处理和后处理。</p>
-<p>在实际应用中，我们通常需要结合具体的问题和应用场景，选择合适的算法进行处理。同时，也需要根据实际的数据质量和数据量，对算法进行适当的调整和优化。此外，由于大数据的处理需要大量的计算资源和存储资源，因此也需要考虑算法的效率和可扩展性。</p>
-<blockquote>
-<p>references:<br><a href="https://aiqicha.baidu.com/qifuknowledge/detail?id=10075551025" target="_blank" rel="noopener">https://aiqicha.baidu.com/qifuknowledge/detail?id=10075551025</a></p>
-</blockquote>
-
           
           
           
@@ -1637,7 +1835,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">143</span>
+          <span class="site-state-item-count">144</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1650,7 +1848,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">220</span>
+        <span class="site-state-item-count">222</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

@@ -122,7 +122,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">220</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">222</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -132,7 +132,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">143</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">144</span></a>
 
   </li>
         <li class="menu-item menu-item-sitemap">
@@ -196,6 +196,104 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="default">
+    <link itemprop="mainEntityOfPage" href="https://imonce.github.io/2024/06/30/时空关联关系挖掘方法概述/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/C_Meng.png">
+      <meta itemprop="name" content="C_Meng">
+      <meta itemprop="description" content="This site is primarily used for personal note-taking, and some content are from open access, with sources clearly indicated. If there are any copyright issues, please feel free to contact us. 本站主要用于个人笔记记录，存在部分内容引用，均已表明出处，如存在版权问题，敬请联系。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="C_Meng PSNA">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/06/30/时空关联关系挖掘方法概述/" class="post-title-link" itemprop="url">时空关联关系挖掘方法概述</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2024-06-30 18:20:55" itemprop="dateCreated datePublished" datetime="2024-06-30T18:20:55+08:00">2024-06-30</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2026-06-28 22:37:22" itemprop="dateModified" datetime="2026-06-28T22:37:22+08:00">2026-06-28</time>
+              </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2024/06/30/时空关联关系挖掘方法概述/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2024/06/30/时空关联关系挖掘方法概述/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+          
+          <ol>
+<li>K-means聚类：K-means是一种广泛使用的无监督学习算法，用于将数据点划分为具有相似特征的集群。在时空数据中，它可以用于发现模式和趋势。例如，通过将具有相似交通模式的日子聚类在一起，我们可以找出影响交通流量和交通拥堵的关键因素。</li>
+<li>关联规则挖掘：关联规则挖掘是用于发现数据集中变量之间的有趣关系的一种方法。在时空数据中，它可以用于发现时间和空间上的关联规则。例如，我们可能发现某种商品在某个特定时间段的销售量与另一商品在同一时间段的销售量之间存在强烈的关联。</li>
+<li>主成分分析（PCA）：PCA是一种用于降低数据维度的机器学习算法。在时空数据中，PCA可以帮助我们减少数据的复杂性，并找出影响结果的主要因素。例如，在气候变化数据中，PCA可以帮助我们找出影响气候变化的主要因素，从而更好地预测和管理气候变化。</li>
+<li>决策树和随机森林：决策树和随机森林是监督学习算法，用于根据输入变量预测一个或多个输出变量。在时空数据中，它们可以用于预测时间和空间上的事件。例如，我们可能使用这些算法来预测交通事故的发生，</li>
+<li>神经网络：神经网络是一种模拟人脑工作机制的非线性算法，具有强大的模式识别和预测能力。在时空数据中，神经网络可以用于识别和预测时空模式。例如，我们可以训练神经网络来识别交通流量的时空模式，从而更准确地预测交通拥堵。</li>
+</ol>
+<p>以上所述的算法各有其优点和局限性。K-means聚类对于发现集群很有用，但可能无法处理复杂的时空关系；关联规则挖掘可以发现有趣的关系，但可能无法处理复杂的时空维度；主成分分析可以帮助我们降低数据的复杂性，但可能无法处理复杂的时空关系；决策树和随机森林可以用于预测事件，但可能无法处理复杂的时空关系；神经网络可以处理复杂的时空关系，但可能需要对数据进行大量的预处理和后处理。</p>
+<p>在实际应用中，我们通常需要结合具体的问题和应用场景，选择合适的算法进行处理。同时，也需要根据实际的数据质量和数据量，对算法进行适当的调整和优化。此外，由于大数据的处理需要大量的计算资源和存储资源，因此也需要考虑算法的效率和可扩展性。</p>
+<blockquote>
+<p>references:<br><a href="https://aiqicha.baidu.com/qifuknowledge/detail?id=10075551025" target="_blank" rel="noopener">https://aiqicha.baidu.com/qifuknowledge/detail?id=10075551025</a></p>
+</blockquote>
+
+          
+          
+          
+          
+          
+          
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="default">
     <link itemprop="mainEntityOfPage" href="https://imonce.github.io/2024/06/27/多模态大模型训练常用公开数据集/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -219,10 +317,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2024-06-27 20:33:54 / Modified: 20:36:36" itemprop="dateCreated datePublished" datetime="2024-06-27T20:33:54+08:00">2024-06-27</time>
+              <time title="Created: 2024-06-27 20:33:54" itemprop="dateCreated datePublished" datetime="2024-06-27T20:33:54+08:00">2024-06-27</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2026-06-28 22:37:22" itemprop="dateModified" datetime="2026-06-28T22:37:22+08:00">2026-06-28</time>
+              </span>
 
           
   
@@ -306,10 +410,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2024-06-27 20:00:04 / Modified: 20:23:54" itemprop="dateCreated datePublished" datetime="2024-06-27T20:00:04+08:00">2024-06-27</time>
+              <time title="Created: 2024-06-27 20:00:04" itemprop="dateCreated datePublished" datetime="2024-06-27T20:00:04+08:00">2024-06-27</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2026-06-28 22:37:22" itemprop="dateModified" datetime="2026-06-28T22:37:22+08:00">2026-06-28</time>
+              </span>
 
           
   
@@ -496,10 +606,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2024-06-27 17:10:50 / Modified: 22:27:06" itemprop="dateCreated datePublished" datetime="2024-06-27T17:10:50+08:00">2024-06-27</time>
+              <time title="Created: 2024-06-27 17:10:50" itemprop="dateCreated datePublished" datetime="2024-06-27T17:10:50+08:00">2024-06-27</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2026-06-28 22:37:22" itemprop="dateModified" datetime="2026-06-28T22:37:22+08:00">2026-06-28</time>
+              </span>
 
           
   
@@ -631,10 +747,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2024-01-06 22:12:30 / Modified: 22:59:38" itemprop="dateCreated datePublished" datetime="2024-01-06T22:12:30+08:00">2024-01-06</time>
+              <time title="Created: 2024-01-06 22:12:30" itemprop="dateCreated datePublished" datetime="2024-01-06T22:12:30+08:00">2024-01-06</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2026-06-28 22:37:22" itemprop="dateModified" datetime="2026-06-28T22:37:22+08:00">2026-06-28</time>
+              </span>
 
           
   
@@ -943,10 +1065,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2024-01-03 20:16:19 / Modified: 20:49:36" itemprop="dateCreated datePublished" datetime="2024-01-03T20:16:19+08:00">2024-01-03</time>
+              <time title="Created: 2024-01-03 20:16:19" itemprop="dateCreated datePublished" datetime="2024-01-03T20:16:19+08:00">2024-01-03</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2026-06-28 22:37:22" itemprop="dateModified" datetime="2026-06-28T22:37:22+08:00">2026-06-28</time>
+              </span>
 
           
   
@@ -1057,10 +1185,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2023-08-09 22:01:48 / Modified: 22:02:50" itemprop="dateCreated datePublished" datetime="2023-08-09T22:01:48+08:00">2023-08-09</time>
+              <time title="Created: 2023-08-09 22:01:48" itemprop="dateCreated datePublished" datetime="2023-08-09T22:01:48+08:00">2023-08-09</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2026-06-28 22:37:22" itemprop="dateModified" datetime="2026-06-28T22:37:22+08:00">2026-06-28</time>
+              </span>
 
           
   
@@ -1161,10 +1295,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2022-12-26 21:50:08 / Modified: 22:30:41" itemprop="dateCreated datePublished" datetime="2022-12-26T21:50:08+08:00">2022-12-26</time>
+              <time title="Created: 2022-12-26 21:50:08" itemprop="dateCreated datePublished" datetime="2022-12-26T21:50:08+08:00">2022-12-26</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2026-06-28 22:37:22" itemprop="dateModified" datetime="2026-06-28T22:37:22+08:00">2026-06-28</time>
+              </span>
 
           
   
@@ -1256,10 +1396,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2022-08-22 10:20:01 / Modified: 10:22:02" itemprop="dateCreated datePublished" datetime="2022-08-22T10:20:01+08:00">2022-08-22</time>
+              <time title="Created: 2022-08-22 10:20:01" itemprop="dateCreated datePublished" datetime="2022-08-22T10:20:01+08:00">2022-08-22</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2026-06-28 22:37:22" itemprop="dateModified" datetime="2026-06-28T22:37:22+08:00">2026-06-28</time>
+              </span>
 
           
   
@@ -1338,10 +1484,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2022-08-22 10:16:54 / Modified: 10:19:05" itemprop="dateCreated datePublished" datetime="2022-08-22T10:16:54+08:00">2022-08-22</time>
+              <time title="Created: 2022-08-22 10:16:54" itemprop="dateCreated datePublished" datetime="2022-08-22T10:16:54+08:00">2022-08-22</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2026-06-28 22:37:22" itemprop="dateModified" datetime="2026-06-28T22:37:22+08:00">2026-06-28</time>
+              </span>
 
           
   
@@ -1372,93 +1524,6 @@
           
           <p>打开terminal运行以下指令：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">launchctl stop com.apple.CalendarAgent</span><br><span class="line">launchctl start com.apple.CalendarAgent</span><br></pre></td></tr></table></figure>
-          
-          
-          
-          
-          
-          
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="default">
-    <link itemprop="mainEntityOfPage" href="https://imonce.github.io/2021/11/21/如何把jupyter-notebook自动转换为python脚本/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/C_Meng.png">
-      <meta itemprop="name" content="C_Meng">
-      <meta itemprop="description" content="This site is primarily used for personal note-taking, and some content are from open access, with sources clearly indicated. If there are any copyright issues, please feel free to contact us. 本站主要用于个人笔记记录，存在部分内容引用，均已表明出处，如存在版权问题，敬请联系。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="C_Meng PSNA">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/11/21/如何把jupyter-notebook自动转换为python脚本/" class="post-title-link" itemprop="url">如何把jupyter notebook自动转换为python脚本</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2021-11-21 11:45:59 / Modified: 11:52:02" itemprop="dateCreated datePublished" datetime="2021-11-21T11:45:59+08:00">2021-11-21</time>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2021/11/21/如何把jupyter-notebook自动转换为python脚本/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/11/21/如何把jupyter-notebook自动转换为python脚本/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-          
-          <p>将YOURNOTEBOOKNAME替换为需要转换的文件名称，运行以下命令即可</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter nbconvert --to script YOURNOTEBOOKNAME.ipynb</span><br></pre></td></tr></table></figure>
-
-<p>如果使用了anaconda环境，且未将其设置为默认环境的话，可以在jupyter命令前补充安装路径。</p>
-<p>以安装路径为“~/opt/anaconda3”为例：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~/opt/anaconda3/bin/jupyter nbconvert --to script YOURNOTEBOOKNAME.ipynb</span><br></pre></td></tr></table></figure>
-
-
           
           
           
@@ -1550,7 +1615,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">143</span>
+          <span class="site-state-item-count">144</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1563,7 +1628,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">220</span>
+        <span class="site-state-item-count">222</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
