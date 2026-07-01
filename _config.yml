@@ -94,7 +94,7 @@ backup:
     type: git
     theme: next
     repository:
-       github: git@github.com:imonce/hexo_backup.git,master
+       origin: git@github.com:imonce/hexo_backup.git,master
 
 # math:
 #   engine: 'mathjax' # or 'katex'
