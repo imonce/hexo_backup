@@ -10,6 +10,7 @@ categories: [Mathematics]
 SAT问题（Boolean Satisfiability Problem）是判断一个以合取范式形式给出的逻辑命题公式是否存在一个真值指派，使得公式为真。
 SAT 可满足问题是第一个被证明的NP问题（就是能在多项式时间验证答案正确与否的问题）
 
+<!-- more -->
 解决方法：
 
 1. 完备方法：枚举法、贪婪算法、局部搜索法等

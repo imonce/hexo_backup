@@ -10,6 +10,7 @@ tags: [Latex, Long Table, 表格跨页]
 
 注意***不能在一个表格上同时使用table和longtable***，比如`\begin{table}\begin{longtable}...\end{longtable}\end{table}`，这会使longtable无法分页。
 
+<!-- more -->
 # 栗子
 
 ```tex

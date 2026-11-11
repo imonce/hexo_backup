@@ -15,6 +15,7 @@ MECE，是Mutually Exclusive Collectively Exhaustive，中文意思是“相互�
 - 各部分之间相互独立 （Mutually Exclusive）
 - 所有部分完全穷尽 （Collectively Exhaustive）
 
+<!-- more -->
 通常的做法分两种：
 
 - 一是在确立问题的时候，通过类似鱼刺图的方法，在确立主要问题的基础上，再逐个往下层层分解，直至所有的疑问都找到，通过问题的层层分解，可以分析出关键问题和初步的解决问题的思路；

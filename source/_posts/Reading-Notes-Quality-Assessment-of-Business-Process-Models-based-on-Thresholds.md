@@ -15,6 +15,7 @@ categories: [Reading Notes, Service Computing]
 > Grupo Alarcos, Universidad de Castilla La Mancha
 > Humboldt-Universität zu Berlin
 
+<!-- more -->
 # Background and Motivation
 
 Process improvement is recognized as the main benefit of process modelling initiatives. Quality considerations are important when conducting a process modelling project. While the early stage of business process design might not be the most expensive ones, they tend to have the highest impact on the benefits and costs of the implemented business processes. In this context, **quality assurance of the models has become a significant objective.**

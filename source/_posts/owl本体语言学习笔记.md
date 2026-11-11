@@ -12,6 +12,7 @@ OWL(Web Ontology Language)是W3C开发的一种网络本体语言，用于对本
 2. OWL DL(Description Logic，描述逻辑)将可判定推理能力和较强表达能力作为首要目标，而忽略了对RDFS的兼容性。0WL DL包括了OWL语言的所有语言成分，但使用时必须符合一定的约束，受到一定的限制。OWL DL提供了描述逻辑的推理功能，描述逻辑是OWL的形式化基础。
 3. OWL Full包含OWL的全部语言成分并取消了OWL DL中的限制，它将RDFS扩展为一个完备的本体语言，支持那些不需要可计算性保证(no computational guarantees)但需要最强表达能力和完全自由的RDFS用户。在OWL Full中，一个类可以看成是个体的集合，也可以看成是一个个体。由于OWL Full取消了基数限制中对可传递性质的约束，因此不能保证可判定推理。
 
+<!-- more -->
 # OWL本体的组成
 
 ## 个体（individual）

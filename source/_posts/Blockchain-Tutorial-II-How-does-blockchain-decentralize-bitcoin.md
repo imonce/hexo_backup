@@ -15,6 +15,7 @@ There have always been three forms of "currency" in the digital world:
 - Centralized computer points or Internet points: Game coins...
 - Decentralized e-cash: Bitcoin, ETH...
 
+<!-- more -->
 Comparison of three forms and cash in the physical world:
 
 ||Cash in physical world|Centralized e-cash|Centralized computer points|Decentralized e-cash|

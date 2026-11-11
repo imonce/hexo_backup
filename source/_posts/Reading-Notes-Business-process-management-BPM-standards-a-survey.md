@@ -10,6 +10,7 @@ tags: [Reading Notes, BPM, Survey, Business Process Management]
 
 This paper seeks to make sense of the myriad BPM standards, organizing them in a classification framework, and to identify key industry trends.
 
+<!-- more -->
 ## Design/methodology/approach
 
 Proposed BPM Standards Classification Framework to list each standard’s distinct features, strengths and weaknesses.

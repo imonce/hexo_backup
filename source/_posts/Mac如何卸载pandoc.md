@@ -6,6 +6,7 @@ tags: [MAC, 卸载, Pandoc]
 
 # 将以下脚本保存到本地，命名为**uninstall-pandoc.pl**
 
+<!-- more -->
 ```bash
 #!/usr/bin/perl
 

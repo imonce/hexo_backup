@@ -23,3 +23,4 @@ mysql>use mysql;
 mysql>update user set host = '%' where user ='root';  
 mysql>flush privileges;
 ```
+<!-- more -->

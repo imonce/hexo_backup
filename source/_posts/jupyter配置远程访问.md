@@ -9,6 +9,7 @@ tags: [Jupyter Notebook, 远程访问, ipython]
 > pip install ipython
 > pip install jupyter
 
+<!-- more -->
 # 生成jupyter配置文件
 
 > jupyter notebook --generate-config

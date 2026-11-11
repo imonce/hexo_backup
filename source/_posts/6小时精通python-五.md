@@ -14,6 +14,7 @@ categories: [Learn X in Y minutes, Learn Python in Y minutes]
 - 不带行号的是代码的输出
 - 把下边的语句对着敲一边自然就会了，博主用的是jupyter notebook
 
+<!-- more -->
 ```python
 ####################################################
 ## 5. 模块

@@ -27,6 +27,7 @@ Collecting mysql-python
     ----------------------------------------
 Command "python setup.py egg_info" failed with error code 1 in /tmp/pip-build-_itbcX/mysql-python/
 ```
+<!-- more -->
 
 ## 问题原因：
 

@@ -9,6 +9,7 @@ categories: [Reading Notes, Service Computing]
 
 Customer Value Chain Analysis (CVCA) is an original methodological tool that enables design teams in the product definition phase to comprehensively identify pertinent stakeholders, their relationships with each other, and their role in the product’s life cycle.
 
+<!-- more -->
 # method
 
 1. CVCA Step 1: Determine the business model for the vending machine.

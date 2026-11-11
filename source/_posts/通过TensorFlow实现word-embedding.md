@@ -11,6 +11,7 @@ word2vec的方法主要分为CBOW（Continuous Bag Of Words）和skip-gram（n-g
 
 这里，我们使用skip-gram的方法。
 
+<!-- more -->
 # python脚本
 
 IDE: jupyter notebook

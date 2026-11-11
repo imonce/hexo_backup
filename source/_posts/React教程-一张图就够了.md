@@ -12,3 +12,4 @@ categories: [Learn X in Y minutes]
 
 
 ![React.xmind](https://raw.githubusercontent.com/imonce/imgs/master/React.png)
+<!-- more -->

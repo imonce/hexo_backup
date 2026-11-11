@@ -15,6 +15,7 @@ categories: [Python]
 %matplotlib inline
 ```
 
+<!-- more -->
 
 ```python
 # python有多个版本，Python 2.7到Python 3.x，Python提供了__future__模块，把3.x新版本的特性导入到当前版本

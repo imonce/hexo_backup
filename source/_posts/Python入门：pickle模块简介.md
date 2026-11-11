@@ -9,6 +9,7 @@ comments: true
 ## 概要
 这篇文章介绍了何为pickle以及pickle模块的简单使用方法，即如何使用pickle进行存储存储以及数据的提取，关于pickle模块的其他更加详细的介绍可以参看[https://docs.python.org/2/library/pickle.html](https://docs.python.org/2/library/pickle.html)
 
+<!-- more -->
 ## pickle简介
 
 pickle模块是python中用来持久化对象的一个模块。所谓对对象进行持久化，即将对象的数据类型、存储结构、存储内容等所有信息作为文件保存下来以便下次使用。

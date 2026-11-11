@@ -18,6 +18,7 @@ categories: [Learn X in Y minutes, Learn blockchain in Y minutes]
 - 22/May/2010, Bitcoin pizza Festival, one programmer traded 10,000 bitcoins for two great John pizza coupons. For the first time, bitcoin had a fair price: 10000 bitcoins cost $25
 - November/2011, Nakamoto Satoshi disappeared
 
+<!-- more -->
 # Why Bitcoin
 
 1. Disintermediation: E-cash between individuals with no intervention of a trusted third-party intermediary

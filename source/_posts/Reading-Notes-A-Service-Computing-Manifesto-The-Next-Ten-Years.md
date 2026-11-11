@@ -20,6 +20,7 @@ categories: [Reading Notes, Service Computing]
 3. 基于众包的信誉 crowdsourcing based reputation
 4. 物联网 the Internet of Things
 
+<!-- more -->
 # BACKGROUND
 
 ## 服务计算的定义

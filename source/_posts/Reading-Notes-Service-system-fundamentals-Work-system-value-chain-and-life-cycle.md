@@ -17,6 +17,7 @@ This paper presents three interrelated frameworks as a first attempt to define t
 ![](https://raw.githubusercontent.com/imonce/imgs/master/20190923165759.png)
 
 
+<!-- more -->
 
 This paper uses two examples, one largely manual and one highly automated, to illustrate the potential usefulness of the three frameworks, which can be applied together to describe, analyze, and study how service systems are created, how they operate, and how they evolve through a combination of planned and unplanned change.
 

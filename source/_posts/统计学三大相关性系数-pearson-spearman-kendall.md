@@ -10,6 +10,7 @@ mathjax: true
 
 要理解Pearson相关系数，首先要理解协方差（Covariance），协方差是一个反映两个随机变量相关程度的指标，如果一个变量跟随着另一个变量同时变大或者变小，那么这两个变量的协方差就是正值，反之相反，公式如下： 
 
+<!-- more -->
 $$
 \operatorname{cov}(x, y)=\frac{\sum_{i=1}^{n}\left(x_{i}-x_{\mu}\right)\left(y_{i}-y_{\mu}\right)}{n-1}
 $$

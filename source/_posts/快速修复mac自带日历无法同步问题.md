@@ -10,3 +10,4 @@ tags: [mac]
 launchctl stop com.apple.CalendarAgent
 launchctl start com.apple.CalendarAgent
 ```
+<!-- more -->

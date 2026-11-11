@@ -11,3 +11,4 @@ tags: [mac]
 ```
 hdiutil resize -size 7g Hello.dmg
 ```
+<!-- more -->

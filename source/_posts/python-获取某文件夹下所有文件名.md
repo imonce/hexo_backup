@@ -15,3 +15,4 @@ categories: [Python]
 > os.listdir('/username/folder_name/') #读取路径下所有文件名，返回列表
 
 ![](https://raw.githubusercontent.com/imonce/imgs/master/20180806154423.png)
+<!-- more -->

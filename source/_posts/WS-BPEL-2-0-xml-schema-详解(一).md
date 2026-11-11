@@ -10,6 +10,7 @@ tags: [BPEL, WSBPEL, ws-bpel, BPEL2.0, Schema, XSD]
 
 wsbpel2.0 xsd源码来自：[ws-bpel_executable.xsd](http://docs.oasis-open.org/wsbpel/2.0/OS/process/executable/ws-bpel_executable.xsd)
 
+<!-- more -->
 # schema声明
 
 ```xml

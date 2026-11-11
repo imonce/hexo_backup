@@ -11,6 +11,7 @@ category: [Python]
 import threading
 ```
 
+<!-- more -->
 # 构造方法： 
 Thread(group=None, target=None, name=None, args=(), kwargs={}) 
 

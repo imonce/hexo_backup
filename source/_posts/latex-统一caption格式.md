@@ -22,3 +22,4 @@ tags: [Latex, Caption]
 ```
 
 Captionsetup中具体字段含义及修改方法见：https://blog.csdn.net/stereohomology/article/details/37741591
+<!-- more -->

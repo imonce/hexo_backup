@@ -19,3 +19,4 @@ dict_sorted_by_value_reverse = sorted(dict.items(), key=lambda d: d[1], reverse=
 ```
 # 示例
 ![](https://raw.githubusercontent.com/imonce/imgs/master/20180808100756.png)
+<!-- more -->

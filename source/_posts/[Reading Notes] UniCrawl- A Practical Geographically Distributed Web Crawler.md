@@ -9,6 +9,7 @@ comments: true
 
 Cause the wealth of information available on the web keeps growing, we want to use web crawler to get them. But the traditional method has a fatal limit of its large infrastructure cost. To reduce it, we developed this method, unicrawl, which can show a performance improvement of 93.6% in terms of network bandwidth consumption, and a speedup factor of 1.75.
 
+<!-- more -->
 ## I. introduction
 
 Nowadays, it's common that to use parallel process on a large number of machines to achieve a reasonable collection time. While this method requires large computing infrastructures. Like Google and Bing, who rely on big data centers. 

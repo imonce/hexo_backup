@@ -15,6 +15,7 @@ $\sigma_x = \left[\begin{matrix}
     1 & 0
 \end{matrix}\right]$
 
+<!-- more -->
 Y:
 $\sigma_y = \left[\begin{matrix}
     0 & -i \\\\

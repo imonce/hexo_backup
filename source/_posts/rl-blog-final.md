@@ -8,6 +8,7 @@ comments: true
 
 > **摘要：** 强化学习（Reinforcement Learning, RL）从上世纪 50 年代的早期构想，到 AlphaGo 的里程碑式突破，再到如今在大语言模型（LLM）中的全面渗透，走过了一条波澜壮阔的技术演进之路。本文回顾了 RL 的核心发展脉络，并重点聚焦 RL 如何与 LLM 结合——从 RLHF 到 PPO、DPO，再到 GRPO、BRPO 等最新算法，梳理其背后的技术逻辑、演进逻辑与前沿趋势。
 
+<!-- more -->
 ---
 
 ## 一、强化学习：一段简史
@@ -454,6 +455,3 @@ RLHF 用三步流程证明了 LLM 对齐的可行性，DPO 用一步优化证明
 13. Williams, R. J. "Simple statistical gradient-following algorithms for connectionist reinforcement learning." *Machine Learning* **8**(3), 229–256 (1992).
 14. Watkins, C. J. C. H. & Barto, A. G. "Q-learning." *Machine Learning* **8**(3–4), 279–292 (1992).
 
----
-
-*本文基于公开文献整理，内容截至 2026 年 6 月。*

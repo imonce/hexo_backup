@@ -9,6 +9,7 @@ categories: [软件架构和服务架构]
 
 假设你在开发一个服务端应用。该应用必须支持各种各样的客户端，包括桌面浏览器、手机浏览器和本地手机应用。应用可能也需要公开部分API供第三方使用，还可能与其他应用通过web service或消息代理(message broker)相集成。应用执行业务逻辑来处理请求(HTTP请求或者消息)；访问数据库；与其他系统交换消息；并返回HTML/JSON/XML类型的响应。
 
+<!-- more -->
 应用或是多层架构或是六角架构，并且包含多种类型的组件：
 
 - 表示组件(Presentation components) - 响应处理HTTP请求，并返回HTML或JSON/XML(对于web service API)

@@ -18,3 +18,4 @@ comments: true
 
 "`dirname "$0"`"/APPNAME.real $@
 ```
+<!-- more -->

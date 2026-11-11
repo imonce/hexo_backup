@@ -26,6 +26,7 @@ XSD Authors: The child element onAlarm needs to be a Local Element Declaration, 
 </xsd:complexType>
 ```
 
+<!-- more -->
 eventHandlers基于tExtensibleElements扩展，由2种元素的sequence组成：
 
 - onEvent：见element：onEvent

@@ -16,6 +16,7 @@ tags: [BPEL, WSBPEL, ws-bpel, BPEL2.0, Schema, XSD]
 </xsd:complexType>
 ```
 
+<!-- more -->
 就是tActivity的一个元素化，可以看作是一个最原始，最纯粹的activity。
 
 和compensate、empty定义是一样的，在语义上和用法上不一样。

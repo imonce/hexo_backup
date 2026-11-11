@@ -11,6 +11,7 @@ tags:
 
 A precise and unambiguous description of the meaning of a mathematical term. It characterizes the meaning of a word by giving all the properties and only those properties that must be true.
 
+<!-- more -->
 对数学术语含义的精确而明确的描述。它通过给出一个词的所有性质，仅给出那些必须为真的性质，来表征该词的意义。
 
 # Theorem（定理）

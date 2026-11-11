@@ -9,6 +9,7 @@ tags: [Python, 数据分析, 学习笔记]
 ## 1.usa.gov data from bit.ly
 
 
+<!-- more -->
 ```python
 # 显示当前路径
 %pwd

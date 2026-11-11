@@ -9,6 +9,7 @@ comments: true
 
 This article propose an object detection system that relies on a multi-region deep convolutional neural network that also encodes sematic segmentation-aware features. The module aims at capturing a diverse set of discriminative appearance factors and exhibits localization sensitivity that is essential for accurate object localization. They exploit the above properties of their recognition module by intergrating it on an iterative localization mechanism that alternates between socring a box proposal and refgining its location with a deep CNN regression model. And consiquently, they detect objects with very high localization accuracy.
 
+<!-- more -->
 ## I. Introduction
 
 The definition of object detection:

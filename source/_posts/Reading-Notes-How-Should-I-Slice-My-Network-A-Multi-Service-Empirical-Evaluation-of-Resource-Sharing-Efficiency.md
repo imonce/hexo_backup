@@ -18,6 +18,7 @@ mathjax: true
 > CNR-IEIIT (Institute of Electronics, Computer and Telecommunication Engineering, the National Research Council of Italy)
 > NEC Laboratories Europe
 
+<!-- more -->
 # FOR A QUICK GLANCE
 
 ## What is network slicing or background

@@ -12,6 +12,7 @@ mathjax: true
 
 $||x||_p = \sqrt[p]{\Sigma_i|x_i|^p}$
 
+<!-- more -->
 # l0范式
 
 ## 定义

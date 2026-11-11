@@ -7,6 +7,7 @@ comments: true
 ---
 
 在Mac上搭建本地大模型环境，OpenClaw（一款开源的大模型管理/运行工具）搭配Ollama（轻量本地大模型运行器）是非常便捷的组合——无需复杂配置，新手也能快速上手。本文将详细补全每一步操作，从Ollama安装、模型选择，到Homebrew配置、OpenClaw安装，再到最终对接测试，全程实操无废话，亲测可用（适配Intel芯片和Apple Silicon芯片Mac）。
+<!-- more -->
 
 # 安装ollama（如果你不喜欢ollama，或者想本地模型运行效率更高，也可以安装llama.cpp替代）
 

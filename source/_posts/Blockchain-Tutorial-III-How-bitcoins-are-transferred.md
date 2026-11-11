@@ -18,6 +18,7 @@ Suppose that Alice is transferring 8 bitcoins to Bob, the process goes like this
 6. Each node acknowledges that it will continue to add blocks after former ones. Mining nodes receive bitcoin rewards. Generally, the transaction is permanently retained after 6 blocks are added
 7. Bob gets transferred bitcoins (expressed as UTXO of the transaction)
 
+<!-- more -->
 # Five Key Technologies
 
 In order to achieve a successful bitcoin transaction, the following five key technologies are needed:

@@ -19,6 +19,7 @@ Anna：Per frequentare il corso di specializzazione all'università' di Padova �
 
 Mario：Sei proprio forte! 你真行
 
+<!-- more -->
 Mario：In bocca al lupo per i tuoi studi！ 祝你学习一切顺利
 
 Anna：Grazie! E' proprio un nuovo inizio per me! 感谢！对我来说，这的确是一个新的开始！

@@ -23,3 +23,4 @@ python3 /home/USERNAME/.local/lib/python3.6/site-packages/tensorboard/main.py --
 ***NOTE：***
 - USERNAME是指用户名称
 - LOGDIR是指log文件存放的相对或绝对目录
+<!-- more -->

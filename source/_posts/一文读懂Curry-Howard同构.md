@@ -9,6 +9,7 @@ mathjax: true
 
 柯里-霍华德同构，Curry-Howard Isomorphism，又称柯里-霍华德对应（Curry-Howard correspondence）是在计算机程序和数学证明之间的紧密联系；这种对应也叫做公式为类型对应或命题为类型对应。这是对形式逻辑系统和公式计算（computational calculus）之间符号的相似性的推广。命名来自它的两位发现者：美国数学家哈斯凯尔·**柯里**和逻辑学家威廉·阿尔文·**霍瓦德**。
 
+<!-- more -->
 # 同构对应
 
 Curry-Howard 同构显示了推理系统和程序语言之间的相似性，在此框架下：

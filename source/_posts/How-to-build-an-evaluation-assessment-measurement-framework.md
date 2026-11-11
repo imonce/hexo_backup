@@ -7,6 +7,7 @@ categories: [Methodology]
 
 An evaluation index system refers to an organic whole with an internal structure composed of multiple indicators that characterize various aspects of the evaluation object and their interconnections.
 
+<!-- more -->
 # Principles to be followed
 
 In order to make the indicator system scientific and standardized, the following principles should be followed when constructing it:

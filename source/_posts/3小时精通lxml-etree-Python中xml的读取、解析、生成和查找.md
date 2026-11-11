@@ -8,6 +8,7 @@ category: [Learn X in Y minutes, Learn lxml.etree in Y minutes]
 本文主要参考官方文档[https://lxml.de/tutorial.html](https://lxml.de/tutorial.html)整理，如有错误欢迎指出。
 
 
+<!-- more -->
 ```python
 from lxml import etree
 from copy import deepcopy

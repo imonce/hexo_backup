@@ -15,3 +15,4 @@ op6=>operation: order by
 op7=>operation: limit
 op1->op2->op3->op4->op5->op6->op7
 ```
+<!-- more -->

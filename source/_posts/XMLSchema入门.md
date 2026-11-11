@@ -11,6 +11,7 @@ comments: true
 
 XML Schema 是基于 XML 的 DTD 替代者。XML Schema 描述 XML 文档的结构。XML Schema 语言也称作 XML Schema 定义（XML Schema Definition，XSD）。
 
+<!-- more -->
 # 简单类型
 
 ## 定义简易元素的语法：

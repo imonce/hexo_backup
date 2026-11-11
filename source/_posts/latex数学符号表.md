@@ -5,6 +5,7 @@ tags: [latex, 数学符号]
 ---
 reference:[一份不太简短的 LATEX 2ε 介绍](http://www.mohu.org/info/lshort-cn.pdf)
 
+<!-- more -->
 ![](https://raw.githubusercontent.com/imonce/imgs/master/20190402205303.png)
 ![](https://raw.githubusercontent.com/imonce/imgs/master/20190402205327.png)
 ![](https://raw.githubusercontent.com/imonce/imgs/master/20190402205344.png)

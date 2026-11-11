@@ -17,3 +17,4 @@ For example:
 The -c flag removes all attributes, whereas -r applies recursively for the entire targeted .app directory contents.
 
 reference: https://www.cnblogs.com/chester-cs/p/13780730.html
+<!-- more -->

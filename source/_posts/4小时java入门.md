@@ -9,6 +9,7 @@ categories: [Learn X in Y minutes, Learn Java in Y minutes]
 
 ps：好多类都写到一起了，自己要运行的话记得写到不同的java文件中哦
 
+<!-- more -->
 ```java
 // 导入java.util包中的ArrayList类
 import java.io.BufferedReader;

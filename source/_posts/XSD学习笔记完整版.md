@@ -22,6 +22,7 @@ tags: [XSD, XML Schema, XML, Schema, 学习笔记]
 |xmlns|设定schema使用的一个或多个命名空间的URI引用| |
 |any attributes|设定带有non-schema命名空间的任何其他属性| |
 
+<!-- more -->
 ## <schema\> 声明
 
 <schema\> 元素是每一个 XML Schema 的根元素：
