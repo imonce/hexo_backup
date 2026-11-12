@@ -24,8 +24,8 @@ comments: true
 90 年代是 RL 走向算法化的关键时期：
 
 - **1989**，Chris Watkins 提出了 **Q-Learning**，一种无需模型（model-free）的时序差分学习方法，通过更新 Q 表来学习最优动作价值函数。该论文随后在 Watkins & Barto（1989）中正式发表，奠定了无模型 RL 的基石。
-- 1996 年，**SARSA**（State-Action-Reward-State-Action）算法由 McCallum 正式提出，与 Q-Learning 的区别在于它属于 on-policy 方法，学习的是实际执行策略的价值，而非理论最优策略的价值。
 - **REINFORCE 算法**由 Ronald Williams 于 1992 年正式提出，它是基于策略梯度（Policy Gradient）的蒙特卡洛方法，直接优化策略参数而非通过价值函数间接优化，为后来 LLM 中的偏好优化奠定了理论基础。
+- 1994 年，**SARSA**（State-Action-Reward-State-Action）算法由 McCallum 正式提出，与 Q-Learning 的区别在于它属于 on-policy 方法，学习的是实际执行策略的价值，而非理论最优策略的价值。
 
 REINFORCE 的核心是**策略梯度定理**：对于策略参数 $\theta$，梯度为
 
