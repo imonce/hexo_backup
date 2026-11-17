@@ -211,7 +211,7 @@ metadata:
 
 ## 第三步：通过 Skill Workshop 提案
 
-如果你希望 Agent 起草 Skill、经过审核后再生效，可以使用 **Skill Workshop**。这是一种受治理的 Skill 创建路径。
+如果你想通过官方定义好的命令起草 Skill、经过审核后再生效，而不是直接修改skill源文件以及openclaw配置，可以使用 **Skill Workshop**。这是一种受治理的 Skill 创建路径。
 
 ### 用 CLI 提案创建
 
@@ -259,6 +259,8 @@ openclaw skills workshop reject <proposal-id> --reason "不符合规范"
 # 隔离审查
 openclaw skills workshop quarantine <proposal-id> --reason "需要安全审查"
 ```
+
+以上操作其实都是在本地个人执行的。
 
 ### 用 Agent 工具提案
 
@@ -394,7 +396,7 @@ openclaw skills install git:用户名/repo-name --as my-skill-name
 总开销 = 195 + Σ (97 + len(名字) + len(描述) + len(文件路径))
 ```
 
-约每 4 个字符 ≈ 1 个 Token。保持描述简短就能减少开销。
+每 4 个字符 ≈ 1 个 Token。保持描述简短就能减少开销。
 
 ### 组织多个 Skill
 
