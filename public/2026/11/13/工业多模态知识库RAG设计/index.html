@@ -1,0 +1,1546 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+<script data-ad-client="ca-pub-1831623022964098" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/C_Meng.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/C_Meng.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/C_Meng.png">
+  <link rel="mask-icon" href="/images/C_Meng.png" color="#222">
+  <meta name="google-site-verification" content="-WnFIB8dOJwdL5b4iIfg6bNp1o-p5XnbyMIPVWXr6N0">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"imonce.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="一、场景与问题1.1 四种数据   数据类型 典型内容 它擅长回答什么 它的坑    文档 Word 制度、手册，夹杂流程插图、现场照片、系统截图 “规定是什么”、”怎么操作” 图和文字是互证关系，拆开就废   数字 数据库表、Excel 台账、设备时序 “实际是多少”、”有没有异常” 数据会变且带口径，只索引入口、不索引内容   规则 温度上限、电流阈值、金额分档 “什么条件下做什么” 差一个字">
+<meta name="keywords" content="多模态,知识库,RAG">
+<meta property="og:type" content="article">
+<meta property="og:title" content="工业多模态知识库RAG设计">
+<meta property="og:url" content="https://imonce.github.io/2026/11/13/工业多模态知识库RAG设计/index.html">
+<meta property="og:site_name" content="C_Meng PSNA">
+<meta property="og:description" content="一、场景与问题1.1 四种数据   数据类型 典型内容 它擅长回答什么 它的坑    文档 Word 制度、手册，夹杂流程插图、现场照片、系统截图 “规定是什么”、”怎么操作” 图和文字是互证关系，拆开就废   数字 数据库表、Excel 台账、设备时序 “实际是多少”、”有没有异常” 数据会变且带口径，只索引入口、不索引内容   规则 温度上限、电流阈值、金额分档 “什么条件下做什么” 差一个字">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2026-11-23T05:53:45.694Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="工业多模态知识库RAG设计">
+<meta name="twitter:description" content="一、场景与问题1.1 四种数据   数据类型 典型内容 它擅长回答什么 它的坑    文档 Word 制度、手册，夹杂流程插图、现场照片、系统截图 “规定是什么”、”怎么操作” 图和文字是互证关系，拆开就废   数字 数据库表、Excel 台账、设备时序 “实际是多少”、”有没有异常” 数据会变且带口径，只索引入口、不索引内容   规则 温度上限、电流阈值、金额分档 “什么条件下做什么” 差一个字">
+
+<link rel="canonical" href="https://imonce.github.io/2026/11/13/工业多模态知识库RAG设计/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'default'
+  };
+</script>
+
+  <title>工业多模态知识库RAG设计 | C_Meng PSNA</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">C_Meng PSNA</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Never wait for the storm to pass, just dance in the rain.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">270</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">31</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">158</span></a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/imonce" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="default">
+    <link itemprop="mainEntityOfPage" href="https://imonce.github.io/2026/11/13/工业多模态知识库RAG设计/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/C_Meng.png">
+      <meta itemprop="name" content="C_Meng">
+      <meta itemprop="description" content="This site is primarily used for personal note-taking, and some content are from open access, with sources clearly indicated. If there are any copyright issues, please feel free to contact us. 本站主要用于个人笔记记录，存在部分内容引用，均已表明出处，如存在版权问题，敬请联系。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="C_Meng PSNA">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          工业多模态知识库RAG设计
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2026-11-13 11:21:16" itemprop="dateCreated datePublished" datetime="2026-11-13T11:21:16+08:00">2026-11-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2026-11-23 13:53:45" itemprop="dateModified" datetime="2026-11-23T13:53:45+08:00">2026-11-23</time>
+              </span>
+
+          
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2026/11/13/工业多模态知识库RAG设计/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2026/11/13/工业多模态知识库RAG设计/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="一、场景与问题"><a href="#一、场景与问题" class="headerlink" title="一、场景与问题"></a>一、场景与问题</h1><h2 id="1-1-四种数据"><a href="#1-1-四种数据" class="headerlink" title="1.1 四种数据"></a>1.1 四种数据</h2><table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th>典型内容</th>
+<th>它擅长回答什么</th>
+<th>它的坑</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>文档</strong></td>
+<td>Word 制度、手册，夹杂流程插图、现场照片、系统截图</td>
+<td>“规定是什么”、”怎么操作”</td>
+<td>图和文字是<strong>互证</strong>关系，拆开就废</td>
+</tr>
+<tr>
+<td><strong>数字</strong></td>
+<td>数据库表、Excel 台账、设备时序</td>
+<td>“实际是多少”、”有没有异常”</td>
+<td>数据会变且带口径，<strong>只索引入口、不索引内容</strong></td>
+</tr>
+<tr>
+<td><strong>规则</strong></td>
+<td>温度上限、电流阈值、金额分档</td>
+<td>“什么条件下做什么”</td>
+<td>差一个字（含不含）结论就反了</td>
+</tr>
+<tr>
+<td><strong>管理规则</strong></td>
+<td>80 万 / 80–100 万 / 100 万以上三档流程</td>
+<td>“我这种情况走哪条路”</td>
+<td>需要<strong>计算 + 判定</strong>，不是”找相似段落”</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>说明</strong>：”规则”和”管理规则”技术上是一回事（条件→结论），区别只在<strong>域</strong>——前者管工艺参数（温度、电流），后者管管理流程（金额、审批）。所以后文统一按”规则”处理，不重复建两套机制。</p>
+</blockquote>
+<h2 id="1-2-五种提问"><a href="#1-2-五种提问" class="headerlink" title="1.2 五种提问"></a>1.2 五种提问</h2><table>
+<thead>
+<tr>
+<th>问题类型</th>
+<th>例子</th>
+<th>答案长什么样</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>规则类</strong></td>
+<td>“单一来源采购要满足什么条件”</td>
+<td>结论 + 条款原文 + 文号条款号</td>
+</tr>
+<tr>
+<td><strong>流程类</strong></td>
+<td>“从立项到签约要走几步”</td>
+<td>步骤序列 + 每步责任人 + 材料 + 系统入口</td>
+</tr>
+<tr>
+<td><strong>多模态类</strong></td>
+<td>“这个阀门在图纸哪个位置、现场怎么装”</td>
+<td>结论 + <strong>图上位置</strong> + 照片 + 说明</td>
+</tr>
+<tr>
+<td><strong>对比类</strong></td>
+<td>“公开招标和竞争性谈判有什么区别”</td>
+<td>对比表 + 适用情形 + 转换条件</td>
+</tr>
+<tr>
+<td><strong>混合计算类</strong></td>
+<td>“90 万的项目该谁审批、要交哪些材料”</td>
+<td><strong>算出来的结论</strong> + 依据 + 清单</td>
+</tr>
+</tbody></table>
+<p><strong>关键观察</strong>：这五类问题的”正确答案”形态完全不同。规则类要的是条文，流程类要的是路径，多模态类要的是<strong>图和文的对应</strong>，对比类要的是<strong>表格</strong>，混合类要的是<strong>算出来的数</strong>。</p>
+<p><strong>用一套流程去套五种需求，就像用一把螺丝刀去拧所有螺丝。</strong></p>
+<h2 id="1-3-案例分析"><a href="#1-3-案例分析" class="headerlink" title="1.3 案例分析"></a>1.3 案例分析</h2><p>假设制度原文这样写：</p>
+<blockquote>
+<p>第八条 项目金额在 <strong>80 万元以下</strong>的，由部门负责人审批；<br>第九条 项目金额在 <strong>80 万元以上、100 万元以下</strong>的，由分管领导审批；<br>第十条 项目金额在 <strong>100 万元以上</strong>的，由总经理办公会审议。</p>
+</blockquote>
+<p>现在用户问：”<strong>90 万的项目谁审批？</strong>“</p>
+<p>如果用最朴素的”向量相似度”去检索，会发生什么？</p>
+<p>$$<br>\text{sim}(q, d) = \frac{\langle \mathbf{e}(q),; \mathbf{e}(d) \rangle}{|\mathbf{e}(q)| \cdot |\mathbf{e}(d)|}<br>$$</p>
+<p><strong>这个公式在算什么</strong>：把问题和每段文字各自变成一串数字（向量），然后看两串数字的方向有多接近。$1$ 表示完全一致，$0$ 表示毫不相干。</p>
+<ul>
+<li>问题 $q$ 含”90 万””审批”</li>
+<li>第八条 $d_1$ 含”80 万””审批”——和 $q$ 共享”万””审批””项目金额”</li>
+<li>第九条 $d_2$ 含”80 万””100 万””审批”——共享得更多</li>
+</ul>
+<p><strong>直觉上 $d_2$ 应该得分更高</strong>。但实际情况常常相反，原因有三：</p>
+<ol>
+<li><strong>数字不是语义</strong>。模型看到”90 万”和”80 万”时，它们的”语义”几乎一样——都是”一笔钱”。真正区分它们的是<strong>大小关系</strong>，而大小关系不是向量能表达的。</li>
+<li><strong>否定和区间最容易被忽略</strong>。”80 万以上”和”80 万以下”在字面上高度重合（五个字里四个一样），向量相似度可以高到 0.95，但结论完全相反。</li>
+<li><strong>越详细的段落越容易被召回</strong>。第十条往往写得最短（只有一句），第九条最长（要解释中间档），长段落召回概率更高——<strong>这叫”长度偏置”，是检索系统的通病</strong>。</li>
+</ol>
+<p><strong>所以：规则类问题，检索系统天然做不好。</strong> 不是模型不够强，是这件事本来就不该用”找相似”来解决。</p>
+<hr>
+<h1 id="二、多模态统一（≠塞进同一个向量空间）"><a href="#二、多模态统一（≠塞进同一个向量空间）" class="headerlink" title="二、多模态统一（≠塞进同一个向量空间）"></a>二、多模态统一（≠塞进同一个向量空间）</h1><p>很多方案的第一反应是：”把所有模态都变成向量，放进一个库，就能统一检索了。”</p>
+<p>这个想法很自然，但在工业场景里会失败。原因是<strong>不同模态的”相似”根本不可比</strong>。</p>
+<h2 id="2-1-做法对比"><a href="#2-1-做法对比" class="headerlink" title="2.1 做法对比"></a>2.1 做法对比</h2><p><strong>错误做法</strong>：把所有书、图片、表格都撕碎、混在一起，装进一个大箱子，然后按”内容像不像”来找。</p>
+<p>结果：你问”80 万以上怎么审批”，它翻出一段讲”80 万以下”的文字——因为这两段有 90% 的字是一样的。它还会翻出一张流程图——因为图里也有”审批”两个字。</p>
+<p><strong>正确做法</strong>：编索引卡片。每张卡片写着：</p>
+<blockquote>
+<p>“这段话出自《项目管理办法》<strong>第九条</strong>，属于<strong>第 3 章 审批权限</strong>，涉及<strong>项目金额</strong>这个对象，<strong>2026 年版</strong>有效。”</p>
+</blockquote>
+<p>图和表也各有一张卡片，指向<strong>同一个位置</strong>。</p>
+<p>这样，你问”第九条讲了什么”，能同时调出<strong>条文、配套流程图、系统截图、以及台账里引用第九条的项目</strong>——它们不是”长得像”，而是”在同一个地址上”。</p>
+<h2 id="2-2-核心原则"><a href="#2-2-核心原则" class="headerlink" title="2.2 核心原则"></a>2.2 核心原则</h2><p>统一知识寻址方式：</p>
+<p>$$<br>\kappa(e) ;=; \big(;\text{文档},; \text{版本},; \text{章节},; \text{步骤号},; \text{实体},; \text{生效时间};\big)<br>$$</p>
+<p><strong>这个公式在算什么</strong>：给每一条知识 $e$ 发一个”地址” $\kappa(e)$，由六个坐标组成。任何模态（一段文字、一张图、一个表格单元格、一条测点数据）都挂在这个地址上。</p>
+<p><strong>为什么这件事关键</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>如果统一”长相”（同一个向量空间）</th>
+<th>如果统一”门牌号”（同一个地址体系）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>图和文本被迫压到同一维度，细节丢失</td>
+<td>图保留图的细节，文字保留文字的精确</td>
+</tr>
+<tr>
+<td>相似度跨模态不可比</td>
+<td>同地址的证据天然可比（它们是同一件事的不同侧面）</td>
+</tr>
+<tr>
+<td>换模型就要全量重建</td>
+<td>换模型只影响检索层，地址不变</td>
+</tr>
+<tr>
+<td>无法回答”这段话的依据在哪一页哪一条”</td>
+<td>每个证据都能回到原文位置</td>
+</tr>
+</tbody></table>
+<p><strong>一句话</strong>：我们要统一的不是”表示形式”，而是”<strong>寻址方式</strong>“。</p>
+<h2 id="2-3-统一的三个层次"><a href="#2-3-统一的三个层次" class="headerlink" title="2.3 统一的三个层次"></a>2.3 统一的三个层次</h2><table>
+<thead>
+<tr>
+<th>层次</th>
+<th>统一什么</th>
+<th>怎么做</th>
+<th>不做什么</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>L1 地址统一</strong></td>
+<td>定位</td>
+<td>文档 ID + 版本 + 章节 + 步骤 + 实体 + 时间</td>
+<td>不做语义压缩</td>
+</tr>
+<tr>
+<td><strong>L2 语义统一</strong></td>
+<td>可被检索</td>
+<td>图像→结构化描述；表格→表头+类型；时序→句柄</td>
+<td>不强行对齐到同一向量空间</td>
+</tr>
+<tr>
+<td><strong>L3 证据统一</strong></td>
+<td>可被引用</td>
+<td>统一成”证据单元”这个抽象</td>
+<td>不合并不同模态的内容</td>
+</tr>
+</tbody></table>
+<p><strong>L1 是地基</strong>。没有地址，后面的关联、引用、版本管理全都做不了。</p>
+<hr>
+<h1 id="三、知识库构建的主要步骤"><a href="#三、知识库构建的主要步骤" class="headerlink" title="三、知识库构建的主要步骤"></a>三、知识库构建的主要步骤</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">flowchart TD</span><br><span class="line">    A[数据源] --&gt; B[① 知识提取（版式还原）]</span><br><span class="line">    B --&gt; C[② 多模态统一（统一门牌号）]</span><br><span class="line">    C --&gt; D[③ 知识关联（织证据网）]</span><br><span class="line">    D --&gt; E[④ 统一检索（多路召回 + 问题路由）]</span><br><span class="line">    E --&gt; F[⑤ 证据装配（生成前决定带什么）]</span><br><span class="line">    F --&gt; G[⑥ 受约束生成]</span><br><span class="line">    G --&gt; H[⑦ 三道校准闸（数值 / 规则 / 时效）]</span><br><span class="line">    H --&gt; I[答案（含图、表、链接、依据）]</span><br></pre></td></tr></table></figure>
+
+<h2 id="工序-①-知识提取"><a href="#工序-①-知识提取" class="headerlink" title="工序 ① 知识提取"></a>工序 ① 知识提取</h2><p><strong>工序目标</strong>：不是”把文件读成文字”，而是”<strong>把文件的层次结构读出来</strong>“。</p>
+<p>这一道工序决定后面所有事情的上限。因为工业文档的信息密度，<strong>大部分藏在结构里</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>结构信息</th>
+<th>丢了会怎样</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>章节层级（1.1 / 1.1.1）</td>
+<td>检索到一段话，不知道它属于哪一章，无法判断适用范围</td>
+</tr>
+<tr>
+<td>条款编号（第八条）</td>
+<td>无法精确引用，也无法建立”条款之间引用”的关系</td>
+</tr>
+<tr>
+<td>表格的表头与合并单元格</td>
+<td>读到一堆数字，不知道哪个是”金额”哪个是”时限”</td>
+</tr>
+<tr>
+<td>图与上下文的绑定</td>
+<td>图和说明文字分离，图变成孤立的图片</td>
+</tr>
+<tr>
+<td>页眉页脚/水印</td>
+<td>版本信息丢失（”2024 版”和”2026 版”混在一起）</td>
+</tr>
+</tbody></table>
+<p><strong>三个必须做对的动作</strong>：</p>
+<ol>
+<li><p><strong>条款不切开</strong>。一条制度如果包含”条件 + 结论 + 例外”，必须整条保留。切开后，”除……外”这种例外会变成孤立的句子，语义完全相反。</p>
+<blockquote>
+<p>举例：”除经总经理批准外，金额超过 80 万元的项目应由分管领导审批。” 如果切成两段，”金额超过 80 万元的项目应由分管领导审批”就会成为一条<strong>没有例外</strong>的硬规则——这是最危险的错误。</p>
+</blockquote>
+</li>
+<li><p>**表格转成”带表头的结构”**，不是转成文字。表格的价值在于”行列对齐”，转成”金额 90 万 时限 5 天”这样的流水文字就废了。</p>
+</li>
+<li><p><strong>图必须绑定上下文</strong>。一张流程图，要知道它是”第 3 章第 2 节 立项流程”配的图，而不是”某张图”。</p>
+</li>
+</ol>
+<h2 id="工序-②-多模态统一"><a href="#工序-②-多模态统一" class="headerlink" title="工序 ② 多模态统一"></a>工序 ② 多模态统一</h2><p>这是最容易做错的一步。很多方案统一把图交给视觉模型”看图说话”，生成一段描述塞进向量库。<strong>这对流程图是灾难</strong>。</p>
+<p>因为视觉模型看到流程图，通常会说：”这是一张流程图，包含了若干步骤和判断节点，说明了业务流程。”——<strong>信息量为零</strong>。</p>
+<p><strong>正确的做法是分类处理</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>图类型</th>
+<th>例子</th>
+<th>该怎么处理</th>
+<th>产出什么</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>流程图</strong></td>
+<td>立项审批流程、设备操作流程</td>
+<td><strong>转成有向图</strong>：识别节点、判断分支、箭头方向</td>
+<td>节点表 + 边表（谁指向谁）</td>
+</tr>
+<tr>
+<td><strong>现场照片</strong></td>
+<td>设备安装、阀门位置、管线走向</td>
+<td><strong>部件标注</strong>：识别关键部件并给出区域坐标</td>
+<td>部件名 + 图上位置 + 关联设备</td>
+</tr>
+<tr>
+<td><strong>系统截图</strong></td>
+<td>采购系统页面、字段填写界面</td>
+<td><strong>界面解析</strong>：页面名 + 控件 + 字段</td>
+<td>“点哪个页面的哪个字段”</td>
+</tr>
+</tbody></table>
+<p><strong>为什么流程图必须转成图（而不是描述）</strong></p>
+<p>因为流程类问题的本质是”<strong>路径查询</strong>“：</p>
+<p>$$<br>\text{Path}(s \to t) ;=; {, p ;\mid; p \text{ 是从节点 } s \text{ 到节点 } t \text{ 的一条合法路径} ,}<br>$$</p>
+<p><strong>这个公式在说什么</strong>：用户问”从立项到签约怎么走”，答案不是”一段描述”,而是从图里找出<strong>所有合法路径</strong>，每条路径上标着每步的责任人、材料、系统入口。</p>
+<p><strong>只有把流程图变成真正的图（节点 + 边），才可能算出路径</strong>。一段文字描述是算不出路径的。</p>
+<p><strong>数字类数据：索引”入口”，不索引”内容”</strong></p>
+<p>这是另一个关键原则。数据库表、Excel 台账、设备时序——<strong>不应该把内容搬进向量库</strong>。</p>
+<p>理由：</p>
+<ul>
+<li>数据会变（今天 90 万，明天可能改成 95 万），静态索引必然过期；</li>
+<li>数据量大（设备时序每秒一条），搬进向量库既浪费又无用；</li>
+<li>数据有精度（金额差 1 元就是不同档），向量化会丢精度。</li>
+</ul>
+<p>**正确的做法：索引”怎么查”，不索引”查到的结果”**。</p>
+<p>$$<br>\mathcal{I}(D) ;=; \big{,(\text{表名},; \text{字段},; \text{单位},; \text{采集频率},; \text{正常范围},; \text{归属设备}),\big}<br>$$</p>
+<p><strong>这个公式在说什么</strong>：对每份数据源，只索引它的”说明书”——这个表叫什么、有哪些字段、单位是什么、多久更新一次、正常范围多少。真正取数时，用工具去查。</p>
+<p><strong>打个比方</strong>：图书馆不会把每本书的内容抄在索引卡上，只写”书名、作者、索书号”。要看书，按索书号去架上取。</p>
+<h2 id="工序-③-知识关联"><a href="#工序-③-知识关联" class="headerlink" title="工序 ③ 知识关联"></a>工序 ③ 知识关联</h2><p><strong>工序目标</strong>：让”制度条款”和”图上步骤”和”台账数据”之间能互相找到。</p>
+<p><strong>四种必须建立的关联</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>关联类型</th>
+<th>例子</th>
+<th>怎么建</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>引用关系</strong></td>
+<td>第九条引用了第三条</td>
+<td>从文本里提取”依照第X条”</td>
+</tr>
+<tr>
+<td><strong>版本替代</strong></td>
+<td>2026 版替代 2024 版</td>
+<td>从文件的”实施日期/替代说明”提取</td>
+</tr>
+<tr>
+<td><strong>制度↔流程</strong></td>
+<td>第九条对应流程图的”分管领导审批”节点</td>
+<td>人工确认（半自动）</td>
+</tr>
+<tr>
+<td><strong>制度↔数据</strong></td>
+<td>台账的”项目金额”字段对应第九条的”项目金额”</td>
+<td>字段映射表</td>
+</tr>
+</tbody></table>
+<p><strong>这里必须诚实说一句</strong>：第三、四类关联<strong>做不到全自动</strong>。制度语言和流程图语言的差异太大，纯算法匹配的准确率通常不到 60%。<strong>需要人工核验</strong>，而且这是项目工作量的主要来源之一（几百到上千个节点，人月级）。</p>
+<p><strong>方案里如果写”自动构建知识图谱”，是不诚恳的</strong>——要么低估了工作量，要么会交付一个看起来完整但实际错漏很多的图。</p>
+<p><strong>每条关联必须带三样东西</strong>：</p>
+<ol>
+<li><strong>来源位置</strong>（条款号 / 图的节点 ID / 表字段名）</li>
+<li><strong>确认状态</strong>（机器抽取 / 人工确认）</li>
+<li><strong>置信度或备注</strong></li>
+</ol>
+<p>没有这三样，图谱就是一张”看起来很厉害但不敢用”的图。</p>
+<h2 id="工序-④-统一检索"><a href="#工序-④-统一检索" class="headerlink" title="工序 ④ 统一检索"></a>工序 ④ 统一检索</h2><p><strong>这一道工序是全文的枢纽</strong>。核心思想：</p>
+<blockquote>
+<p><strong>不是用一个检索器回答所有问题，而是先判断”这是什么问题”，再决定”去哪里找”。</strong></p>
+</blockquote>
+<p><strong>四路召回</strong>（并行执行）：</p>
+<table>
+<thead>
+<tr>
+<th>召回通道</th>
+<th>找什么</th>
+<th>适用问题</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>全文检索</strong>（关键词）</td>
+<td>精确词、编号、条款号</td>
+<td>“第九条”、”GB/T 12345”</td>
+</tr>
+<tr>
+<td><strong>语义检索</strong>（向量）</td>
+<td>意思相近的段落</td>
+<td>“怎么办手续”→”办理流程”</td>
+</tr>
+<tr>
+<td><strong>结构化查询</strong>（图/表）</td>
+<td>流程路径、规则区间</td>
+<td>“从立项到签约”、”90 万走哪档”</td>
+</tr>
+<tr>
+<td><strong>工具取数</strong>（SQL/接口）</td>
+<td>实际数值、台账、时序</td>
+<td>“上个月采购总额”、”3 号线温度”</td>
+</tr>
+</tbody></table>
+<p>**合并去重靠”地址”，不靠”分数”**：</p>
+<p>$$<br>\text{Evidence}(q) ;=; \bigcup_{m \in M} \text{TopK}_m(q), \qquad \text{去重依据} = \kappa(e)<br>$$</p>
+<p><strong>这个公式在说什么</strong>：从四个通道各取前 K 条，然后<strong>按门牌号去重</strong>——同一个地址（同一条款的文字、图、表）只保留一份。这样不同通道的”分数”不需要可比，因为合并依据是地址不是分数。</p>
+<p><strong>为什么这一点很重要</strong>：如果按分数合并，就要解决”全文检索的分数”和”向量的相似度”如何换算——这是一个没有标准答案的问题，很多系统在这里埋了隐性 bug。</p>
+<h2 id="工序-⑤-证据装配"><a href="#工序-⑤-证据装配" class="headerlink" title="工序 ⑤ 证据装配"></a>工序 ⑤ 证据装配</h2><p><strong>这是对你原方案第 (f) 项的一个修正建议。</strong></p>
+<p>原方案是”生成后再做多模态补全”。但实践中这样做，补上去的图往往是<strong>装饰性的</strong>（”顺便放张流程图”），不是<strong>证据性的</strong>（”这一步的依据是图里的这个节点”）。</p>
+<p><strong>更好的做法：把”带哪些证据”提前到生成之前决定。</strong></p>
+<p>$$<br>\text{生成} ;=; \text{文字} ;\oplus; \text{锚点}(\kappa_1, \kappa_2, \ldots, \kappa_n)<br>$$</p>
+<p><strong>这个公式在说什么</strong>：生成的答案由”文字”和”若干个锚点”组成。锚点指向证据（某条款、某图的某节点、某表某行）。生成时只决定”这里要引用第几条”，具体内容由系统按锚点去取。</p>
+<p><strong>这样做有三个好处</strong>：</p>
+<ol>
+<li><strong>图和文天然对齐</strong>：因为锚点在生成前就定了，不会出现”文字讲 A 步骤、配图是 B 步骤”；</li>
+<li><strong>可校验</strong>：每个锚点都能检查”这个位置真的存在吗”；</li>
+<li><strong>可替换</strong>：图更新了，答案不变，只是锚点取到新图。</li>
+</ol>
+<p><strong>装配时按问题类型决定证据组合</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>问题类型</th>
+<th>必带证据</th>
+<th>可选证据</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>规则类</td>
+<td>条款原文 + 文号 + 条款号</td>
+<td>修订说明</td>
+</tr>
+<tr>
+<td>流程类</td>
+<td>节点序列 + 每步责任人 + 材料</td>
+<td>流程图 + 系统截图</td>
+</tr>
+<tr>
+<td>多模态类</td>
+<td><strong>图的区域坐标 + 对应说明文字</strong></td>
+<td>现场照片</td>
+</tr>
+<tr>
+<td>对比类</td>
+<td>对比表 + 各自依据</td>
+<td>适用情形说明</td>
+</tr>
+<tr>
+<td>混合计算类</td>
+<td><strong>计算过程 + 规则判定 + 数据来源</strong></td>
+<td>敏感性说明</td>
+</tr>
+</tbody></table>
+<h2 id="工序-⑥-受约束生成"><a href="#工序-⑥-受约束生成" class="headerlink" title="工序 ⑥ 受约束生成"></a>工序 ⑥ 受约束生成</h2><p><strong>这是全文第二重要的原则。</strong></p>
+<p>大模型最不可靠的地方是<strong>算数</strong>。它会把 90 万算成”超过 100 万”，会把三个月的时限算成”90 天”。这不是模型不聪明，是它本来就不是计算器。</p>
+<p><strong>正确做法：把答案的生产拆成四层，每层职责单一</strong>：</p>
+<p>$$<br>\text{答案} ;=; \text{表述}\Big(; \text{判定}\big(; \text{计算}(; \text{取数}(; \text{检索证据} ;); ); \big); \Big)<br>$$</p>
+<p><strong>这个公式在说什么</strong>：从里往外读——</p>
+<table>
+<thead>
+<tr>
+<th>层</th>
+<th>谁来做</th>
+<th>输出</th>
+<th>能不能错</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>检索证据</strong></td>
+<td>工序 ④</td>
+<td>相关条款、图、表</td>
+<td>可能漏，但可查</td>
+</tr>
+<tr>
+<td><strong>取数</strong></td>
+<td>SQL / 接口</td>
+<td>精确数值</td>
+<td><strong>必须零错</strong></td>
+</tr>
+<tr>
+<td><strong>计算</strong></td>
+<td>公式 / 代码</td>
+<td>算出来的结果（落在哪一档）</td>
+<td><strong>必须零错</strong></td>
+</tr>
+<tr>
+<td><strong>判定</strong></td>
+<td>规则引擎</td>
+<td>该走哪个流程</td>
+<td><strong>必须零错</strong></td>
+</tr>
+<tr>
+<td><strong>表述</strong></td>
+<td>大模型</td>
+<td>人话</td>
+<td>可能措辞不当，但数字已被锁定</td>
+</tr>
+</tbody></table>
+<p><strong>大模型只负责最外层</strong>。前三层都是确定性程序。这样即使模型措辞不好，<strong>结论和数字是对的</strong>。</p>
+<p><strong>具体到”90 万谁审批”这个例子</strong>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">① 检索：找到第八、九、十条（三条都要，不能只找一条）</span><br><span class="line">② 取数：从用户问题/台账取到 amount = 900,000 元</span><br><span class="line">③ 计算：判定落在哪个区间 → [800000, 1000000) → 第九条</span><br><span class="line">④ 判定：第九条 → 审批人 = 分管领导；材料 = 3 项</span><br><span class="line">⑤ 表述：&quot;90 万元属于 80 万至 100 万元档，依《项目管理办法》第九条，由分管领导审批。需提交……&quot;</span><br></pre></td></tr></table></figure>
+
+<p>**关键：如果第①步只召回了第九条，第③步就无法验证”90 万真的落在第九条”**——因为缺少第八条和第十条作为边界对照。</p>
+<p><strong>这是一个实践要点</strong>：规则类检索必须<strong>召回相邻档位</strong>，用来做边界校验。只召回”最像的那一条”是不够的。</p>
+<h2 id="工序-⑦-结果校准"><a href="#工序-⑦-结果校准" class="headerlink" title="工序 ⑦ 结果校准"></a>工序 ⑦ 结果校准</h2><p><strong>这是对你原方案 (g)”实时校准”的具体化。</strong>“校准”是个模糊词——校准什么？我的建议是明确成<strong>三道闸</strong>，每次生成后依次过一遍。</p>
+<p><strong>闸一：数值校准——所有数字必须可追溯</strong></p>
+<p>$$<br>\text{合法}(a) ;=; \forall, n \in \text{数字}(a):; n \in \text{来源}(e_1, \ldots, e_k)<br>$$</p>
+<p><strong>这个公式在说什么</strong>：答案 $a$ 里出现的<strong>每一个数字</strong> $n$，都必须能在引用的证据里找到出处。找不到就是<strong>编造</strong>，必须拦下。</p>
+<p><strong>这是工业场景最刚性的要求</strong>。因为一个错误的金额、一个错误的温度上限，可能导致真实的业务事故。</p>
+<p><strong>实操</strong>：把答案里的所有数字抽出来（正则 + 模型），逐个回查证据文本。命中率必须 100%，否则退回重生成。</p>
+<p><strong>闸二：规则校准——条件不全就不许下结论</strong></p>
+<p>$$<br>\text{可判定}(q) ;=; \bigwedge_{c ,\in, \text{必要条件}(q)} \text{已知}(c)<br>$$</p>
+<p><strong>这个公式在说什么</strong>：一个问题要能回答，它的<strong>所有必要条件</strong>都必须已知。任何一个未知，就不能给结论。</p>
+<p><strong>以 90 万为例</strong>，必要条件至少包括：金额、项目类型（工程/货物/服务）、资金性质、所属单位。<strong>如果用户只说了金额，系统应该说”还需要知道项目类型”，而不是直接给出审批人。</strong></p>
+<p><strong>这是”追问”的理论依据</strong>——不是系统笨，是条件真的不够。</p>
+<p><strong>闸三：时效校准——引用的制度必须是现行有效的</strong></p>
+<p>$$<br>\text{有效}(e, t) ;=; \big(\text{实施日期}(e) \le t\big) ;\wedge; \big(t &lt; \text{失效日期}(e)\big)<br>$$</p>
+<p><strong>这个公式在说什么</strong>：一条制度在时间 $t$ 有效，当且仅当它已开始实施、且尚未失效。</p>
+<p><strong>为什么必须做</strong>：制度改版很频繁。如果 2026 版替代了 2024 版，而系统同时索引了这两版，检索可能召回旧版——<strong>答案看起来完全正确，但依据已经作废</strong>。这是最隐蔽的错误，因为它不会被任何”准确性检查”发现。</p>
+<p><strong>实操</strong>：每个条款带 <code>[生效日, 失效日)</code> 区间，检索时按当前时间过滤。旧版保留但标记为”历史版本”，只在用户明确问”以前怎么规定的”时才召回。</p>
+<hr>
+<h1 id="四、针对五类提问的执行路径"><a href="#四、针对五类提问的执行路径" class="headerlink" title="四、针对五类提问的执行路径"></a>四、针对五类提问的执行路径</h1><p>有了上面的七道工序，下面回答”怎么处理五类不同问题”。</p>
+<p><strong>核心思想：七道工序是”公共设施”，五条路径是”不同的走法”。</strong> 不是五个系统，是一个系统里的五种调度。</p>
+<h2 id="路径-A：规则类问题"><a href="#路径-A：规则类问题" class="headerlink" title="路径 A：规则类问题"></a>路径 A：规则类问题</h2><p><strong>典型问法</strong>：”单一来源采购需要什么条件？””90 万谁审批？”</p>
+<p><strong>走法</strong>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">识别规则要素（金额/类型/单位） </span><br><span class="line">  → 检索相邻档位条款（不止一条）</span><br><span class="line">  → 取数（若涉及具体数值）</span><br><span class="line">  → 规则引擎判定区间</span><br><span class="line">  → 输出：结论 + 条款原文 + 文号条款号 + 适用条件</span><br></pre></td></tr></table></figure>
+
+<p><strong>三个设计要点</strong>：</p>
+<ol>
+<li>**必须召回”边界邻居”**。问第九条，要同时召回第八、十条，用来校验边界。</li>
+<li><strong>区间用半开区间表示</strong>，避免重复和遗漏：</li>
+</ol>
+<p>$$<br>\text{命中}(x) ;=; {, i ;\mid; l_i \le x &lt; u_i ,}<br>$$</p>
+<p><strong>这个公式在说什么</strong>：每一个档位 $i$ 用”左闭右开”区间 $[l_i, u_i)$ 表示。80 万整落在”80 万以上”这一档，100 万整落在”100 万以上”这一档，<strong>不重不漏</strong>。</p>
+<ol start="3">
+<li><strong>边界必须显式定义</strong>。”80 万以上”到底含不含 80 万？制度原文常常说不清。**这时必须标注”边界待确认”**，而不是猜一个。</li>
+</ol>
+<h2 id="路径-B：流程类问题"><a href="#路径-B：流程类问题" class="headerlink" title="路径 B：流程类问题"></a>路径 B：流程类问题</h2><p><strong>典型问法</strong>：”从立项到签约要走几步？””这个环节谁审批？”</p>
+<p><strong>走法</strong>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">识别起点和终点（或&quot;当前所在节点&quot;）</span><br><span class="line">  → 图查询（找路径）</span><br><span class="line">  → 补充每节点的责任人、材料、系统入口</span><br><span class="line">  → 输出：节点序列 + 每步四要素 + 流程图锚点</span><br></pre></td></tr></table></figure>
+
+<p><strong>三个设计要点</strong>：</p>
+<ol>
+<li><strong>流程必须是图，不是段落</strong>。段落无法回答”如果条件不满足会退回哪一步”。</li>
+<li><strong>双轨要分开</strong>。行业流程和公司流程可能 80% 相同，但<strong>关键节点不同</strong>。必须维护两套图，并且在答案里明确”你现在走的是哪一套”。</li>
+<li><strong>要支持”当前位置”查询</strong>。用户往往不是问”全流程”，而是”我在第 3 步，下一步做什么”。这时需要的是<strong>后继节点</strong>，不是整条路径。</li>
+</ol>
+<h2 id="路径-C：多模态类问题"><a href="#路径-C：多模态类问题" class="headerlink" title="路径 C：多模态类问题"></a>路径 C：多模态类问题</h2><p><strong>典型问法</strong>：”这个阀门在图纸哪个位置？””系统里这个字段在哪填？”</p>
+<p><strong>走法</strong>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">定位实体（部件名/字段名）</span><br><span class="line">  → 在图像索引里查（部件标注 / 界面元素）</span><br><span class="line">  → 返回：区域坐标 + 该区域对应的说明文字 + 原图锚点</span><br><span class="line">  → 输出：文字说明 + 高亮区域图</span><br></pre></td></tr></table></figure>
+
+<p><strong>三个设计要点</strong>：</p>
+<ol>
+<li><strong>图上位置要能返回坐标</strong>，不能只说”在图纸上”。用户要的是<strong>能高亮的区域</strong>。</li>
+<li><strong>图和文必须成对返回</strong>。只给图，用户不知道看什么；只给文字，用户找不到位置。</li>
+<li>**系统截图要能定位到”页面 + 控件”**，这样答案才是”点开 A 页面的 B 字段”，而不是”在系统里填一下”。</li>
+</ol>
+<h2 id="路径-D：对比类问题"><a href="#路径-D：对比类问题" class="headerlink" title="路径 D：对比类问题"></a>路径 D：对比类问题</h2><p><strong>典型问法</strong>：”公开招标和竞争性谈判有什么区别？””2024 版和 2026 版有什么变化？”</p>
+<p><strong>走法</strong>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">拆解两个对比对象</span><br><span class="line">  → 并行召回（两个对象各自检索）</span><br><span class="line">  → 抽取&quot;对比维度&quot;（金额门槛/审批层级/所需材料/时限）</span><br><span class="line">  → 按维度对齐</span><br><span class="line">  → 输出：对比表 + 各自依据</span><br></pre></td></tr></table></figure>
+
+<p><strong>核心公式</strong>：</p>
+<p>$$<br>\text{差异}(A, B) ;=; {, (k,; v_A(k),; v_B(k)) ;\mid; v_A(k) \neq v_B(k) ,}<br>$$</p>
+<p><strong>这个公式在说什么</strong>：对每个维度 $k$，取出 A 和 B 的取值；<strong>只保留不一样的</strong>。相同的不用列——用户要看的就是差别。</p>
+<p><strong>三个设计要点</strong>：</p>
+<ol>
+<li><strong>对比维度必须先定</strong>。不定维度直接让模型”对比一下”，会得到一堆散乱的句子。</li>
+<li><strong>两个对象必须用同一套维度取数</strong>，否则表格会残缺。</li>
+<li>**必须分开”依据”**。表格里每一行的差异，都要能点回各自的条款——不能给一个”混合依据”。</li>
+</ol>
+<h2 id="路径-E：混合计算类问题"><a href="#路径-E：混合计算类问题" class="headerlink" title="路径 E：混合计算类问题"></a>路径 E：混合计算类问题</h2><p><strong>典型问法</strong>：”这个 90 万的项目要交哪些材料？””上个月超过 80 万的项目有几个，都要补什么手续？”</p>
+<p><strong>走法</strong>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">拆解成子任务（取数 / 判定 / 检索）</span><br><span class="line">  → 依次执行，每步输出可校验</span><br><span class="line">  → 汇总成结构化结果</span><br><span class="line">  → 表述成自然语言</span><br><span class="line">  → 三道校准闸</span><br></pre></td></tr></table></figure>
+
+<p><strong>举个完整的例子</strong>：</p>
+<blockquote>
+<p>用户问：”上个月超过 80 万的项目有几个？都要补什么手续？”</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>步骤</th>
+<th>做什么</th>
+<th>谁做</th>
+<th>输出</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>查台账：上月金额 &gt; 80 万的记录</td>
+<td>SQL</td>
+<td>4 条记录，金额列表</td>
+</tr>
+<tr>
+<td>2</td>
+<td>逐条判定落在哪一档</td>
+<td>规则引擎</td>
+<td>3 条在 80–100 万档，1 条 &gt; 100 万</td>
+</tr>
+<tr>
+<td>3</td>
+<td>检索两档各自的手续要求</td>
+<td>检索</td>
+<td>两套材料清单</td>
+</tr>
+<tr>
+<td>4</td>
+<td>求并集/分别列出</td>
+<td>代码</td>
+<td>清单</td>
+</tr>
+<tr>
+<td>5</td>
+<td>表述</td>
+<td>大模型</td>
+<td>自然语言 + 计算过程</td>
+</tr>
+</tbody></table>
+<p><strong>关键</strong>：<strong>第 1、2 步绝不能由大模型做</strong>。让模型”数一下有几个”是最危险的操作——它可能数错，而且错得很自信。</p>
+<h2 id="五条路径的调度表"><a href="#五条路径的调度表" class="headerlink" title="五条路径的调度表"></a>五条路径的调度表</h2><table>
+<thead>
+<tr>
+<th>判断依据</th>
+<th>走向</th>
+<th>核心引擎</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>问”能不能/该不该/是否允许”</td>
+<td>路径 A（规则）</td>
+<td>规则引擎</td>
+</tr>
+<tr>
+<td>问”几步/顺序/下一步”</td>
+<td>路径 B（流程）</td>
+<td>图查询</td>
+</tr>
+<tr>
+<td>问”在哪/长什么样/怎么操作”</td>
+<td>路径 C（多模态）</td>
+<td>图像索引</td>
+</tr>
+<tr>
+<td>问”区别/对比/变化”</td>
+<td>路径 D（对比）</td>
+<td>并行召回 + 对齐</td>
+</tr>
+<tr>
+<td>问”多少/几个/合计”</td>
+<td>路径 E（计算）</td>
+<td>SQL + 规则</td>
+</tr>
+<tr>
+<td>同时涉及多个</td>
+<td><strong>组合路径</strong></td>
+<td>按子任务拆解</td>
+</tr>
+</tbody></table>
+<p><strong>现实中大部分问题都是组合的</strong>。比如”90 万谁审批、要交什么材料”= 路径 A + 路径 E。所以**路由不是五选一，而是”拆解成子任务，每个子任务各自路由”**。</p>
+<hr>
+<h1 id="五、四个最容易被忽略、但决定成败的细节"><a href="#五、四个最容易被忽略、但决定成败的细节" class="headerlink" title="五、四个最容易被忽略、但决定成败的细节"></a>五、四个最容易被忽略、但决定成败的细节</h1><h2 id="5-1-边界：80-万含不含？"><a href="#5-1-边界：80-万含不含？" class="headerlink" title="5.1 边界：80 万含不含？"></a>5.1 边界：80 万含不含？</h2><p>这是工业规则场景里<strong>最高频的错误来源</strong>。</p>
+<p>制度原文写”80 万元以上”，到底是 $x &gt; 80$ 还是 $x \ge 80$？中文表述在这里是不严谨的。</p>
+<p><strong>处理原则</strong>：</p>
+<ol>
+<li>**默认采用”左闭右开”**（$[80, 100)$），并在答案里显式写出：”90 万元（80 万元 ≤ 金额 &lt; 100 万元）”；</li>
+<li><strong>边界值单独标注</strong>。如果原文没说清 80 万整算哪档，答案里要写”80 万元整的归属需与制度起草部门确认”；</li>
+<li><strong>不要猜</strong>。猜错的代价是真实的审批错误。</li>
+</ol>
+<h2 id="5-2-版本：旧答案看起来对，但依据已经作废"><a href="#5-2-版本：旧答案看起来对，但依据已经作废" class="headerlink" title="5.2 版本：旧答案看起来对，但依据已经作废"></a>5.2 版本：旧答案看起来对，但依据已经作废</h2><p>这是最隐蔽的错误。系统同时索引了 2024 版和 2026 版，检索召回旧版，<strong>答案的文字完全正确，但依据已经失效</strong>。</p>
+<p><strong>处理原则</strong>：</p>
+<ol>
+<li>每个条款带生效区间 $[\text{实施日}, \text{失效日})$；</li>
+<li>检索时默认只查”当前有效”；</li>
+<li>旧版标记为”历史版本”，只在用户明确问”以前怎么规定”时召回；</li>
+<li><strong>答案里必须显示版本号</strong>——“依《项目管理办法》（2026 版）第九条”。</li>
+</ol>
+<h2 id="5-3-拒答与追问：宁可问一句，不要猜一个"><a href="#5-3-拒答与追问：宁可问一句，不要猜一个" class="headerlink" title="5.3 拒答与追问：宁可问一句，不要猜一个"></a>5.3 拒答与追问：宁可问一句，不要猜一个</h2><p>$$<br>\text{可判定}(q) ;=; \bigwedge_{c \in C(q)} \text{已知}(c)<br>$$</p>
+<p><strong>这个公式在说什么</strong>：$C(q)$ 是回答问题 $q$ 的<strong>必要条件集合</strong>，只有全部已知，才可判定。这与工序⑦”闸二”是同一个判据——<strong>闸二负责在生成后拦住它，这里负责在生成前就问出来</strong>。</p>
+<p><strong>必要条件因问题类型而异</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>问题类型</th>
+<th>必要条件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>限额判定</td>
+<td>金额、项目类型、资金性质、所属单位</td>
+</tr>
+<tr>
+<td>流程导航</td>
+<td>业务阶段、所在平台（行业 / 公司）</td>
+</tr>
+<tr>
+<td>材料清单</td>
+<td>采购方式、项目类型</td>
+</tr>
+<tr>
+<td>风险识别</td>
+<td>业务环节、具体情形</td>
+</tr>
+</tbody></table>
+<p>**缺一个就问，不要给一个”通用答案”**。因为通用答案在具体场景下往往是错的。</p>
+<p><strong>追问要问得让用户答得出</strong>。不要问”你在哪个平台”，而要问”你现在是要报采购计划，还是要发招标公告”——用户可能不知道自己”在哪个平台”，但知道自己”在干什么”。</p>
+<h2 id="5-4-图不是装饰：锚点必须能被验证"><a href="#5-4-图不是装饰：锚点必须能被验证" class="headerlink" title="5.4 图不是装饰：锚点必须能被验证"></a>5.4 图不是装饰：锚点必须能被验证</h2><p>如果答案里放了图，<strong>这张图必须能被验证是”这一处”的证据</strong>。</p>
+<p>判定标准：把图里的锚点（某节点 ID、某区域坐标）拿去查，应该能查到<strong>对应的说明文字</strong>。查不到，说明图和文没对齐，这张图就是装饰。</p>
+<p><strong>这条在验收时特别有用</strong>：随机抽 20 条带图的答案，逐个检查”图的锚点能不能对上文字”，命中率低于 90% 就说明多模态关联没做好。</p>
+<hr>
+<h1 id="六、常见问题与解决方案"><a href="#六、常见问题与解决方案" class="headerlink" title="六、常见问题与解决方案"></a>六、常见问题与解决方案</h1><p>上面的七道工序和五条路径，解决的是”<strong>制度 + 图纸 + 台账</strong>“这个核心组合。但如果把同样的方法搬到相邻场景——能源电力的操作规程、化工的安全管理、医疗的设备维护、制造工艺的作业指导——会发现还有六件事是这个场景里没有充分覆盖的。</p>
+<p><strong>这一节是给方案做完整性检查用的</strong>：如果你的场景里出现了下面任何一条，就得在七道工序里补上对应环节。</p>
+<h2 id="6-1-规则冲突问题"><a href="#6-1-规则冲突问题" class="headerlink" title="6.1 规则冲突问题"></a>6.1 规则冲突问题</h2><p><strong>为什么必须有</strong>：工业制度几乎都是多层叠加的——国家法规、行业规定、公司标准、部门细则。你问一个问题，可能同时命中四条规定，而且它们<strong>互相不一致</strong>。</p>
+<p><strong>三类冲突，各有不同的解法</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>冲突类型</th>
+<th>例子</th>
+<th>谁优先</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>层级冲突</strong>（上位 vs 下位）</td>
+<td>国家规定”必须公开招标”，公司细则说”可直接委托”</td>
+<td><strong>上位法优先</strong>；下位法与之冲突的部分<strong>无效</strong></td>
+</tr>
+<tr>
+<td><strong>专指冲突</strong>（一般 vs 特别）</td>
+<td>通用办法说”80 万以上招标”，专项规定说”科研设备另有规定”</td>
+<td><strong>特别规定优先</strong>（同一层级内）</td>
+</tr>
+<tr>
+<td><strong>时间冲突</strong>（新 vs 旧）</td>
+<td>2024 版与 2026 版对同一条规定不同</td>
+<td><strong>新法优先</strong>（后法优于前法）</td>
+</tr>
+</tbody></table>
+<p><strong>消解规则可以写成一条排序函数</strong>：</p>
+<p>$$<br>e^{<em>}(x) ;=; \operatorname</em>{lexmax}<em>{e ,\in, E(x)} \Big( \underbrace{\text{层级}(e)}</em>{\text{法规} &gt; \text{行业} &gt; \text{公司}},;; \underbrace{\text{专指度}(e)}<em>{\text{专项} &gt; \text{通用}},;; \underbrace{\text{生效日}(e)}</em>{\text{新} &gt; \text{旧}} \Big)<br>$$</p>
+<p><strong>这个公式在说什么</strong>：对同时命中的若干条规定 $E(x)$，按”层级 → 专指度 → 生效日”的<strong>先后顺序</strong>比较，先比第一项，第一项相同再比第二项，以此类推（这叫”字典序”，$\operatorname*{lexmax}$ 就是按这个顺序取最大）。最终选出应该适用的那一条 $e^{*}$。</p>
+<p><strong>三个工程要点</strong>：</p>
+<ol>
+<li><strong>冲突不是”两个都答”**。很多系统怕答错，就把两条都列出来让用户自己判断——这在合规场景是</strong>失职**。系统必须给出”以哪条为准”，并说明为什么。</li>
+<li><strong>冲突必须显式检测</strong>。检索到多条后，要判断它们是不是在讲<strong>同一件事</strong>（同一实体 + 同一动作 + 同一条件），是的话才可能冲突。不同事的条款并列，不叫冲突。</li>
+<li><strong>“下位法更严”是常见且合法的，而且有两种形态</strong>。这时不构成冲突，答案应说明”公司标准更严，按公司标准执行”：<ul>
+<li><strong>扩面</strong>：适用条件更宽。国家规定 80 万元以上须招标，公司内控要求 50 万元以上就走招标，50–80 万这一段属于<strong>加严</strong>；</li>
+<li><strong>提标</strong>：适用条件相同，但要求更高。同样都要招标，公司还要求纪委备案。</li>
+</ul>
+</li>
+</ol>
+<p>$$<br>\text{加严}(e_{\text{下}}, e_{\text{上}}) ;=; \big[, \text{条件}(e_{\text{下}}) \supseteq \text{条件}(e_{\text{上}}) ,\big] ;\wedge; \big[, \text{要求}(e_{\text{下}}) \succeq \text{要求}(e_{\text{上}}) ,\big]<br>$$</p>
+<p><strong>这个公式在说什么</strong>：下位法的<strong>适用条件覆盖了上位法</strong>（$\supseteq$，管得更多），且<strong>要求不低于上位法</strong>（$\succeq$，管得不松），就是合法加严。”提标”形态则是条件相同、要求更严，$\supseteq$ 取等号即可，同一式子覆盖。</p>
+<p><strong>注意这只是必要条件</strong>：要能判出加严，$E(x)$ 里必须有<strong>结构化的条件与要求字段</strong>，纯文本比不出来——这也反过来要求工序①在解析时就把”适用条件”抽成字段，而不是只存原文段落。</p>
+<h2 id="6-2-计算口径问题"><a href="#6-2-计算口径问题" class="headerlink" title="6.2 计算口径问题"></a>6.2 计算口径问题</h2><p><strong>这是最容易被忽略、但一定会出事的一条。</strong></p>
+<p>同样一个合同，可能算出四个不同的金额：</p>
+<table>
+<thead>
+<tr>
+<th>口径</th>
+<th>取值</th>
+<th>差异来源</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>含税 / 不含税</strong></td>
+<td>90 万 / 79.6 万</td>
+<td>增值税 13%</td>
+</tr>
+<tr>
+<td><strong>单次 / 年度累计</strong></td>
+<td>90 万 / 240 万</td>
+<td>同一供应商多次采购</td>
+</tr>
+<tr>
+<td><strong>合同额 / 预算额</strong></td>
+<td>90 万 / 100 万</td>
+<td>预算通常含不可预见费</td>
+</tr>
+<tr>
+<td><strong>本币 / 外币</strong></td>
+<td>90 万 / 12.5 万美元</td>
+<td>汇率与时点</td>
+</tr>
+</tbody></table>
+<p><strong>只要口径错一个，落档就可能错一档，审批人就全错。</strong></p>
+<p><strong>处理原则</strong>：判定用的金额不是”取到的数”，而是”<strong>按规则口径换算后的数</strong>“：</p>
+<p>$$<br>a_{\text{判定}} ;=; \Phi\big(, a_{\text{原始}},; \text{口径规则} ,\big)<br>$$</p>
+<p><strong>这个公式在说什么</strong>：$a_{\text{原始}}$ 是台账里那一列的值，$\Phi$ 是按”这条规则要求的口径”做的换算。<strong>同一条规则永远用同一个口径</strong>，不允许这次用含税、下次用不含税。</p>
+<p><strong>必须做的三件事</strong>：</p>
+<ol>
+<li><strong>规则侧标注口径</strong>。在规则库里，金额阈值必须带 <code>tax_included: true/false</code>、<code>aggregation: single/cumulative</code> 这样的字段。<strong>没有标注的规则，默认不能自动判定</strong>。</li>
+<li><strong>数据侧标注口径</strong>。台账的”金额”字段是什么口径，要在元数据里写清——这跟工序②”索引说明书”是同一件事。</li>
+<li><strong>口径不一致时必须显式提示</strong>。如果规则要求不含税、数据是含税，答案要写：”规则按不含税口径（80 万元），本条合同含税 90 万元，折不含税 79.6 万元，落在 80 万元以下档”。<strong>把换算过程写出来</strong>，比直接给结论可靠得多。</li>
+</ol>
+<h2 id="6-3-权限问题"><a href="#6-3-权限问题" class="headerlink" title="6.3 权限问题"></a>6.3 权限问题</h2><p><strong>为什么必须有</strong>：制度可以全员共享，但<strong>具体实施记录、供应商报价、历史案例、审计问题</strong>往往分级可见。如果系统把”某供应商被处罚”的案例和制度条款关联起来，通过关联把案例内容”顺带”显示给无权用户，就是泄密。</p>
+<p><strong>核心原则：检索前过滤，不是检索后过滤。</strong></p>
+<p>$$<br>\text{检索}(q, u) ;\subseteq; \text{可见}(u) ;=; {, e ;\mid; \text{perm}(u, e) = 1 ,}<br>$$</p>
+<p><strong>这个公式在说什么</strong>：用户 $u$ 能检索到的结果集合，必须是”他有权看的那些知识 $e$”的<strong>子集</strong>。也就是说，无权的内容根本不进入候选池，而不是”检出来再删掉”。</p>
+<p><strong>为什么”检出来再删”不行</strong>：因为模型已经”看到”了这些内容（哪怕最后不输出），而日志、缓存、上下文里可能已经留下痕迹。合规审计时这是硬伤。</p>
+<p><strong>两道关卡都要设</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>关卡</th>
+<th>检查什么</th>
+<th>漏了会怎样</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>检索前过滤</strong></td>
+<td>这个用户能查哪些文档/条款</td>
+<td>结果里出现无权内容</td>
+</tr>
+<tr>
+<td><strong>关联扩展二次校验</strong></td>
+<td>顺着图谱跳过去的节点，用户有权看吗</td>
+<td>通过关联”绕道”看到无权内容</td>
+</tr>
+</tbody></table>
+<p><strong>第二道最容易被漏掉</strong>。比如：制度（公开）→ 引用 → 案例（受限）。检索命中制度，图谱扩展时跳到案例，如果扩展不看权限，就绕过了第一道关。</p>
+<h2 id="6-4-术语与位号问题"><a href="#6-4-术语与位号问题" class="headerlink" title="6.4 术语与位号问题"></a>6.4 术语与位号问题</h2><p><strong>为什么必须有</strong>：工业现场的实体命名极度混乱——</p>
+<table>
+<thead>
+<tr>
+<th>同一台设备，可能被叫作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>位号：<code>P-101A</code>（P&amp;ID 图上的编号）</td>
+</tr>
+<tr>
+<td>资产号：<code>EQ-2023-0451</code>（资产系统）</td>
+</tr>
+<tr>
+<td>中文全称：<code>一号进料泵</code></td>
+</tr>
+<tr>
+<td>口语简称：<code>一号泵</code>（现场）</td>
+</tr>
+<tr>
+<td>英文名：<code>Feed Pump No.1</code></td>
+</tr>
+</tbody></table>
+<p>**用户问”一号泵怎么保养”，系统必须知道这就是 <code>P-101A</code>**，否则查不到保养规程，也关联不到 P&amp;ID 图上的位置。</p>
+<p><strong>解法：建一张实体别名表，作为检索的”翻译层”</strong></p>
+<p>$$<br>\text{归一}(s) ;=; \text{CanonicalID}, \qquad s \in {\text{位号},\ \text{资产号},\ \text{全称},\ \text{简称},\ \text{英文}}<br>$$</p>
+<p><strong>这个公式在说什么</strong>：把任何一个写法 $s$，都映射到一个唯一的规范 ID。检索时先把用户说法归一，再用规范 ID 去查。</p>
+<p><strong>三个实操要点</strong>：</p>
+<ol>
+<li><strong>位号是主键</strong>。P&amp;ID 位号在工程上最稳定，应作为规范 ID；口语简称做别名。</li>
+<li><strong>别名表要能长</strong>。用户会不断发明新叫法（”那个大泵”），要支持人工补充。</li>
+<li><strong>归一失败要提示，不要硬猜</strong>。”一号泵”如果对应两台设备，必须追问，不能猜一台。</li>
+</ol>
+<h2 id="6-5-多轮对话问题"><a href="#6-5-多轮对话问题" class="headerlink" title="6.5 多轮对话问题"></a>6.5 多轮对话问题</h2><p><strong>为什么必须有</strong>：真实使用中，问题是被”问出来”的，不是”一次说完”的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">用户：90 万的项目怎么审批？</span><br><span class="line">系统：属于 80–100 万档，由分管领导审批。需要的话我可以列出所需材料。</span><br><span class="line">用户：要交什么？          ← &quot;要交什么&quot;里没有主语，需要承接上文</span><br><span class="line">系统：（继续答材料清单）</span><br></pre></td></tr></table></figure>
+
+<p><strong>三个需要处理的问题</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>问题</th>
+<th>例子</th>
+<th>处理方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>省略</strong></td>
+<td>“要交什么？”</td>
+<td>从上一轮继承”90 万项目 + 审批”这两个槽位</td>
+</tr>
+<tr>
+<td><strong>指代</strong></td>
+<td>“它呢？”、”那这个呢？”</td>
+<td>解析”它”指向上一轮的哪个实体</td>
+</tr>
+<tr>
+<td><strong>改口</strong></td>
+<td>“不对，是 120 万”</td>
+<td><strong>只更新这一个槽位，其余保留</strong>，重新判定</td>
+</tr>
+</tbody></table>
+<p><strong>实现上最简的做法：维护一个”槽位表”</strong></p>
+<p>$$<br>\text{State}<em>t ;=; \text{State}</em>{t-1} ;\cup; \Delta_t<br>$$</p>
+<p><strong>这个公式在说什么</strong>：第 $t$ 轮的对话状态 = 上一轮状态，叠加本轮新信息 $\Delta_t$。$\Delta_t$ 可能只是改一个金额，其余条件沿用。</p>
+<p><strong>一个必须注意的坑</strong>：**改口后必须重新判定，而不是”在旧答案上打补丁”**。用户从 90 万改成 120 万，档位从”80–100 万”跳到”100 万以上”，审批人、材料清单、流程全都变了。如果只是把答案里的数字替换掉，会得到一个”数字对了但结论错了”的答案——这比不答更危险。</p>
+<h2 id="6-6-增量更新问题"><a href="#6-6-增量更新问题" class="headerlink" title="6.6 增量更新问题"></a>6.6 增量更新问题</h2><p><strong>为什么必须有</strong>：制度是活的。改一条条款，会连带动摇：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">条款修改</span><br><span class="line">  ├─→ 依赖它的规则（金额阈值变了）</span><br><span class="line">  ├─→ 依赖它的关联（制度↔流程节点、制度↔台账字段）</span><br><span class="line">  ├─→ 依赖它的答案（历史问答里引用这一条的，全部失效）</span><br><span class="line">  ├─→ 依赖它的测试题（回归验证要重跑）</span><br><span class="line">  └─→ 依赖它的别名/术语（新表述进入别名表）</span><br></pre></td></tr></table></figure>
+
+<p><strong>如果只做”新文档入库”，会得到什么</strong>：新旧两版同时在库里，检索随机命中，<strong>答案时对时错</strong>——而且错的时候看起来完全正确（见 5.2）。</p>
+<p><strong>正确的做法：变更影响域分析</strong></p>
+<p>$$<br>\text{影响}(e) ;=; {, x ;\mid; x \text{ 依赖 } e ,}, \qquad \text{重算}(\text{影响}(e))<br>$$</p>
+<p><strong>这个公式在说什么</strong>：先算出一条条款 $e$ 被哪些东西依赖（规则、关联、问答、测试题），然后只重算这些。</p>
+<p><strong>三个必要机制</strong>：</p>
+<ol>
+<li><strong>依赖登记</strong>。每条规则、每条关联、每道测试题，都要记下”我依赖哪一条款”。这是设计时就要埋的，事后补不上。</li>
+<li><strong>状态切换而非删除</strong>。旧版保留（标”历史版本”），新版标”现行”，通过状态切换生效——而不是删了旧的。</li>
+<li><strong>回归测试</strong>。变更后跑一遍受影响的测试题，确认”新规定被正确引用”，且”旧规定不再作为现行结论被引用”。</li>
+</ol>
+<h2 id="6-7-补充项"><a href="#6-7-补充项" class="headerlink" title="6.7 补充项"></a>6.7 补充项</h2><table>
+<thead>
+<tr>
+<th>补充项</th>
+<th>什么时候必须做</th>
+<th>关键设计</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>审计日志</strong></td>
+<td>有合规/内审要求</td>
+<td>记录”谁、何时、问什么、命中哪些证据、最终答案”，且<strong>可回放</strong></td>
+</tr>
+<tr>
+<td><strong>兜底与转人工</strong></td>
+<td>答案会用于决策</td>
+<td>定义”什么情况必须转人”：置信度低、涉及金额超阈值、跨部门争议</td>
+</tr>
+<tr>
+<td><strong>反向检索</strong></td>
+<td>现场作业场景</td>
+<td>用户上传一张照片/扫一个位号，问”这是什么、怎么维护”——需要”以图查规程”</td>
+</tr>
+<tr>
+<td><strong>受众适配</strong></td>
+<td>多角色共用</td>
+<td>领导要结论与依据，操作工要步骤与图；同一答案两种表述，<strong>但数字必须一致</strong></td>
+</tr>
+</tbody></table>
+<p><strong>“审计日志可回放”这一条特别重要</strong>：出了问题（比如审批依据错了），要能还原”当时系统看到了什么、判定了什么”。如果日志只记最终答案，就无法定位是”检索错了”还是”判定错了”。</p>
+<h2 id="6-8-优先级建议"><a href="#6-8-优先级建议" class="headerlink" title="6.8 优先级建议"></a>6.8 优先级建议</h2><table>
+<thead>
+<tr>
+<th>优先级</th>
+<th>补充项</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>必做</strong></td>
+<td>6.1 规则冲突</td>
+<td>制度库的核心正确性，不做则大面积答错</td>
+</tr>
+<tr>
+<td><strong>必做</strong></td>
+<td>6.2 计算口径</td>
+<td>直接影响落档，错了就是业务事故</td>
+</tr>
+<tr>
+<td><strong>必做</strong></td>
+<td>6.5 多轮对话</td>
+<td>不做则实际使用率极低</td>
+</tr>
+<tr>
+<td><strong>应做</strong></td>
+<td>6.3 权限</td>
+<td>有合规要求就必须做，且必须前置过滤</td>
+</tr>
+<tr>
+<td><strong>应做</strong></td>
+<td>6.6 增量更新</td>
+<td>制度会改，不做则半年后系统失效</td>
+</tr>
+<tr>
+<td><strong>按需</strong></td>
+<td>6.4 术语位号</td>
+<td>设备/现场类场景必做，纯管理类可缓</td>
+</tr>
+<tr>
+<td><strong>按需</strong></td>
+<td>6.6 四块</td>
+<td>看合规要求与角色复杂度</td>
+</tr>
+</tbody></table>
+<p><strong>一句话</strong>：6.1、6.2、6.5 是”不完整就会出错”，6.3、6.6 是”不做会出事”，6.4、6.7 是”场景决定”。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/多模态/" rel="tag"># 多模态</a>
+              <a href="/tags/知识库/" rel="tag"># 知识库</a>
+              <a href="/tags/RAG/" rel="tag"># RAG</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2026/11/12/分布距离度量全家桶/" rel="prev" title="分布距离度量全家桶：从 KL 散度到 Wasserstein，以及它们为什么不能互相替代">
+      <i class="fa fa-chevron-left"></i> 分布距离度量全家桶：从 KL 散度到 Wasserstein，以及它们为什么不能互相替代
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2026/11/21/Agent时代的软件工程/" rel="next" title="Agent 时代的软件工程：当基础设施的服务对象从人变成 Agent">
+      Agent 时代的软件工程：当基础设施的服务对象从人变成 Agent <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-1831623022964098"
+     data-ad-slot="5648729926"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、场景与问题"><span class="nav-number">1.</span> <span class="nav-text">一、场景与问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-四种数据"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 四种数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-五种提问"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 五种提问</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-案例分析"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 案例分析</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、多模态统一（≠塞进同一个向量空间）"><span class="nav-number">2.</span> <span class="nav-text">二、多模态统一（≠塞进同一个向量空间）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-做法对比"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 做法对比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-核心原则"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 核心原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-统一的三个层次"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 统一的三个层次</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、知识库构建的主要步骤"><span class="nav-number">3.</span> <span class="nav-text">三、知识库构建的主要步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#工序-①-知识提取"><span class="nav-number">3.1.</span> <span class="nav-text">工序 ① 知识提取</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#工序-②-多模态统一"><span class="nav-number">3.2.</span> <span class="nav-text">工序 ② 多模态统一</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#工序-③-知识关联"><span class="nav-number">3.3.</span> <span class="nav-text">工序 ③ 知识关联</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#工序-④-统一检索"><span class="nav-number">3.4.</span> <span class="nav-text">工序 ④ 统一检索</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#工序-⑤-证据装配"><span class="nav-number">3.5.</span> <span class="nav-text">工序 ⑤ 证据装配</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#工序-⑥-受约束生成"><span class="nav-number">3.6.</span> <span class="nav-text">工序 ⑥ 受约束生成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#工序-⑦-结果校准"><span class="nav-number">3.7.</span> <span class="nav-text">工序 ⑦ 结果校准</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四、针对五类提问的执行路径"><span class="nav-number">4.</span> <span class="nav-text">四、针对五类提问的执行路径</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#路径-A：规则类问题"><span class="nav-number">4.1.</span> <span class="nav-text">路径 A：规则类问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#路径-B：流程类问题"><span class="nav-number">4.2.</span> <span class="nav-text">路径 B：流程类问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#路径-C：多模态类问题"><span class="nav-number">4.3.</span> <span class="nav-text">路径 C：多模态类问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#路径-D：对比类问题"><span class="nav-number">4.4.</span> <span class="nav-text">路径 D：对比类问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#路径-E：混合计算类问题"><span class="nav-number">4.5.</span> <span class="nav-text">路径 E：混合计算类问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五条路径的调度表"><span class="nav-number">4.6.</span> <span class="nav-text">五条路径的调度表</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#五、四个最容易被忽略、但决定成败的细节"><span class="nav-number">5.</span> <span class="nav-text">五、四个最容易被忽略、但决定成败的细节</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#5-1-边界：80-万含不含？"><span class="nav-number">5.1.</span> <span class="nav-text">5.1 边界：80 万含不含？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-2-版本：旧答案看起来对，但依据已经作废"><span class="nav-number">5.2.</span> <span class="nav-text">5.2 版本：旧答案看起来对，但依据已经作废</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-3-拒答与追问：宁可问一句，不要猜一个"><span class="nav-number">5.3.</span> <span class="nav-text">5.3 拒答与追问：宁可问一句，不要猜一个</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-4-图不是装饰：锚点必须能被验证"><span class="nav-number">5.4.</span> <span class="nav-text">5.4 图不是装饰：锚点必须能被验证</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#六、常见问题与解决方案"><span class="nav-number">6.</span> <span class="nav-text">六、常见问题与解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#6-1-规则冲突问题"><span class="nav-number">6.1.</span> <span class="nav-text">6.1 规则冲突问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-2-计算口径问题"><span class="nav-number">6.2.</span> <span class="nav-text">6.2 计算口径问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-3-权限问题"><span class="nav-number">6.3.</span> <span class="nav-text">6.3 权限问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-4-术语与位号问题"><span class="nav-number">6.4.</span> <span class="nav-text">6.4 术语与位号问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-5-多轮对话问题"><span class="nav-number">6.5.</span> <span class="nav-text">6.5 多轮对话问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-6-增量更新问题"><span class="nav-number">6.6.</span> <span class="nav-text">6.6 增量更新问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-7-补充项"><span class="nav-number">6.7.</span> <span class="nav-text">6.7 补充项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-8-优先级建议"><span class="nav-number">6.8.</span> <span class="nav-text">6.8 优先级建议</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="C_Meng"
+      src="/images/C_Meng.png">
+  <p class="site-author-name" itemprop="name">C_Meng</p>
+  <div class="site-description" itemprop="description">This site is primarily used for personal note-taking, and some content are from open access, with sources clearly indicated. If there are any copyright issues, please feel free to contact us. 本站主要用于个人笔记记录，存在部分内容引用，均已表明出处，如存在版权问题，敬请联系。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">158</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">31</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">270</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/imonce" title="GitHub → https://github.com/imonce" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:imonce@outlook.com" title="E-Mail → mailto:imonce@outlook.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/3912390829/profile?topnav=1&wvr=6&is_all=1" title="Weibo → https://weibo.com/3912390829/profile?topnav=1&wvr=6&is_all=1" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/moescee" title="Twitter → https://twitter.com/moescee" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+  </div>
+
+
+
+      </div><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-1831623022964098"
+     data-ad-slot="5648729926"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">C_Meng</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://events.vercount.one/js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+  <div style="display: none;">
+    <script src="//s95.cnzz.com/z_stat.php?id=1279293837&web_id=1279293837"></script>
+  </div>
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+  <script>
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+<script>
+document.querySelectorAll('.pdfobject-container').forEach(element => {
+  let url = element.dataset.target;
+  let pdfOpenParams = {
+    navpanes : 0,
+    toolbar  : 0,
+    statusbar: 0,
+    pagemode : 'thumbs',
+    view     : 'FitH'
+  };
+  let pdfOpenFragment = '#' + Object.entries(pdfOpenParams).map(([key, value]) => `${key}=${encodeURIComponent(value)}`).join('&');
+  let fullURL = `/lib/pdf/web/viewer.html?file=${encodeURIComponent(url)}${pdfOpenFragment}`;
+
+  if (NexT.utils.supportsPDFs()) {
+    element.innerHTML = `<embed class="pdfobject" src="${url + pdfOpenFragment}" type="application/pdf" style="height: ${element.dataset.height};">`;
+  } else {
+    element.innerHTML = `<iframe src="${fullURL}" style="height: ${element.dataset.height};" frameborder="0"></iframe>`;
+  }
+});
+</script>
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'hBUFmUyAMBRRHULc0Y4SPPzw-gzGzoHsz',
+      appKey     : 'WBQPPWjmwGWqvQcLqprPq0xs',
+      placeholder: "Just go go",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>
