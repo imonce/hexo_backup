@@ -22,18 +22,18 @@
     var CONFIG = {"hostname":"imonce.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="一、导语过去三十年，软件基础设施只有一个隐含目标：让人用得顺手。  文档是给人读的：有章节、有比喻、有截图、有”注意”和”提示”； 界面是给人点的：有按钮、有表单、有加载动画、有错误提示； 数据是给人看的：有报表、有仪表盘、有红黄绿灯。  这些设计共享一个前提：人是那个”填缝”的角色。文档没写清的，人靠经验补；界面没提示的，人点两下就懂了；报表有歧义的，人打电话问一句。 Agent 没有这个能力。">
+  <meta name="description" content="一、导语过去三十年，软件基础设施只有一个隐含目标：让人用得顺手。  文档是给人读的：有章节、有比喻、有截图、有”注意”和”提示”； 界面是给人点的：有按钮、有表单、有加载动画、有错误提示； 数据是给人看的：有报表、有仪表盘、有红黄绿灯。  这些设计共享一个前提：人是那个”填缝”的角色。文档没写清的，人靠经验补；界面没提示的，人点两下就懂了；报表有歧义的，人打电话问一句。">
 <meta name="keywords" content="agent,软件工程">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Agent 时代的软件工程：当基础设施的服务对象从人变成 Agent">
 <meta property="og:url" content="https://imonce.github.io/2026/11/21/Agent时代的软件工程/index.html">
 <meta property="og:site_name" content="C_Meng PSNA">
-<meta property="og:description" content="一、导语过去三十年，软件基础设施只有一个隐含目标：让人用得顺手。  文档是给人读的：有章节、有比喻、有截图、有”注意”和”提示”； 界面是给人点的：有按钮、有表单、有加载动画、有错误提示； 数据是给人看的：有报表、有仪表盘、有红黄绿灯。  这些设计共享一个前提：人是那个”填缝”的角色。文档没写清的，人靠经验补；界面没提示的，人点两下就懂了；报表有歧义的，人打电话问一句。 Agent 没有这个能力。">
+<meta property="og:description" content="一、导语过去三十年，软件基础设施只有一个隐含目标：让人用得顺手。  文档是给人读的：有章节、有比喻、有截图、有”注意”和”提示”； 界面是给人点的：有按钮、有表单、有加载动画、有错误提示； 数据是给人看的：有报表、有仪表盘、有红黄绿灯。  这些设计共享一个前提：人是那个”填缝”的角色。文档没写清的，人靠经验补；界面没提示的，人点两下就懂了；报表有歧义的，人打电话问一句。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2026-11-23T05:57:02.726Z">
+<meta property="og:updated_time" content="2026-11-23T06:00:13.594Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Agent 时代的软件工程：当基础设施的服务对象从人变成 Agent">
-<meta name="twitter:description" content="一、导语过去三十年，软件基础设施只有一个隐含目标：让人用得顺手。  文档是给人读的：有章节、有比喻、有截图、有”注意”和”提示”； 界面是给人点的：有按钮、有表单、有加载动画、有错误提示； 数据是给人看的：有报表、有仪表盘、有红黄绿灯。  这些设计共享一个前提：人是那个”填缝”的角色。文档没写清的，人靠经验补；界面没提示的，人点两下就懂了；报表有歧义的，人打电话问一句。 Agent 没有这个能力。">
+<meta name="twitter:description" content="一、导语过去三十年，软件基础设施只有一个隐含目标：让人用得顺手。  文档是给人读的：有章节、有比喻、有截图、有”注意”和”提示”； 界面是给人点的：有按钮、有表单、有加载动画、有错误提示； 数据是给人看的：有报表、有仪表盘、有红黄绿灯。  这些设计共享一个前提：人是那个”填缝”的角色。文档没写清的，人靠经验补；界面没提示的，人点两下就懂了；报表有歧义的，人打电话问一句。">
 
 <link rel="canonical" href="https://imonce.github.io/2026/11/21/Agent时代的软件工程/">
 
@@ -229,7 +229,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2026-11-23 13:57:02" itemprop="dateModified" datetime="2026-11-23T13:57:02+08:00">2026-11-23</time>
+                <time title="Modified: 2026-11-23 14:00:13" itemprop="dateModified" datetime="2026-11-23T14:00:13+08:00">2026-11-23</time>
               </span>
 
           
@@ -271,6 +271,7 @@
 <li>数据是给人看的：有报表、有仪表盘、有红黄绿灯。</li>
 </ul>
 <p>这些设计共享一个前提：<strong>人是那个”填缝”的角色</strong>。文档没写清的，人靠经验补；界面没提示的，人点两下就懂了；报表有歧义的，人打电话问一句。</p>
+<a id="more"></a>
 <p>Agent 没有这个能力。<strong>它不填缝，它填幻觉。</strong></p>
 <p>于是出现了一个正在发生的倒转：<strong>同一个系统，需要同时服务两类消费者，而这两类消费者的最优形态几乎相反。</strong></p>
 <table>
